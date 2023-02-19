@@ -11,23 +11,28 @@ struct OnboardingView: View {
   @Binding var onboardingIsShown: Bool
   
   var body: some View {
-    VStack(spacing: Constants.Onboarding.verticalSpacing) {
-      OnboardingTopView(onboardingIsShown: $onboardingIsShown)
+    ZStack {
+      Color.backgroundColor
+        .edgesIgnoringSafeArea(.all)
       
-      ScrollView {
-        VStack(
-          alignment: .leading,
-          spacing: Constants.Onboarding.verticalSpacing
-        ) {
-          HeadlineTextView(text: Constants.Onboarding.headlineText)
-          FeatureListView()
-          HStack {
-            Spacer()
-            FootnoteTextView(text: Constants.Onboarding.footnoteText)
-            Spacer()
+      VStack(spacing: Constants.Onboarding.verticalSpacing) {
+        OnboardingTopView(onboardingIsShown: $onboardingIsShown)
+        
+        ScrollView {
+          VStack(
+            alignment: .leading,
+            spacing: Constants.Onboarding.verticalSpacing
+          ) {
+            HeadlineTextView(text: Constants.Onboarding.headlineText)
+            FeatureListView()
+            HStack {
+              Spacer()
+              FootnoteTextView(text: Constants.Onboarding.footnoteText)
+              Spacer()
+            }
           }
+          .padding([.leading, .trailing, .bottom])
         }
-        .padding([.leading, .trailing, .bottom])
       }
     }
   }

@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+  private let userName = "Natalia Borzenko"
+  
+  var body: some View {
+    ZStack {
+      Color("BackgroundColor")
+        .edgesIgnoringSafeArea(.all)
+      VStack(spacing: 20) {
+        Image("LogoLarge")
+          .padding(.top, 100)
+        Text("Welcome,\n \(userName).")
+          .font(.headline)
+          .kerning(0.4)
+          .foregroundColor(Color("TextColor"))
+          .multilineTextAlignment(.center)
+          .lineSpacing(8)
+        Spacer()
+      }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }

@@ -8,7 +8,7 @@ Capstone project for [Kodeco iOS Bootcamp](https://store.kodeco.com/bootcamp/ios
 This project represents user experience in a shopping application.
 
 Planned feature list ordered by priority:
-- Basic welcome and onboarding screens
+- ☑️ Basic home and onboarding screens
 - Screen with the list of items
 - Detailed item screen
 - Fetching items from an external API
@@ -26,17 +26,17 @@ Planned feature list ordered by priority:
 Must have:
 - ☑️ Setup project
 - ☑️ App icon, display name
-- Welcome screen
-  - Welcome text
-  - Button leading to onboarding screen
-- Onboarding screen
-  - Text array of features
-  - Close screen button
-- Correct colors for light and dark modes
-- Correct alignment for both orientations and small screens
+- ☑️ Home screen
+  - ☑️ Welcome text
+  - ☑️ Button leading to the Onboarding screen
+- ☑️ Onboarding screen
+  - ☑️ Text array of features
+  - ☑️ Close screen button
+- ☑️ Correct colors for light and dark modes
+- ☑️ Correct alignment for both orientations and small screens
   
 Nice to have:
-- Constants file
+- ☑️ Constants file
 
 ## Implementation details and installation
 

@@ -14,18 +14,33 @@ struct ContentView: View {
     ZStack {
       Color("BackgroundColor")
         .edgesIgnoringSafeArea(.all)
+      
       VStack(spacing: 20) {
+        ContentTopView()
         Image("LogoLarge")
-          .padding(.top, 100)
-        Text("Welcome,\n \(userName).")
-          .font(.headline)
-          .kerning(0.4)
-          .foregroundColor(Color("TextColor"))
-          .multilineTextAlignment(.center)
-          .lineSpacing(8)
+        WelcomeTextView(text: "Welcome,\n \(userName).")
         Spacer()
       }
     }
+  }
+}
+
+struct ContentTopView: View {
+  @State private var onboardingIsShown = false
+  
+  var body: some View {
+    HStack {
+      Spacer()
+      Button(action: {
+        onboardingIsShown = true
+      }) {
+        Circle().frame(width: 20, height: 20).foregroundColor(.accentColor)
+      }
+      .sheet(isPresented: $onboardingIsShown, onDismiss: {}) {
+        OnboardingView(onboardingIsShown: $onboardingIsShown)
+      }
+    }
+    .padding([.leading, .trailing, .top])
   }
 }
 

@@ -11,6 +11,9 @@
 		19BB564929A144C6006B768E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB564829A144C6006B768E /* ContentView.swift */; };
 		19BB564B29A144C8006B768E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19BB564A29A144C8006B768E /* Assets.xcassets */; };
 		19BB564E29A144C8006B768E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19BB564D29A144C8006B768E /* Preview Assets.xcassets */; };
+		19BB565829A26D39006B768E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB565729A26D39006B768E /* OnboardingView.swift */; };
+		19BB565B29A28646006B768E /* FeatureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB565A29A28646006B768E /* FeatureList.swift */; };
+		19BB565F29A2876B006B768E /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB565E29A2876B006B768E /* TextViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		19BB564A29A144C8006B768E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19BB564D29A144C8006B768E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		19BB565629A1A810006B768E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19BB565729A26D39006B768E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		19BB565A29A28646006B768E /* FeatureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureList.swift; sourceTree = "<group>"; };
+		19BB565E29A2876B006B768E /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 		19BB564529A144C6006B768E /* Borzenko-Shopellio */ = {
 			isa = PBXGroup;
 			children = (
+				19BB565929A28632006B768E /* Models */,
 				19BB565529A1A324006B768E /* Views */,
 				19BB565429A1A315006B768E /* App */,
 				19BB564C29A144C8006B768E /* Preview Content */,
@@ -81,8 +88,18 @@
 			isa = PBXGroup;
 			children = (
 				19BB564829A144C6006B768E /* ContentView.swift */,
+				19BB565729A26D39006B768E /* OnboardingView.swift */,
+				19BB565E29A2876B006B768E /* TextViews.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		19BB565929A28632006B768E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19BB565A29A28646006B768E /* FeatureList.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19BB565B29A28646006B768E /* FeatureList.swift in Sources */,
+				19BB565829A26D39006B768E /* OnboardingView.swift in Sources */,
 				19BB564929A144C6006B768E /* ContentView.swift in Sources */,
+				19BB565F29A2876B006B768E /* TextViews.swift in Sources */,
 				19BB564729A144C6006B768E /* Borzenko_ShopellioApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +187,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -227,6 +248,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

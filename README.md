@@ -24,8 +24,8 @@ Planned feature list ordered by priority:
 ## Programming to-do list (for week 1)
 
 Must have:
-- Setup project
-- App icon, display name
+- ☑️ Setup project
+- ☑️ App icon, display name
 - Welcome screen
   - Welcome text
   - Button leading to onboarding screen

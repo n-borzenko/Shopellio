@@ -20,7 +20,11 @@ struct ImageCircleView: View {
         .background(
           ZStack {
             Color.accentColor
-            LinearGradient(colors: [.white.opacity(0.3), .clear], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(
+              colors: [.white.opacity(Constants.General.buttonGradientOpacity), .clear],
+              startPoint: .topLeading,
+              endPoint: .bottomTrailing
+            )
           }
             .clipShape(Circle())
         )
@@ -29,6 +33,6 @@ struct ImageCircleView: View {
 
 struct ButtonContentViews_Previews: PreviewProvider {
     static var previews: some View {
-        ImageCircleView(systemName: "info.circle")
+      ImageCircleView(systemName: Constants.Images.infoCircle)
     }
 }

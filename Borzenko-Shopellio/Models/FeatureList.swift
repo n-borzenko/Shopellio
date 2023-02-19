@@ -27,8 +27,8 @@ struct Feature: Hashable {
 }
 
 struct FeatureList {
-  let content = [
-    Feature(title: "Welcome and Onboarding screens", implemented: true),
+  public static let content = [
+    Feature(title: "Home and Onboarding screens", implemented: true),
     Feature(title: "List of available items fetched from the API"),
     Feature(title: "Detailed item page"),
     Feature(title: "Shopping cart"),

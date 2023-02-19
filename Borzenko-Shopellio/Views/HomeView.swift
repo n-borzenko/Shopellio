@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  Borzenko-Shopellio
 //
 //  Created by Natalia Borzenko on 18/02/2023.
@@ -7,25 +7,23 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  private let userName = "Natalia Borzenko"
-  
+struct HomeView: View {
   var body: some View {
     ZStack {
       Color.backgroundColor
         .edgesIgnoringSafeArea(.all)
       
-      VStack(spacing: 40) {
-        ContentTopView()
-        Image("LogoLarge")
-        WelcomeTextView(text: "Welcome,\n \(userName).")
+      VStack(spacing: Constants.Home.verticalSpacing) {
+        HomeTopView()
+        Image(Constants.Images.logoLarge)
+        WelcomeTextView(text: Constants.Home.welcomeText)
         Spacer()
       }
     }
   }
 }
 
-struct ContentTopView: View {
+struct HomeTopView: View {
   @State private var onboardingIsShown = false
   
   var body: some View {
@@ -34,7 +32,7 @@ struct ContentTopView: View {
       Button(action: {
         onboardingIsShown = true
       }) {
-        ImageCircleView(systemName: "info.circle")
+        ImageCircleView(systemName: Constants.Images.infoCircle)
       }
       .sheet(isPresented: $onboardingIsShown, onDismiss: {}) {
         OnboardingView(onboardingIsShown: $onboardingIsShown)
@@ -44,8 +42,8 @@ struct ContentTopView: View {
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    HomeView()
   }
 }

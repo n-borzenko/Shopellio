@@ -11,18 +11,19 @@ struct OnboardingView: View {
   @Binding var onboardingIsShown: Bool
   
   var body: some View {
-    VStack(spacing: 20) {
+    VStack(spacing: Constants.Onboarding.verticalSpacing) {
       OnboardingTopView(onboardingIsShown: $onboardingIsShown)
       
       ScrollView {
-        VStack(alignment: .leading, spacing: 40) {
-          HeadlineTextView(text: "Shopellio is an online shop where you can buy a huge variety of different goods that can fit anyone's needs. User-friendly interface will help you navigate easily and choose the best item possible in almost one touch. Please, enjoy the application and share your experience and thoughts!")
-          
+        VStack(
+          alignment: .leading,
+          spacing: Constants.Onboarding.verticalSpacing
+        ) {
+          HeadlineTextView(text: Constants.Onboarding.headlineText)
           FeatureListView()
-          
           HStack {
             Spacer()
-            FootnoteTextView(text: "This app is a prototype of the Capstone project for Kodeco iOS Bootcamp 2023.")
+            FootnoteTextView(text: Constants.Onboarding.footnoteText)
             Spacer()
           }
         }
@@ -41,7 +42,7 @@ struct OnboardingTopView: View {
       Button(action: {
         onboardingIsShown = false
       }) {
-        ImageCircleView(systemName: "xmark.circle")
+        ImageCircleView(systemName: Constants.Images.xmarkCircle)
       }
     }
     .padding([.leading, .trailing, .top])
@@ -49,15 +50,14 @@ struct OnboardingTopView: View {
 }
 
 struct FeatureListView: View {
-  private let plannedFeatureList = FeatureList()
-  
   var body: some View {
     VStack(alignment: .leading, spacing: 10) {
-      TitleTextView(text: "Planned feature list")
+      TitleTextView(text: Constants.Onboarding.listTitle)
       
-      ForEach(plannedFeatureList.content, id: \.self) { feature in
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
-          Image(systemName: feature.implemented ? "checkmark.circle" : "circle")
+      ForEach(FeatureList.content, id: \.self) { feature in
+        HStack(alignment: .firstTextBaseline) {
+          let imageName = feature.implemented ? Constants.Images.checkmarkCircle : Constants.Images.emptyCircle
+          Image(systemName: imageName)
             .foregroundColor(.accentColor)
           TextView(text: feature.title)
         }

@@ -11,7 +11,7 @@
 		19A9B8C429A2A78700A1A81D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9B8C329A2A78700A1A81D /* Constants.swift */; };
 		19A9B8C629A2A93E00A1A81D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9B8C529A2A93E00A1A81D /* Colors.swift */; };
 		19BB564729A144C6006B768E /* Borzenko_ShopellioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB564629A144C6006B768E /* Borzenko_ShopellioApp.swift */; };
-		19BB564929A144C6006B768E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB564829A144C6006B768E /* ContentView.swift */; };
+		19BB564929A144C6006B768E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB564829A144C6006B768E /* HomeView.swift */; };
 		19BB564B29A144C8006B768E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19BB564A29A144C8006B768E /* Assets.xcassets */; };
 		19BB564E29A144C8006B768E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19BB564D29A144C8006B768E /* Preview Assets.xcassets */; };
 		19BB565829A26D39006B768E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB565729A26D39006B768E /* OnboardingView.swift */; };
@@ -25,7 +25,7 @@
 		19A9B8C529A2A93E00A1A81D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		19BB564329A144C6006B768E /* Borzenko-Shopellio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Borzenko-Shopellio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BB564629A144C6006B768E /* Borzenko_ShopellioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borzenko_ShopellioApp.swift; sourceTree = "<group>"; };
-		19BB564829A144C6006B768E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		19BB564829A144C6006B768E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		19BB564A29A144C8006B768E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19BB564D29A144C8006B768E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		19BB565629A1A810006B768E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		19BB565529A1A324006B768E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				19BB564829A144C6006B768E /* ContentView.swift */,
+				19BB564829A144C6006B768E /* HomeView.swift */,
 				19BB565729A26D39006B768E /* OnboardingView.swift */,
 				19BB565E29A2876B006B768E /* TextViews.swift */,
 				19A9B8C129A29EA400A1A81D /* ButtonContentViews.swift */,
@@ -185,7 +185,7 @@
 				19A9B8C629A2A93E00A1A81D /* Colors.swift in Sources */,
 				19BB565829A26D39006B768E /* OnboardingView.swift in Sources */,
 				19A9B8C229A29EA400A1A81D /* ButtonContentViews.swift in Sources */,
-				19BB564929A144C6006B768E /* ContentView.swift in Sources */,
+				19BB564929A144C6006B768E /* HomeView.swift in Sources */,
 				19A9B8C429A2A78700A1A81D /* Constants.swift in Sources */,
 				19BB565F29A2876B006B768E /* TextViews.swift in Sources */,
 				19BB564729A144C6006B768E /* Borzenko_ShopellioApp.swift in Sources */,
@@ -323,7 +323,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Borzenko-Shopellio/App/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Borzenko-Shopellio";
+				INFOPLIST_KEY_CFBundleDisplayName = Shopellio;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -354,7 +354,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Borzenko-Shopellio/App/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Borzenko-Shopellio";
+				INFOPLIST_KEY_CFBundleDisplayName = Shopellio;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

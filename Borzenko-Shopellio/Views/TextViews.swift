@@ -14,7 +14,7 @@ struct WelcomeTextView: View {
     Text(text)
       .font(.title2)
       .fontWeight(.semibold)
-      .kerning(1.4)
+      .kerning(Constants.General.welcomeTextKerning)
       .foregroundColor(.textColor)
       .multilineTextAlignment(.center)
   }
@@ -28,7 +28,7 @@ struct HeadlineTextView: View {
       .font(.headline)
       .fontWeight(.medium)
       .foregroundColor(.textColor)
-      .lineSpacing(6)
+      .lineSpacing(Constants.General.headlineTextLineSpacing)
   }
 }
 

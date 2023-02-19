@@ -41,7 +41,7 @@ struct OnboardingTopView: View {
       Button(action: {
         onboardingIsShown = false
       }) {
-        Circle().frame(width: 20, height: 20).foregroundColor(.accentColor)
+        ImageCircleView(systemName: "xmark.circle")
       }
     }
     .padding([.leading, .trailing, .top])

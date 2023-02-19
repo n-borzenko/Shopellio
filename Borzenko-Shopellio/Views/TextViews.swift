@@ -15,7 +15,7 @@ struct WelcomeTextView: View {
       .font(.title2)
       .fontWeight(.semibold)
       .kerning(1.4)
-      .foregroundColor(Color("TextColor"))
+      .foregroundColor(.textColor)
       .multilineTextAlignment(.center)
   }
 }
@@ -27,7 +27,8 @@ struct HeadlineTextView: View {
     Text(text)
       .font(.headline)
       .fontWeight(.medium)
-      .foregroundColor(Color("TextColor"))
+      .foregroundColor(.textColor)
+      .lineSpacing(6)
   }
 }
 
@@ -38,7 +39,7 @@ struct TitleTextView: View {
     Text(text)
       .font(.title3)
       .fontWeight(.semibold)
-      .foregroundColor(Color("TextColor"))
+      .foregroundColor(.textColor)
   }
 }
 
@@ -48,7 +49,7 @@ struct TextView: View {
   var body: some View {
     Text(text)
       .font(.body)
-      .foregroundColor(Color("TextColor"))
+      .foregroundColor(.textColor)
       .multilineTextAlignment(.leading)
   }
 }
@@ -59,8 +60,9 @@ struct FootnoteTextView: View {
   var body: some View {
     Text(text)
       .font(.footnote)
-      .foregroundColor(Color("TextColor"))
+      .foregroundColor(.textColor)
       .multilineTextAlignment(.center)
+      .textCase(.uppercase)
   }
 }
 

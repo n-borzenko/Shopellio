@@ -12,10 +12,10 @@ struct ContentView: View {
   
   var body: some View {
     ZStack {
-      Color("BackgroundColor")
+      Color.backgroundColor
         .edgesIgnoringSafeArea(.all)
       
-      VStack(spacing: 20) {
+      VStack(spacing: 40) {
         ContentTopView()
         Image("LogoLarge")
         WelcomeTextView(text: "Welcome,\n \(userName).")
@@ -34,7 +34,7 @@ struct ContentTopView: View {
       Button(action: {
         onboardingIsShown = true
       }) {
-        Circle().frame(width: 20, height: 20).foregroundColor(.accentColor)
+        ImageCircleView(systemName: "info.circle")
       }
       .sheet(isPresented: $onboardingIsShown, onDismiss: {}) {
         OnboardingView(onboardingIsShown: $onboardingIsShown)

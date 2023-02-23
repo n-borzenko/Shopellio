@@ -56,7 +56,7 @@ struct OnboardingTopView: View {
 
 struct FeatureListView: View {
   var body: some View {
-    VStack(alignment: .leading, spacing: 10) {
+    VStack(alignment: .leading, spacing: Constants.Onboarding.featureListSpacing) {
       TitleTextView(text: Constants.Onboarding.listTitle)
       
       ForEach(FeatureList.content, id: \.self) { feature in

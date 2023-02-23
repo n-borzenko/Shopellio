@@ -34,6 +34,7 @@ enum Constants {
   
   enum Onboarding {
     public static let verticalSpacing = CGFloat(20.0)
+    public static let featureListSpacing = CGFloat(10.0)
     
     public static let headlineText = "Shopellio is an online shop where you can buy a huge variety of different products that can fit anyone's needs. User-friendly interface will help you navigate easily and choose the best item possible in almost one touch. Please, enjoy the application and share your experience and thoughts!"
     public static let footnoteText = "This app is a prototype of the Capstone project for Kodeco iOS Bootcamp 2023."

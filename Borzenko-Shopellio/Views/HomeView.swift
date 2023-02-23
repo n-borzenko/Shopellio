@@ -12,7 +12,7 @@ struct HomeView: View {
     ZStack {
       Color.backgroundColor
         .edgesIgnoringSafeArea(.all)
-      
+
       VStack(spacing: Constants.Home.verticalSpacing) {
         HomeTopView()
         Image(Constants.Images.logoLarge)
@@ -25,18 +25,18 @@ struct HomeView: View {
 
 struct HomeTopView: View {
   @State private var onboardingIsShown = false
-  
+
   var body: some View {
     HStack {
       Spacer()
       Button(action: {
         onboardingIsShown = true
-      }) {
+      }, label: {
         ImageCircleView(systemName: Constants.Images.infoCircle)
-      }
-      .sheet(isPresented: $onboardingIsShown, onDismiss: {}) {
+      })
+      .sheet(isPresented: $onboardingIsShown, onDismiss: {}, content: {
         OnboardingView(onboardingIsShown: $onboardingIsShown)
-      }
+      })
     }
     .padding([.leading, .trailing, .top])
   }

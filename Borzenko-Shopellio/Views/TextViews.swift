@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WelcomeTextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.title2)
@@ -22,7 +22,7 @@ struct WelcomeTextView: View {
 
 struct HeadlineTextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.headline)
@@ -34,7 +34,7 @@ struct HeadlineTextView: View {
 
 struct TitleTextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.title3)
@@ -45,7 +45,7 @@ struct TitleTextView: View {
 
 struct TextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.body)
@@ -56,7 +56,7 @@ struct TextView: View {
 
 struct FootnoteTextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.footnote)

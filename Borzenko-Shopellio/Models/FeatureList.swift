@@ -10,23 +10,23 @@ import Foundation
 struct Feature: Hashable {
   let title: String
   let implemented: Bool
-  
+
   init(title: String, implemented: Bool = false) {
     self.title = title
     self.implemented = implemented
   }
-  
+
   static func == (lhs: Feature, rhs: Feature) -> Bool {
     return lhs.title == rhs.title && lhs.implemented == rhs.implemented
   }
-  
+
   func hash(into hasher: inout Hasher) {
     hasher.combine(title)
     hasher.combine(implemented)
   }
 }
 
-struct FeatureList {
+enum FeatureList {
   public static let content = [
     Feature(title: "Home and Onboarding screens", implemented: true),
     Feature(title: "List of available items fetched from the API"),

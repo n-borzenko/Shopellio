@@ -15,9 +15,7 @@ struct HomeView: View {
 
       VStack(spacing: Constants.Home.verticalSpacing) {
         HomeTopView()
-        Image(Constants.Images.logoLarge)
-        WelcomeTextView(text: Constants.Home.welcomeText)
-        Spacer()
+        ProductListView()
       }
     }
   }
@@ -28,6 +26,7 @@ struct HomeTopView: View {
 
   var body: some View {
     HStack {
+      Image(Constants.Images.logoLarge)
       Spacer()
       Button(action: {
         onboardingIsShown = true

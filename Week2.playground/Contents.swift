@@ -1,13 +1,15 @@
 import UIKit
 
-enum ProductCategory: Int {
-  case food = 1
+enum ProductCategory: String {
+  case fruits
   case clothes
-  case household
-  case animals
   case stationery
+}
 
-  // TODO: add description, sf icon symbol, consider structs implementing same protocol
+struct Review {
+  var text: String
+  var imageURLs: [String]?
+  var rating: Int
 }
 
 struct Product: CustomStringConvertible {
@@ -15,16 +17,24 @@ struct Product: CustomStringConvertible {
   var name: String
   var price: Double
   var specification: String
-  var imageURL: String?
-  var category: ProductCategory
+  var imageURL: String
+  var category: ProductCategory?
+  var reviews: [Review] = []
 
   var description: String {
+    var categoryString = ""
+    if let category = category {
+      categoryString = category.rawValue
+    }
+
     return """
-      \(id): name: \(name)
-        price: \(price)
-        specification: \(specification)
-        imageURL: \(imageURL ?? "")
-        category: \(category.rawValue)
+      \(id):
+      name: \(name)
+      price: \(price)
+      specification: \(specification)
+      imageURL: \(imageURL)
+      category: \(categoryString)
+      reviewCount: \(reviews.count)
     """
   }
 }
@@ -36,7 +46,7 @@ let product1 = Product(
   name: "Whole Milk",
   price: 1.3,
   specification: "Whole Milk 1.13L (2 pint)",
-  category: .food
+  imageURL: "/milk.png"
 )
 let product2 = Product(
   id: 2,
@@ -44,7 +54,11 @@ let product2 = Product(
   price: 2.0,
   specification: "Conference Pears, Ripe & Ready x4",
   imageURL: "/pears.png",
-  category: .food
+  category: .fruits,
+  reviews: [
+    Review(text: "tasty", rating: 5),
+    Review(text: "healthy", rating: 4)
+  ]
 )
 let product3 = Product(
   id: 3,
@@ -52,15 +66,18 @@ let product3 = Product(
   price: 5.9,
   specification: "Women's Stretch Midi Pencil Green Skirt",
   imageURL: "/skirt_green.png",
-  category: .clothes
+  category: .clothes,
+  reviews: [
+    Review(text: "too small", rating: 3),
+    Review(text: "nice one", imageURLs: ["/photo23342.jpeg", "/photo43728935.jpeg"], rating: 4)
+  ]
 )
 let product4 = Product(
   id: 4,
   name: "Kitchen Towels",
   price: 3.0,
   specification: "Super Absorbent Kitchen Towels x2",
-  imageURL: "/kitchen_towels.png",
-  category: .household
+  imageURL: "/kitchen_towels.png"
 )
 let product5 = Product(
   id: 5,
@@ -75,7 +92,11 @@ let product6 = Product(
   name: "Printer Paper",
   price: 7.5,
   specification: "A4 Printer Paper 75Gsm 500 Sheets",
-  category: .stationery
+  imageURL: "/printer_paper.png",
+  category: .stationery,
+  reviews: [
+    Review(text: "expensive, good quality", rating: 4)
+  ]
 )
 
 func appendToList(_ product: Product) {
@@ -89,13 +110,13 @@ appendToList(product4)
 appendToList(product5)
 appendToList(product6)
 
-func printProductsWithImages() {
+func printСategorizedProducts() {
   productList.forEach { product in
-    guard product.imageURL != nil else {
+    guard product.category != nil else {
       return
     }
     print(product)
   }
 }
 
-printProductsWithImages()
+printСategorizedProducts()

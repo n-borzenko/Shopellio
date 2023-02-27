@@ -23,6 +23,8 @@ enum Constants {
     public static let emptyCircle = "circle"
     public static let checkmarkCircle = "checkmark.circle"
     public static let xmarkCircle = "xmark.circle"
+    public static let star = "star"
+    public static let starFill = "star.fill"
   }
 
   enum Home {
@@ -42,5 +44,17 @@ enum Constants {
       "Please, enjoy the application and share your experience and thoughts!"
     public static let footnoteText = "This app is a prototype of the Capstone project for Kodeco iOS Bootcamp 2023."
     public static let listTitle = "Planned feature list"
+  }
+
+  enum Product {
+    public static let borderWidth = CGFloat(2.0)
+    public static let cornerRadius = CGFloat(8.0)
+    public static let listVerticalSpacing = CGFloat(20.0)
+
+    public static let maxRating = 5
+
+    public static let priceFormat = "%.2f$"
+    public static let reviews = "Reviews:"
+    public static let toggleLabel = "Hide items without category"
   }
 }

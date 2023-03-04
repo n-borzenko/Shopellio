@@ -12,32 +12,9 @@ struct ProductListItemView: View {
 
   var body: some View {
     VStack(alignment: .leading) {
-      HStack {
-        TextView(text: product.name)
-          .fontWeight(.bold)
-        Spacer()
-        TextView(text: String(format: Constants.Product.priceFormat, product.price))
-      }
-      TextView(text: product.specification)
-      if let category = product.category {
-        TextView(text: category.rawValue.capitalized)
-      }
+      ProductListItemSummaryView(product: product)
       if !product.reviews.isEmpty {
-        TextView(text: Constants.Product.reviews)
-          .padding(.top)
-        ForEach(product.reviews, id: \.self) { review in
-          HStack {
-            TextView(text: review.text)
-            Spacer()
-            HStack {
-              ForEach(0..<Constants.Product.maxRating, id: \.self) {
-                let imageName = $0 < review.rating ? Constants.Images.starFill : Constants.Images.star
-                Image(systemName: imageName)
-                  .foregroundColor(.textColor)
-              }
-            }
-          }
-        }
+        ProductListItemReviewsView(product: product)
       }
     }
     .padding()
@@ -45,6 +22,45 @@ struct ProductListItemView: View {
       RoundedRectangle(cornerRadius: Constants.Product.cornerRadius)
         .stroke(Color.textColor, lineWidth: Constants.Product.borderWidth)
     )
+  }
+}
+
+struct ProductListItemSummaryView: View {
+  var product: Product
+
+  var body: some View {
+    HStack {
+      TextView(text: product.name)
+        .fontWeight(.bold)
+      Spacer()
+      TextView(text: String(format: Constants.Product.priceFormat, product.price))
+    }
+    TextView(text: product.specification)
+    if let category = product.category {
+      TextView(text: category.rawValue.capitalized)
+    }
+  }
+}
+
+struct ProductListItemReviewsView: View {
+  var product: Product
+
+  var body: some View {
+    TextView(text: Constants.Product.reviews)
+      .padding(.top)
+    ForEach(product.reviews, id: \.self) { review in
+      HStack {
+        TextView(text: review.text)
+        Spacer()
+        HStack {
+          ForEach(0..<Constants.Product.maxRating, id: \.self) {
+            let imageName = $0 < review.rating ? Constants.Images.starFill : Constants.Images.star
+            Image(systemName: imageName)
+              .foregroundColor(.textColor)
+          }
+        }
+      }
+    }
   }
 }
 

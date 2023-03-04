@@ -22,18 +22,13 @@ struct Product: CustomStringConvertible {
   var reviews: [Review] = []
 
   var description: String {
-    var categoryString = ""
-    if let category = category {
-      categoryString = category.rawValue
-    }
-
     return """
       \(id):
       name: \(name)
       price: \(price)
       specification: \(specification)
       imageURL: \(imageURL)
-      category: \(categoryString)
+      category: \(category?.rawValue ?? "")
       reviewCount: \(reviews.count)
     """
   }

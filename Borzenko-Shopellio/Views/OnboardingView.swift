@@ -9,15 +9,15 @@ import SwiftUI
 
 struct OnboardingView: View {
   @Binding var onboardingIsShown: Bool
-  
+
   var body: some View {
     ZStack {
       Color.backgroundColor
         .edgesIgnoringSafeArea(.all)
-      
+
       VStack(spacing: Constants.Onboarding.verticalSpacing) {
         OnboardingTopView(onboardingIsShown: $onboardingIsShown)
-        
+
         ScrollView {
           VStack(
             alignment: .leading,
@@ -40,15 +40,15 @@ struct OnboardingView: View {
 
 struct OnboardingTopView: View {
   @Binding var onboardingIsShown: Bool
-  
+
   var body: some View {
     HStack {
       Spacer()
       Button(action: {
         onboardingIsShown = false
-      }) {
+      }, label: {
         ImageCircleView(systemName: Constants.Images.xmarkCircle)
-      }
+      })
     }
     .padding([.leading, .trailing, .top])
   }
@@ -58,7 +58,7 @@ struct FeatureListView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: Constants.Onboarding.featureListSpacing) {
       TitleTextView(text: Constants.Onboarding.listTitle)
-      
+
       ForEach(FeatureList.content, id: \.self) { feature in
         HStack(alignment: .firstTextBaseline) {
           let imageName = feature.implemented ? Constants.Images.checkmarkCircle : Constants.Images.emptyCircle

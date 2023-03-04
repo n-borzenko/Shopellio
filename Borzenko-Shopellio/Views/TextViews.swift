@@ -7,22 +7,9 @@
 
 import SwiftUI
 
-struct WelcomeTextView: View {
-  var text: String
-  
-  var body: some View {
-    Text(text)
-      .font(.title2)
-      .fontWeight(.semibold)
-      .kerning(Constants.General.welcomeTextKerning)
-      .foregroundColor(.textColor)
-      .multilineTextAlignment(.center)
-  }
-}
-
 struct HeadlineTextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.headline)
@@ -34,7 +21,7 @@ struct HeadlineTextView: View {
 
 struct TitleTextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.title3)
@@ -45,7 +32,7 @@ struct TitleTextView: View {
 
 struct TextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.body)
@@ -56,7 +43,7 @@ struct TextView: View {
 
 struct FootnoteTextView: View {
   var text: String
-  
+
   var body: some View {
     Text(text)
       .font(.footnote)
@@ -69,7 +56,6 @@ struct FootnoteTextView: View {
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 16) {
-      WelcomeTextView(text: "WelcomeTextView")
       HeadlineTextView(text: "HeadlineTextView")
       TitleTextView(text: "TitleTextView")
       TextView(text: "TextView")

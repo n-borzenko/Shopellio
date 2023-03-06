@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+  @StateObject private var cart = Cart(items: [])
+
   var body: some View {
     ZStack {
       Color.backgroundColor
@@ -15,7 +17,7 @@ struct HomeView: View {
 
       VStack(spacing: Constants.Home.verticalSpacing) {
         HomeTopView()
-        ProductListView()
+        ProductListView(cart: cart)
       }
     }
   }

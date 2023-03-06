@@ -36,7 +36,7 @@ func printDiscount(totalAmount: Decimal, discountCalculator: DiscountCalculator)
   }
 }
 
-printDiscount(totalAmount: totalAmount) { (totalAmount, discountType) in
+printDiscount(totalAmount: totalAmount) { totalAmount, discountType in
   let discountPercentage = discounts[discountType] ?? defaultDiscountPercentage
   return applyDiscount(totalAmount: totalAmount, discountPercentage: discountPercentage)
 }
@@ -52,7 +52,7 @@ print(calculateDiscount(totalAmount, "Shop Birthday"))
 
 // Assignment 5: Map
 print("\nAssignment 5 ----------------------------")
-itemPrices.map { $0 + $0 * 0.5 }.enumerated().forEach { (index, item) in
+itemPrices.map { $0 + $0 * 0.5 }.enumerated().forEach { index, item in
   let formatter = NumberFormatter()
   formatter.numberStyle = .currency
   print("New price for item №\(index) is \(formatter.string(for: item) ?? "n/a")")
@@ -60,7 +60,7 @@ itemPrices.map { $0 + $0 * 0.5 }.enumerated().forEach { (index, item) in
 
 // Assignment 6: Sorted
 print("\nAssignment 6 ----------------------------")
-discounts.sorted() { $0.value > $1.value }.forEach() { print("\($0.key): \($0.value * 100)%") }
+discounts.sorted { $0.value > $1.value }.forEach { print("\($0.key): \($0.value * 100)%") }
 
 // Assignment 7: Enums and Switch Cases
 print("\nAssignment 7 ----------------------------")
@@ -72,7 +72,14 @@ enum DiscountTypes {
   case shopBirthday(Decimal)
 }
 
-let enumDiscounts: [DiscountTypes] = [.defaultDiscount(0.05), .boxingDay(0.1), .cyberMonday(0.2), .blackFriday(0.25), .shopBirthday(0.3)]
+let enumDiscounts: [DiscountTypes] = [
+  .defaultDiscount(0.05),
+  .boxingDay(0.1),
+  .cyberMonday(0.2),
+  .blackFriday(0.25),
+  .shopBirthday(0.3)
+]
+
 func printEnumDiscounts(_ discount: DiscountTypes) {
   switch discount {
   case .defaultDiscount(let value):
@@ -101,24 +108,22 @@ class Cart {
   }
 
   var currentDiscountedAmount: Decimal {
-    get {
-      let totalAmount = items.reduce(0) { $0 + $1 }
-      var discount: Decimal = 0
-      switch currentDiscount {
-      case .defaultDiscount(let value):
-        discount = value
-      case .boxingDay(let value):
-        discount = value
-      case .cyberMonday(let value):
-        discount = value
-      case .blackFriday(let value):
-        discount = value
-      case .shopBirthday(let value):
-        discount = value
-      }
-
-      return totalAmount - totalAmount * discount
+    let totalAmount = items.reduce(0) { $0 + $1 }
+    var discount: Decimal = 0
+    switch currentDiscount {
+    case .defaultDiscount(let value):
+      discount = value
+    case .boxingDay(let value):
+      discount = value
+    case .cyberMonday(let value):
+      discount = value
+    case .blackFriday(let value):
+      discount = value
+    case .shopBirthday(let value):
+      discount = value
     }
+
+    return totalAmount - totalAmount * discount
   }
 }
 
@@ -196,9 +201,7 @@ struct Cart3: Discountable {
   var discountPercentage: Decimal
 
   var currentDiscountedAmount: Decimal {
-    get {
-      return totalAmount - calculateDiscountedAmount(totalAmount: totalAmount)
-    }
+    totalAmount - calculateDiscountedAmount(totalAmount: totalAmount)
   }
 }
 
@@ -231,17 +234,17 @@ let calculateDiscount1 = { (totalAmount: Decimal, discountType: String) -> Decim
 }
 
 typealias CalculateDiscount = (Decimal, String) -> Decimal
-let calculateDiscount2: CalculateDiscount = { (totalAmount, discountType) in
+let calculateDiscount2: CalculateDiscount = { totalAmount, discountType in
   let discountPercentage = discounts[discountType] ?? defaultDiscountPercentage
   let discountedAmount = totalAmount * discountPercentage
   return totalAmount - discountedAmount
 }
 
-let calculateDiscount3: CalculateDiscount = { (totalAmount, discountType) in
+let calculateDiscount3: CalculateDiscount = { totalAmount, discountType in
   return totalAmount - totalAmount * (discounts[discountType] ?? defaultDiscountPercentage)
 }
 
-let calculateDiscount4: CalculateDiscount = { (totalAmount, discountType) in
+let calculateDiscount4: CalculateDiscount = { totalAmount, discountType in
   totalAmount - totalAmount * (discounts[discountType] ?? defaultDiscountPercentage)
 }
 

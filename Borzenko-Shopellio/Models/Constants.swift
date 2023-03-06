@@ -15,6 +15,8 @@ enum Constants {
 
     static let welcomeTextKerning = 1.4
     static let headlineTextLineSpacing = 6.0
+
+    static let unavailableString = "n/a"
   }
 
   enum Images {
@@ -25,6 +27,7 @@ enum Constants {
     static let xmarkCircle = "xmark.circle"
     static let star = "star"
     static let starFill = "star.fill"
+    static let cartCircle = "cart.circle"
   }
 
   enum Home {
@@ -50,11 +53,23 @@ enum Constants {
     static let borderWidth = 2.0
     static let cornerRadius = 8.0
     static let listVerticalSpacing = 20.0
+    static let horizontalActionsSpacing = 40.0
 
     static let maxRating = 5
 
-    static let priceFormat = "%.2f$"
     static let reviews = "Reviews:"
     static let toggleLabel = "Hide items without category"
+    static let cartContentLabel = "In the cart:"
+    static let addToCartLabel = "Add to cart"
+  }
+
+  enum Cart {
+    static let verticalSpacing = 20.0
+    static let itemListSpacing = 10.0
+
+    static let listTitle = "Cart content"
+    static let totalTitle = "Total:"
+    static let discount = "Current discount"
+    static let totalAfterDiscountTitle = "Total amount after discount:"
   }
 }

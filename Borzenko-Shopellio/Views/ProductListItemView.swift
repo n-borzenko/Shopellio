@@ -84,8 +84,7 @@ struct ProductListItemReviewsView: View {
         Spacer()
         HStack {
           ForEach(0..<Constants.Product.maxRating, id: \.self) {
-            let imageName = $0 < review.rating ? Constants.Images.starFill : Constants.Images.star
-            Image(systemName: imageName)
+            ($0 < review.rating ? Image.starFill : Image.star)
               .foregroundColor(.textColor)
           }
         }

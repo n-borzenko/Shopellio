@@ -43,7 +43,8 @@ struct ProductCartButton: View {
     Button(action: {
       cartIsShown = true
     }, label: {
-      ImageCircleView(systemName: Constants.Images.cartCircle)
+      Image.cartCircle
+        .gradientCircle()
     })
     .sheet(isPresented: $cartIsShown, onDismiss: {}, content: {
       CartView(cartIsShown: $cartIsShown, cart: cart)

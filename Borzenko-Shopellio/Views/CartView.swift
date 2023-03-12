@@ -37,7 +37,8 @@ struct CartTopView: View {
       Button(action: {
         cartIsShown = false
       }, label: {
-        ImageCircleView(systemName: Constants.Images.xmarkCircle)
+        Image.xmarkCircle
+          .gradientCircle()
       })
     }
     .padding([.leading, .trailing, .top])

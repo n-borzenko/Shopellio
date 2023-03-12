@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct ImageCircleView: View {
-  var systemName: String
-
-  var body: some View {
-    Image(systemName: systemName)
+extension Image {
+  func gradientCircle() -> some View {
+    self
       .frame(
         width: Constants.General.circularButtonWidth,
         height: Constants.General.circularButtonHeight)
@@ -33,6 +31,7 @@ struct ImageCircleView: View {
 
 struct ButtonContentViews_Previews: PreviewProvider {
   static var previews: some View {
-    ImageCircleView(systemName: Constants.Images.infoCircle)
+    Image.infoCircle
+      .gradientCircle()
   }
 }

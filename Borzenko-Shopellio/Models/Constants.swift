@@ -19,17 +19,6 @@ enum Constants {
     static let unavailableString = "n/a"
   }
 
-  enum Images {
-    static let logoLarge = "LogoLarge"
-    static let infoCircle = "info.circle"
-    static let emptyCircle = "circle"
-    static let checkmarkCircle = "checkmark.circle"
-    static let xmarkCircle = "xmark.circle"
-    static let star = "star"
-    static let starFill = "star.fill"
-    static let cartCircle = "cart.circle"
-  }
-
   enum Home {
     static let verticalSpacing = 20.0
 

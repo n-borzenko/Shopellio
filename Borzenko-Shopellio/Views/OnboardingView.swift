@@ -47,7 +47,8 @@ struct OnboardingTopView: View {
       Button(action: {
         onboardingIsShown = false
       }, label: {
-        ImageCircleView(systemName: Constants.Images.xmarkCircle)
+        Image.xmarkCircle
+          .gradientCircle()
       })
     }
     .padding([.leading, .trailing, .top])
@@ -61,8 +62,7 @@ struct FeatureListView: View {
 
       ForEach(FeatureList.content, id: \.self) { feature in
         HStack(alignment: .firstTextBaseline) {
-          let imageName = feature.implemented ? Constants.Images.checkmarkCircle : Constants.Images.emptyCircle
-          Image(systemName: imageName)
+          (feature.implemented ? Image.checkmarkCircle : Image.emptyCircle)
             .foregroundColor(.accentColor)
           TextView(text: feature.title)
         }

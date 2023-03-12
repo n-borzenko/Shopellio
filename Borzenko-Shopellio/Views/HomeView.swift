@@ -28,12 +28,13 @@ struct HomeTopView: View {
 
   var body: some View {
     HStack {
-      Image(Constants.Images.logoLarge)
+      Image.logoLarge
       Spacer()
       Button(action: {
         onboardingIsShown = true
       }, label: {
-        ImageCircleView(systemName: Constants.Images.infoCircle)
+        Image.infoCircle
+          .gradientCircle()
       })
       .sheet(isPresented: $onboardingIsShown, onDismiss: {}, content: {
         OnboardingView(onboardingIsShown: $onboardingIsShown)

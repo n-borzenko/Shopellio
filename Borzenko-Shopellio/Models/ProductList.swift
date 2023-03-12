@@ -32,7 +32,7 @@ struct Review: Hashable {
 struct Product: CustomStringConvertible, Identifiable {
   let id: Int
   var name: String
-  var price: Double
+  var price: Decimal
   var specification: String
   var imageURL: String
   var category: ProductCategory?

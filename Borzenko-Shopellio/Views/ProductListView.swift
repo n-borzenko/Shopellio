@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProductListView: View {
+  @ObservedObject var cart: Cart
   @State private var hideUncategorizedItems = false
 
   var products: [Product] {
@@ -17,12 +18,16 @@ struct ProductListView: View {
   var body: some View {
     ScrollView {
       VStack(spacing: Constants.Product.listVerticalSpacing) {
-        Toggle(isOn: $hideUncategorizedItems) {
-          TextView(text: Constants.Product.toggleLabel)
-        }
+        HStack {
+          ProductCartButton(cart: cart)
+          Spacer(minLength: Constants.Product.horizontalActionsSpacing)
+          Toggle(isOn: $hideUncategorizedItems) {
+            TextView(text: Constants.Product.toggleLabel)
+          }
           .tint(.accentColor)
+        }
         ForEach(products) { product in
-          ProductListItemView(product: product)
+          ProductListItemView(cart: cart, product: product)
         }
       }
       .padding()
@@ -30,8 +35,27 @@ struct ProductListView: View {
   }
 }
 
+struct ProductCartButton: View {
+  @State private var cartIsShown = false
+  @ObservedObject var cart: Cart
+
+  var body: some View {
+    Button(action: {
+      cartIsShown = true
+    }, label: {
+      ImageCircleView(systemName: Constants.Images.cartCircle)
+    })
+    .sheet(isPresented: $cartIsShown, onDismiss: {}, content: {
+      CartView(cartIsShown: $cartIsShown, cart: cart)
+    })
+  }
+}
+
 struct ProductListView_Previews: PreviewProvider {
   static var previews: some View {
-    ProductListView()
+    ProductListView(cart: Cart(items: [
+      CartItem(product: ProductList.items[0], count: 1),
+      CartItem(product: ProductList.items[3], count: 2)
+    ]))
   }
 }

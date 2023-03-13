@@ -14,7 +14,7 @@ struct ProductDetailView: View {
   var body: some View {
     ScrollView {
       VStack {
-        ProductDetailImageView(product: product)
+        ProductImageView(imageURL: product.imageURL)
         ProductDetailSummaryView(product: product)
         ProductDetailStepperView(cart: cart, product: product)
         if !product.reviews.isEmpty {
@@ -26,28 +26,6 @@ struct ProductDetailView: View {
     .navigationTitle(product.name)
     .navigationBarTitleDisplayMode(.large)
     .background(Color.backgroundColor)
-  }
-}
-
-struct ProductDetailImageView: View {
-  var product: Product
-
-  var body: some View {
-    VStack(alignment: .center) {
-      Rectangle()
-        .fill(.white)
-        .aspectRatio(Constants.General.imagesAspectRatio, contentMode: .fill)
-        .overlay {
-          AsyncImage(url: URL(string: product.imageURL)) { image in
-            image
-              .resizable()
-              .scaledToFit()
-          } placeholder: {
-            ProgressView()
-              .tint(.accentColor)
-          }
-        }
-    }
   }
 }
 

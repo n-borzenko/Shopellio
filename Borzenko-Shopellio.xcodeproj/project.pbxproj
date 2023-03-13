@@ -15,6 +15,7 @@
 		1963FD0C29BF5BEA0022C2B9 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1963FD0B29BF5BEA0022C2B9 /* ProductDetailView.swift */; };
 		1963FD0E29BF5C1E0022C2B9 /* ProductGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1963FD0D29BF5C1E0022C2B9 /* ProductGridView.swift */; };
 		1963FD1029BF5CB80022C2B9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1963FD0F29BF5CB80022C2B9 /* Text.swift */; };
+		19806EA129BF8D17005B43D7 /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19806EA029BF8D17005B43D7 /* ProductImageView.swift */; };
 		19A9B8C429A2A78700A1A81D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9B8C329A2A78700A1A81D /* Constants.swift */; };
 		19A9B8C629A2A93E00A1A81D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9B8C529A2A93E00A1A81D /* Color.swift */; };
 		19BB564729A144C6006B768E /* BorzenkoShopellioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB564629A144C6006B768E /* BorzenkoShopellioApp.swift */; };
@@ -34,6 +35,7 @@
 		1963FD0B29BF5BEA0022C2B9 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		1963FD0D29BF5C1E0022C2B9 /* ProductGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGridView.swift; sourceTree = "<group>"; };
 		1963FD0F29BF5CB80022C2B9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		19806EA029BF8D17005B43D7 /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
 		19A9B8C329A2A78700A1A81D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		19A9B8C529A2A93E00A1A81D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		19BB564329A144C6006B768E /* Borzenko-Shopellio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Borzenko-Shopellio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,7 @@
 				1963FD0929BF5BDC0022C2B9 /* ProductView.swift */,
 				1963FD0B29BF5BEA0022C2B9 /* ProductDetailView.swift */,
 				1963FD0D29BF5C1E0022C2B9 /* ProductGridView.swift */,
+				19806EA029BF8D17005B43D7 /* ProductImageView.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			files = (
 				19BB565B29A28646006B768E /* FeatureList.swift in Sources */,
 				1963FD0E29BF5C1E0022C2B9 /* ProductGridView.swift in Sources */,
+				19806EA129BF8D17005B43D7 /* ProductImageView.swift in Sources */,
 				194DECCD29B62DB800F4D9C0 /* CartView.swift in Sources */,
 				19A9B8C629A2A93E00A1A81D /* Color.swift in Sources */,
 				1963FD0A29BF5BDC0022C2B9 /* ProductView.swift in Sources */,

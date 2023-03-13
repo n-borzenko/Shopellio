@@ -13,19 +13,7 @@ struct ProductView: View {
 
   var body: some View {
     VStack(alignment: .center) {
-      Rectangle()
-        .fill(.white)
-        .aspectRatio(Constants.General.imagesAspectRatio, contentMode: .fill)
-        .overlay {
-          AsyncImage(url: URL(string: product.imageURL)) { image in
-            image
-              .resizable()
-              .scaledToFit()
-          } placeholder: {
-            ProgressView()
-              .tint(.accentColor)
-          }
-        }
+      ProductImageView(imageURL: product.imageURL)
       Text(product.name)
         .headlineStyle()
         .lineLimit(Constants.Product.maxLineCount)

@@ -10,11 +10,14 @@ import SwiftUI
 struct ProductGridView: View {
   @ObservedObject var cart: Cart
   var products: [Product] = ProductList.items
-  let columns = Array.init(repeating: GridItem(.adaptive(minimum: 160)), count: 2)
+  let columns = Array.init(
+    repeating: GridItem(.adaptive(minimum: Constants.Product.gridColumnMinWidth)),
+    count: Constants.Product.gridColumnsCount
+  )
 
   var body: some View {
     ScrollView {
-      LazyVGrid(columns: columns, spacing: 20) {
+      LazyVGrid(columns: columns, spacing: Constants.Product.gridVerticalSpacing) {
         ForEach(products) { product in
           NavigationLink(destination: ProductDetailView(cart: cart, product: product)) {
             ProductView(cart: cart, product: product)

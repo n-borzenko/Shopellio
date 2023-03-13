@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductDetailView: View {
   @ObservedObject var cart: Cart
   var product: Product
-  
+
   var body: some View {
     ScrollView {
       VStack {
@@ -25,6 +25,7 @@ struct ProductDetailView: View {
     }
     .navigationTitle(product.name)
     .navigationBarTitleDisplayMode(.large)
+    .background(Color.backgroundColor)
   }
 }
 
@@ -35,7 +36,7 @@ struct ProductDetailImageView: View {
     VStack(alignment: .center) {
       Rectangle()
         .fill(.white)
-        .aspectRatio(3 / 4, contentMode: .fill)
+        .aspectRatio(Constants.General.imagesAspectRatio, contentMode: .fill)
         .overlay {
           AsyncImage(url: URL(string: product.imageURL)) { image in
             image

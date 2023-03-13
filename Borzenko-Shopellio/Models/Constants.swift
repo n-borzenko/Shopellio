@@ -14,10 +14,12 @@ enum Constants {
 
     static let unavailableString = "n/a"
     static let doneAction = "Done"
+    static let imagesAspectRatio = CGSize(width: 3, height: 4)
   }
 
   enum Home {
     static let navigationTitle = "Products"
+    static let logoPadding = 4.0
   }
 
   enum About {
@@ -36,9 +38,12 @@ enum Constants {
   enum Product {
     static let borderWidth = 2.0
     static let cornerRadius = 8.0
-    static let listVerticalSpacing = 20.0
+    static let gridVerticalSpacing = 20.0
+    static let gridColumnMinWidth = 160.0
+    static let gridColumnsCount = 2
     static let horizontalActionsSpacing = 40.0
 
+    static let maxLineCount = 2
     static let maxRating = 5
 
     static let reviews = "Reviews:"

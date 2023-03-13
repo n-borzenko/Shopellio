@@ -15,7 +15,7 @@ struct ProductView: View {
     VStack(alignment: .center) {
       Rectangle()
         .fill(.white)
-        .aspectRatio(3 / 4, contentMode: .fill)
+        .aspectRatio(Constants.General.imagesAspectRatio, contentMode: .fill)
         .overlay {
           AsyncImage(url: URL(string: product.imageURL)) { image in
             image
@@ -28,10 +28,10 @@ struct ProductView: View {
         }
       Text(product.name)
         .headlineStyle()
-        .lineLimit(2)
+        .lineLimit(Constants.Product.maxLineCount)
       Text(product.specification)
         .defaultStyle()
-        .lineLimit(2)
+        .lineLimit(Constants.Product.maxLineCount)
     }
   }
 }

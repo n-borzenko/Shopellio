@@ -22,7 +22,7 @@ struct HomeView: View {
             Image.logoLarge
               .resizable()
               .scaledToFit()
-              .padding(.vertical, 4.0)
+              .padding(.vertical, Constants.Home.logoPadding)
           }
           ToolbarItem(placement: .navigationBarTrailing) {
             NavigationLink(destination: CartView(cart: cart)) {

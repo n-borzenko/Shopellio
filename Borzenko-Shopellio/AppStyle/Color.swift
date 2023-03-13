@@ -10,5 +10,13 @@ import SwiftUI
 extension Color {
   static let backgroundColor = Color("BackgroundColor")
   static let textColor = Color("TextColor")
-  static let buttonTextColor = Color("ButtonTextColor")
+}
+
+struct Color_Previews: PreviewProvider {
+  static var previews: some View {
+    Text("Text")
+      .titleStyle()
+      .foregroundColor(Color.textColor)
+      .background(Color.backgroundColor)
+  }
 }

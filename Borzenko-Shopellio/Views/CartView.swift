@@ -8,40 +8,15 @@
 import SwiftUI
 
 struct CartView: View {
-  @Binding var cartIsShown: Bool
   @ObservedObject var cart: Cart
 
   var body: some View {
-    ZStack {
-      Color.backgroundColor
-        .edgesIgnoringSafeArea(.all)
-
-      VStack(spacing: Constants.Cart.verticalSpacing) {
-        CartTopView(cartIsShown: $cartIsShown)
-
-        ScrollView {
-          CartContentView(cart: cart)
-            .padding([.leading, .trailing, .bottom])
-        }
-      }
+    ScrollView {
+      CartContentView(cart: cart)
+        .padding([.horizontal, .bottom])
     }
-  }
-}
-
-struct CartTopView: View {
-  @Binding var cartIsShown: Bool
-
-  var body: some View {
-    HStack {
-      Spacer()
-      Button(action: {
-        cartIsShown = false
-      }, label: {
-        Image.xmarkCircle
-          .gradientCircle()
-      })
-    }
-    .padding([.leading, .trailing, .top])
+    .navigationTitle(Constants.Cart.navigationTitle)
+    .background(Color.backgroundColor)
   }
 }
 
@@ -56,47 +31,55 @@ struct CartContentView: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: Constants.Cart.itemListSpacing) {
-      TitleTextView(text: Constants.Cart.listTitle)
-
       ForEach(cart.items, id: \.self.product.id) { item in
         VStack {
           HStack(alignment: .firstTextBaseline) {
-            TextView(text: item.product.name)
+            Text(item.product.name)
+              .defaultStyle()
             Spacer()
-            TextView(text: getPriceString(price: item.product.price))
+            Text(getPriceString(price: item.product.price))
+              .defaultStyle()
           }
           if item.count > 1 {
             HStack(alignment: .firstTextBaseline) {
-              TextView(text: "x \(item.count)")
+              Text("x \(item.count)")
+                .defaultStyle()
                 .padding(.leading)
               Spacer()
-              TextView(text: getPriceString(price: item.product.price * Decimal(item.count)))
+              Text(getPriceString(price: item.product.price * Decimal(item.count)))
+                .defaultStyle()
             }
           }
         }
       }
 
       HStack {
-        TextView(text: Constants.Cart.totalTitle)
+        Text(Constants.Cart.totalTitle)
+          .defaultStyle()
           .fontWeight(.bold)
         Spacer()
-        TextView(text: getPriceString(price: cart.totalAmount))
+        Text(getPriceString(price: cart.totalAmount))
+          .defaultStyle()
           .fontWeight(.bold)
       }
 
       if let discountType = cart.discountType {
         HStack(alignment: .firstTextBaseline) {
-          TextView(text: Constants.Cart.discount)
+          Text(Constants.Cart.discount)
+            .defaultStyle()
             .padding(.leading)
           Spacer()
-          TextView(text: "\(discountType) (\(cart.discount * 100.0)%)")
+          Text("\(discountType) (" + "\(cart.discount * 100.0)" + "%)")
+            .defaultStyle()
         }
 
         HStack {
-          TextView(text: Constants.Cart.totalAfterDiscountTitle)
+          Text(Constants.Cart.totalAfterDiscountTitle)
+            .defaultStyle()
             .fontWeight(.bold)
           Spacer()
-          TextView(text: getPriceString(price: cart.currentDiscountedAmount))
+          Text(getPriceString(price: cart.currentDiscountedAmount))
+            .defaultStyle()
             .fontWeight(.bold)
         }
       }
@@ -106,9 +89,11 @@ struct CartContentView: View {
 
 struct CartView_Previews: PreviewProvider {
   static var previews: some View {
-    CartView(cartIsShown: .constant(true), cart: Cart(items: [
-      CartItem(product: ProductList.items[0], count: 1),
-      CartItem(product: ProductList.items[3], count: 2)
-    ]))
+    NavigationView {
+      CartView(cart: Cart(items: [
+        CartItem(product: ProductList.items[0], count: 1),
+        CartItem(product: ProductList.items[3], count: 2)
+      ]))
+    }
   }
 }

@@ -58,14 +58,14 @@ enum ProductList {
       name: "Whole Milk",
       price: 1.3,
       specification: "Whole Milk 1.13L (2 pint)",
-      imageURL: "/milk.png"
+      imageURL: "https://www.ocado.com/productImages/278/278141011_0_640x640.jpg?identifier=20cb081482efebd3a4aa15db31133e9e"
     ),
     Product(
       id: 2,
       name: "Conference Pears",
       price: 2.0,
       specification: "Conference Pears, Ripe & Ready x4",
-      imageURL: "/pears.png",
+      imageURL: "https://assets.sainsburys-groceries.co.uk/gol/6621757/1/640x640.jpg",
       category: .fruits,
       reviews: [
         Review(text: "tasty", rating: 5),
@@ -77,7 +77,7 @@ enum ProductList {
       name: "Green midi skirt",
       price: 5.9,
       specification: "Women's Stretch Midi Pencil Green Skirt",
-      imageURL: "/skirt_green.png",
+      imageURL: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/31tb2t8uXYS._AC_.jpg",
       category: .clothes,
       reviews: [
         Review(text: "too small", rating: 3),
@@ -89,14 +89,14 @@ enum ProductList {
       name: "Kitchen Towels",
       price: 3.0,
       specification: "Super Absorbent Kitchen Towels x2",
-      imageURL: "/kitchen_towels.png"
+      imageURL: "https://assets.sainsburys-groceries.co.uk/gol/7971919/1/640x640.jpg"
     ),
     Product(
       id: 5,
       name: "Post It Notes",
       price: 3.5,
       specification: "Post It Notes Super Sticky Lined Pads",
-      imageURL: "/post-it-notes.png",
+      imageURL: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/61fl-Tob7gL._AC_SL1139_.jpg",
       category: .stationery
     ),
     Product(
@@ -104,7 +104,7 @@ enum ProductList {
       name: "Printer Paper",
       price: 7.5,
       specification: "A4 Printer Paper 75Gsm 500 Sheets",
-      imageURL: "/printer_paper.png",
+      imageURL: "https://digitalcontent.api.tesco.com/v2/media/ghs/d7f07b17-b474-4c8f-9f1b-cb5c0e0642c5/123419ea-a684-4099-b780-f35cf047c08e_1118034231.jpeg?h=540&w=540",
       category: .stationery,
       reviews: [
         Review(text: "expensive, good quality", rating: 4)

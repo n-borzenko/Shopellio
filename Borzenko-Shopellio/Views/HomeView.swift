@@ -9,38 +9,47 @@ import SwiftUI
 
 struct HomeView: View {
   @StateObject private var cart = Cart(items: [])
+  @State private var aboutIsShown = false
 
   var body: some View {
-    ZStack {
-      Color.backgroundColor
-        .edgesIgnoringSafeArea(.all)
-
-      VStack(spacing: Constants.Home.verticalSpacing) {
-        HomeTopView()
-        ProductListView(cart: cart)
-      }
+    NavigationView {
+      ProductGridView(cart: cart)
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            AboutToolbarItem(aboutIsShown: $aboutIsShown)
+          }
+          ToolbarItem(placement: .principal) {
+            Image.logoLarge
+              .resizable()
+              .scaledToFit()
+              .padding(.vertical, 4.0)
+          }
+          ToolbarItem(placement: .navigationBarTrailing) {
+            NavigationLink(destination: CartView(cart: cart)) {
+              Image.cart
+            }
+          }
+        }
+        .navigationViewStyle(.stack)
+        .navigationTitle(Constants.Home.navigationTitle)
+        .navigationBarTitleDisplayMode(.large)
+        .background(Color.backgroundColor)
     }
   }
 }
 
-struct HomeTopView: View {
-  @State private var onboardingIsShown = false
+struct AboutToolbarItem: View {
+  @Binding var aboutIsShown: Bool
 
   var body: some View {
-    HStack {
-      Image.logoLarge
-      Spacer()
-      Button(action: {
-        onboardingIsShown = true
-      }, label: {
-        Image.infoCircle
-          .gradientCircle()
-      })
-      .sheet(isPresented: $onboardingIsShown, onDismiss: {}, content: {
-        OnboardingView(onboardingIsShown: $onboardingIsShown)
-      })
-    }
-    .padding([.leading, .trailing, .top])
+    Button(action: {
+      aboutIsShown = true
+    }, label: {
+      Image.infoCircle
+    })
+    .sheet(isPresented: $aboutIsShown, onDismiss: {}, content: {
+      AboutView(aboutIsShown: $aboutIsShown)
+    })
   }
 }
 

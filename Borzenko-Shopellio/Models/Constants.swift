@@ -9,35 +9,21 @@ import Foundation
 
 enum Constants {
   enum General {
-    static let circularButtonWidth = 40.0
-    static let circularButtonHeight = 40.0
-    static let buttonGradientOpacity = 0.3
-
     static let welcomeTextKerning = 1.4
     static let headlineTextLineSpacing = 6.0
 
     static let unavailableString = "n/a"
-  }
-
-  enum Images {
-    static let logoLarge = "LogoLarge"
-    static let infoCircle = "info.circle"
-    static let emptyCircle = "circle"
-    static let checkmarkCircle = "checkmark.circle"
-    static let xmarkCircle = "xmark.circle"
-    static let star = "star"
-    static let starFill = "star.fill"
-    static let cartCircle = "cart.circle"
+    static let doneAction = "Done"
+    static let imagesAspectRatio = CGSize(width: 3, height: 4)
   }
 
   enum Home {
-    static let verticalSpacing = 20.0
-
-    static let username = "Natalia Borzenko"
-    static let welcomeText = "Welcome,\n \(Constants.Home.username)."
+    static let navigationTitle = "Products"
+    static let logoPadding = 4.0
   }
 
-  enum Onboarding {
+  enum About {
+    static let navigationTitle = "About"
     static let verticalSpacing = 20.0
     static let featureListSpacing = 10.0
 
@@ -52,9 +38,12 @@ enum Constants {
   enum Product {
     static let borderWidth = 2.0
     static let cornerRadius = 8.0
-    static let listVerticalSpacing = 20.0
+    static let gridVerticalSpacing = 20.0
+    static let gridColumnMinWidth = 160.0
+    static let gridColumnsCount = 2
     static let horizontalActionsSpacing = 40.0
 
+    static let maxLineCount = 2
     static let maxRating = 5
 
     static let reviews = "Reviews:"
@@ -67,7 +56,7 @@ enum Constants {
     static let verticalSpacing = 20.0
     static let itemListSpacing = 10.0
 
-    static let listTitle = "Cart content"
+    static let navigationTitle = "Cart content"
     static let totalTitle = "Total:"
     static let discount = "Current discount"
     static let totalAfterDiscountTitle = "Total amount after discount:"

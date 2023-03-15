@@ -65,8 +65,8 @@ struct ProductDetailStepperView: View {
 
   var body: some View {
     Stepper(label: {
-      if cart.getItemCount(product: product) > 0 {
-        Text("\(Constants.Product.cartContentLabel) \(cart.getItemCount(product: product))")
+      if itemCount > 0 {
+        Text("\(Constants.Product.cartContentLabel) \(itemCount)")
           .defaultStyle()
       } else {
         Text(Constants.Product.addToCartLabel)

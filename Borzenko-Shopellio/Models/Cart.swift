@@ -14,7 +14,7 @@ struct CartItem {
 }
 
 class Cart: ObservableObject {
-  @Published var items: [CartItem] = []
+  @Published var items: [CartItem]
 
   var totalItemCount: Int {
     items.reduce(0) { $0 + $1.count }
@@ -30,6 +30,10 @@ class Cart: ObservableObject {
 
   var discountedAmount: Decimal {
     totalAmount - totalAmountBeforeDiscount
+  }
+
+  init(items: [CartItem] = []) {
+    self.items = items
   }
 }
 

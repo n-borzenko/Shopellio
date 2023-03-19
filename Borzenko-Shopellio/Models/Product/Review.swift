@@ -18,12 +18,12 @@ struct Review {
 }
 
 protocol Reviewable {
-  var reviews: [Review]? { get }
+  var reviews: [Review] { get }
 }
 
 extension Reviewable {
   var rating: Int {
-    guard let reviews = reviews else {
+    guard !reviews.isEmpty else {
       return 0
     }
     return reviews.reduce(0) { $0 + $1.rating } / reviews.count

@@ -12,7 +12,7 @@ struct ProductVariant: Equatable {
   let size: String
 
   static func ==(lhs: ProductVariant, rhs: ProductVariant) -> Bool {
-      return lhs.color == rhs.color && lhs.size == rhs.size
+    return lhs.color == rhs.color && lhs.size == rhs.size
   }
 }
 

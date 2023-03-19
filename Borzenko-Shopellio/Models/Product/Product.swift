@@ -8,13 +8,13 @@
 import Foundation
 
 struct Product: Reviewable, Discountable {
-  let id: Int
+  let id = UUID()
   let title: String
   let imageUrls: [String]
-  let subcategoryId: Int
+  let subcategoryId: String
 
   let price: Decimal
-  let discount: Decimal = 0.0
+  let discount: Decimal
 
   let stock: [StockItem]
   let sizes: [String]
@@ -22,12 +22,28 @@ struct Product: Reviewable, Discountable {
 
   let overview: String?
   let careInstruction: String?
-  let reviews: [Review]?
+  let reviews: [Review]
 
   let keywords: [String] // for search, filters, seo
-  let tags: [Int] // new, sells fast, customer choice, ...
+  let tags: [String] // new, sells fast, customer choice, ...
 
   // other possible characteristics: materials, oversized, high/low waist, ...
+
+  init(title: String, imageUrls: [String] = [], subcategoryId: String, price: Decimal, discount: Decimal = 0.0, stock: [StockItem] = [], sizes: [String] = [], colors: [String] = [], overview: String? = nil, careInstruction: String? = nil, reviews: [Review] = [], keywords: [String] = [], tags: [String] = []) {
+    self.title = title
+    self.imageUrls = imageUrls
+    self.subcategoryId = subcategoryId
+    self.price = price
+    self.discount = discount
+    self.stock = stock
+    self.sizes = sizes
+    self.colors = colors
+    self.overview = overview
+    self.careInstruction = careInstruction
+    self.reviews = reviews
+    self.keywords = keywords
+    self.tags = tags
+  }
 }
 
 protocol Discountable {

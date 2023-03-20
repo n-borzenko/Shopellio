@@ -11,22 +11,26 @@ struct ProductImageView: View {
   var imageUrl: String?
 
   var body: some View {
-    if let imageUrl = imageUrl {
-      AsyncImage(url: URL(string: imageUrl)) { image in
-        image
+    Group {
+      if let imageUrl = imageUrl {
+        AsyncImage(url: URL(string: imageUrl)) { image in
+          image
+            .resizable()
+            .scaledToFit()
+        } placeholder: {
+          ProgressView()
+            .tint(.accentColor)
+        }
+      } else {
+        Image.photo
           .resizable()
           .scaledToFit()
-      } placeholder: {
-        ProgressView()
-          .tint(.accentColor)
+          .scaleEffect(Constants.Product.imagePlaceholderScale)
+          .foregroundColor(.accentColor)
       }
-    } else {
-      Image.photo
-        .resizable()
-        .scaledToFit()
-        .scaleEffect(Constants.Product.imagePlaceholderScale)
-        .foregroundColor(.accentColor)
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .aspectRatio(1, contentMode: .fit)
   }
 }
 

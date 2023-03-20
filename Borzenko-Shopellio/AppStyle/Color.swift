@@ -10,6 +10,7 @@ import SwiftUI
 extension Color {
   static let backgroundColor = Color("BackgroundColor")
   static let textColor = Color("TextColor")
+  static let invertedContrastColor = Color("InvertedContrastColor")
 }
 
 extension Color {
@@ -40,9 +41,15 @@ extension Color {
 
 struct Color_Previews: PreviewProvider {
   static var previews: some View {
-    Text("Text")
-      .titleStyle()
-      .foregroundColor(Color.textColor)
-      .background(Color.backgroundColor)
+    VStack {
+      Text("Text")
+        .titleStyle()
+      Image.plusCircle
+        .foregroundColor(Color.invertedContrastColor)
+        .background(Color.accentColor)
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .foregroundColor(Color.textColor)
+    .background(Color.backgroundColor)
   }
 }

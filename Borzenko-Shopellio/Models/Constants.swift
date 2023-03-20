@@ -46,6 +46,13 @@ enum Constants {
 
   enum NewArrivals {
     static let navigationTitle = "New Arrivals"
+    static let categoryPickerLabel = "Category"
+
+    static let gridItemMaxWidth = 220.0
+    static let gridItemMinWidth = 160.0
+    static let cellAspectRatio = CGSize(width: 3, height: 5)
+    static let cellPadding = 8.0
+    static let cellCornerRadius = 16.0
   }
 
   enum About {

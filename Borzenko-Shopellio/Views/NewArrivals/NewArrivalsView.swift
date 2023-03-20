@@ -10,7 +10,11 @@ import SwiftUI
 struct NewArrivalsView: View {
   @State private var products = SampleData.products
   @EnvironmentObject var shop: Shop
-  @State private var selectedCategory: String = ""
+  @State private var selectedCategoryId: String = ""
+
+  var categories: [ProductCategory] {
+    shop.orderedCategoryIds.compactMap { shop.categories[$0] }
+  }
 
   private var filteredProducts: [Product] {
     products.filter { product in
@@ -19,22 +23,25 @@ struct NewArrivalsView: View {
         product.tags.contains(Constants.General.newArrivalTag) else {
         return false
       }
-      return subcategory.categoryId == selectedCategory
+      return subcategory.categoryId == selectedCategoryId
     }
   }
 
   var body: some View {
     NavigationStack {
-      ProductListView(products: filteredProducts)
+      ProductGridView(products: filteredProducts)
       .navigationDestination(for: Product.self) { product in
         ProductDetailsView(product: product)
       }
       .navigationTitle(Constants.NewArrivals.navigationTitle)
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
-          Picker("Category", selection: $selectedCategory) {
-            ForEach(shop.orderedCategoryIds, id: \.self) { categoryId in
-              Text(shop.categories[categoryId]?.title ?? categoryId)
+          Picker(
+            Constants.NewArrivals.categoryPickerLabel,
+            selection: $selectedCategoryId
+          ) {
+            ForEach(categories) { category in
+              Text(category.title)
             }
           }
           .pickerStyle(.segmented)
@@ -42,8 +49,8 @@ struct NewArrivalsView: View {
       }
       .onAppear {
         DispatchQueue.main.async {
-          if self.selectedCategory.isEmpty && !self.shop.orderedCategoryIds.isEmpty {
-            self.selectedCategory = self.shop.orderedCategoryIds.first ?? ""
+          if self.selectedCategoryId.isEmpty && !self.categories.isEmpty {
+            self.selectedCategoryId = self.categories[0].id
           }
         }
       }

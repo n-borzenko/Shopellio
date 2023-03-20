@@ -24,12 +24,12 @@ extension Image {
 struct Image_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 16) {
-//      Image.logoLarge
+      //      Image.logoLarge
       Image.infoCircle
       Image.emptyCircle
       Image.checkmarkCircle
-//      Image.star
-//      Image.starFill
+      //      Image.star
+      //      Image.starFill
       Image.cart
       Image.squareStack
       Image.flame

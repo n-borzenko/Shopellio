@@ -9,12 +9,13 @@ import Foundation
 
 enum Constants {
   enum General {
-//    static let welcomeTextKerning = 1.4
+    //    static let welcomeTextKerning = 1.4
     static let headlineTextLineSpacing = 6.0
-//
-//    static let unavailableString = "n/a"
-//    static let doneAction = "Done"
-//    static let imagesAspectRatio = CGSize(width: 3, height: 4)
+    //
+    static let unavailableString = "n/a"
+    static let newArrivalTag = "new"
+    //    static let doneAction = "Done"
+    //    static let imagesAspectRatio = CGSize(width: 3, height: 4)
   }
 
   enum Main {
@@ -22,6 +23,29 @@ enum Constants {
     static let newArrivalsTitle = "New Arrivals"
     static let cartTitle = "Cart"
     static let aboutTitle = "About"
+  }
+
+  enum Products {
+    static let navigationTitle = "Categories"
+    static let unselectedSubcategoryText = "Select subcategory"
+    static let unselectedProductText = "Select product"
+
+
+    static let productRowHeight = 100.0
+    static let titleRowLineLimit = 2
+    static let colorCircleRowSize = 16.0
+    static let colorCircleBorderWidth = 1.0
+    static let colorCircleLimit = 5
+    static let tagRowCornerRadius = 4.0
+    static let tagRowHorizontalPadding = 4.0
+  }
+
+  enum Product {
+    static let imagePlaceholderScale = 0.2
+  }
+
+  enum NewArrivals {
+    static let navigationTitle = "New Arrivals"
   }
 
   enum About {
@@ -40,7 +64,7 @@ enum Constants {
     static let listTitle = "Planned feature list"
   }
 
-  enum Product {
+//  enum Product {
 //    static let borderWidth = 2.0
 //    static let cornerRadius = 8.0
 //    static let gridVerticalSpacing = 20.0
@@ -55,7 +79,7 @@ enum Constants {
 //    static let toggleLabel = "Hide items without category"
 //    static let cartContentLabel = "In the cart:"
 //    static let addToCartLabel = "Add to cart"
-  }
+//  }
 
   enum Cart {
 //    static let verticalSpacing = 20.0

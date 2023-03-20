@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct ProductCategory {
+struct ProductCategory: Identifiable {
   let id: String
   let title: String
   let subcategoryIds: [String]
 }
 
-struct ProductSubcategory {
+struct ProductSubcategory: Identifiable {
   let id: String
   let title: String
   let categoryId: String

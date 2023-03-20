@@ -17,6 +17,8 @@ extension Image {
   static let cart = Image(systemName: "cart")
   static let squareStack = Image(systemName: "square.stack.3d.down.right")
   static let flame = Image(systemName: "flame")
+  static let photo = Image(systemName: "photo")
+  static let plusCircle = Image(systemName: "plus.circle")
 }
 
 struct Image_Previews: PreviewProvider {
@@ -31,6 +33,8 @@ struct Image_Previews: PreviewProvider {
       Image.cart
       Image.squareStack
       Image.flame
+      Image.photo
+      Image.plusCircle
     }
   }
 }

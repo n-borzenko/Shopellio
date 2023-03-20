@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product: Reviewable, Discountable {
+struct Product: Reviewable, Discountable, Identifiable {
   let id = UUID()
   let title: String
   let imageUrls: [String]
@@ -59,5 +59,15 @@ extension Product {
 
   var discountLabel: String {
     "\(discount * 100)%"
+  }
+}
+
+extension Product: Hashable, Equatable {
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+
+  static func ==(lhs: Product, rhs: Product) -> Bool {
+    lhs.id == rhs.id
   }
 }

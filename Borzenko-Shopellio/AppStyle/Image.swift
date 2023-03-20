@@ -19,6 +19,7 @@ extension Image {
   static let flame = Image(systemName: "flame")
   static let photo = Image(systemName: "photo")
   static let plusCircle = Image(systemName: "plus.circle")
+  static let minusCircle = Image(systemName: "minus.circle")
 }
 
 struct Image_Previews: PreviewProvider {
@@ -35,6 +36,7 @@ struct Image_Previews: PreviewProvider {
       Image.flame
       Image.photo
       Image.plusCircle
+      Image.minusCircle
     }
   }
 }

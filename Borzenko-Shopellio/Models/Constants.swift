@@ -80,21 +80,32 @@ enum Constants {
 //    static let horizontalActionsSpacing = 40.0
 //
 //    static let maxLineCount = 2
-//    static let maxRating = 5
-//
-//    static let reviews = "Reviews:"
-//    static let toggleLabel = "Hide items without category"
-//    static let cartContentLabel = "In the cart:"
-//    static let addToCartLabel = "Add to cart"
-//  }
+  //    static let maxRating = 5
+  //
+  //    static let reviews = "Reviews:"
+  //    static let toggleLabel = "Hide items without category"
+  //    static let cartContentLabel = "In the cart:"
+  //    static let addToCartLabel = "Add to cart"
+  //  }
 
   enum Cart {
-//    static let verticalSpacing = 20.0
-//    static let itemListSpacing = 10.0
-//
-//    static let navigationTitle = "Cart content"
-//    static let totalTitle = "Total:"
-//    static let discount = "Current discount"
-//    static let totalAfterDiscountTitle = "Total amount after discount:"
+    //    static let verticalSpacing = 20.0
+    //    static let itemListSpacing = 10.0
+    //
+    static let navigationTitle = "Cart"
+    static let checkoutButtonTitle = "Checkout"
+    static let contentSectionTitle = "Content"
+    static let summarySectionTitle = "Summary"
+    static let summaryItemsCount = "Items count:"
+    static let summaryBeforeDiscount = "Before discount:"
+    static let summaryDiscountedAmount = "Discounted amount:"
+    static let summarytotalAmount = "Total amount:"
+    static let rowColorLabel = "Color:"
+    static let rowSizeLabel = "Size:"
+    static let rowCountLabel = "Count:"
+
+    //    static let totalTitle = "Total:"
+    //    static let discount = "Current discount"
+    //    static let totalAfterDiscountTitle = "Total amount after discount:"
   }
 }

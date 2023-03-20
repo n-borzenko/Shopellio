@@ -19,7 +19,6 @@ struct ProductListView: View {
         return 0
       }
     }
-
     .listStyle(.insetGrouped)
     .scrollContentBackground(.hidden)
     .background(Color.backgroundColor)

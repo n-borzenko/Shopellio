@@ -46,7 +46,13 @@ struct MainView: View {
   // shop settings data is expected to be loaded from the API
   // and shared throughout the application
   @StateObject private var shop = SampleData.shop
-  @StateObject private var cart = Cart()
+  @StateObject private var cart = Cart(items: [
+    CartItem(
+      product: SampleData.products[0],
+      variant: SampleData.products[0].stock[0].variant,
+      count: 2
+    )
+  ])
 
   var body: some View {
     MainTabView()

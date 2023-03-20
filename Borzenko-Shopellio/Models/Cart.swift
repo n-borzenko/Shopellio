@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct CartItem {
+struct CartItem: Identifiable {
+  let id = UUID()
   let product: Product
   let variant: ProductVariant
   var count: Int
@@ -61,6 +62,10 @@ extension Cart {
         items.remove(at: index)
       }
     }
+  }
+
+  func removeItems(atOffsets offsets: IndexSet) {
+    items.remove(atOffsets: offsets)
   }
 
   func getItemCount(product: Product, variant: ProductVariant) -> Int {

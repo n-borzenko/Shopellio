@@ -78,7 +78,7 @@ struct CartSummarySection: View {
         }
       }
       HStack {
-        Text(Constants.Cart.summarytotalAmount)
+        Text(Constants.Cart.summaryTotalAmount)
         Spacer()
         Text(getPriceString(cart.totalAmount))
       }

@@ -67,7 +67,7 @@ extension Product: Hashable, Equatable {
     hasher.combine(id)
   }
 
-  static func ==(lhs: Product, rhs: Product) -> Bool {
+  static func == (lhs: Product, rhs: Product) -> Bool {
     lhs.id == rhs.id
   }
 }

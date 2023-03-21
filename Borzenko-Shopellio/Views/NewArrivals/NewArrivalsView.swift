@@ -20,7 +20,7 @@ struct NewArrivalsView: View {
     products.filter { product in
       guard
         let subcategory = shop.subcategories[product.subcategoryId],
-        product.tags.contains(Constants.General.newArrivalTag) else {
+        product.tags.contains(Constants.Product.newArrivalTag) else {
         return false
       }
       return subcategory.categoryId == selectedCategoryId

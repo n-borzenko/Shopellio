@@ -12,17 +12,25 @@ struct CartView: View {
 
   var body: some View {
     NavigationStack {
-      CartListView()
-        .navigationDestination(for: Product.self) { product in
-          ProductDetailsView(product: product)
+      List {
+        if !cart.items.isEmpty {
+          CartContentSectionView()
         }
-        .navigationTitle(Constants.Cart.navigationTitle)
-        .toolbar {
-          ToolbarItem(placement: .confirmationAction) {
-            Button(Constants.Cart.checkoutButtonTitle) {}
-              .disabled(true)
-          }
+        CartSummarySectionView()
+      }
+      .listStyle(.insetGrouped)
+      .scrollContentBackground(.hidden)
+      .background(Color.backgroundColor)
+      .navigationDestination(for: Product.self) { product in
+        ProductDetailsView(product: product)
+      }
+      .navigationTitle(Constants.Cart.navigationTitle)
+      .toolbar {
+        ToolbarItem(placement: .confirmationAction) {
+          Button(Constants.Cart.checkoutButtonTitle) {}
+            .disabled(true)
         }
+      }
     }
   }
 }
@@ -34,8 +42,13 @@ struct CartView_Previews: PreviewProvider {
       .environmentObject(Cart(items: [
         CartItem(
           product: SampleData.products[0],
-          variant: SampleData.products[0].stock[0].variant,
+          variant: SampleData.products[0].stock[3].variant,
           count: 2
+        ),
+        CartItem(
+          product: SampleData.products[1],
+          variant: SampleData.products[1].stock[2].variant,
+          count: 1
         )
       ]))
   }

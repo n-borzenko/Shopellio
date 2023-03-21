@@ -11,42 +11,22 @@ struct CartRowView: View {
   var item: CartItem
   @EnvironmentObject var shop: Shop
 
-  func getPriceString(_ price: Decimal) -> String {
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .currency
-    return formatter.string(for: price) ?? Constants.General.unavailableString
-  }
-
   var body: some View {
     VStack(alignment: .leading) {
       Text(item.product.title)
-      ProductPriceTextView(product: item.product)
+        .font(.title3)
+        .lineLimit(Constants.Cart.titleRowLineLimit)
+        .foregroundColor(.textColor)
+      ProductPriceContainerView(product: item.product)
       HStack {
-        HStack {
-          Text(Constants.Cart.rowColorLabel)
-          Circle()
-            .strokeBorder(
-              Color.textColor,
-              lineWidth: Constants.Products.colorCircleBorderWidth
-            )
-            .background(Circle().fill(
-              Color(hex: shop.colors[item.variant.color] ?? "") ?? .clear)
-            )
-            .frame(
-              width: Constants.Products.colorCircleRowSize,
-              height: Constants.Products.colorCircleRowSize
-            )
-          Text(item.variant.color.capitalized)
-        }
+        ProductColorView(colorName: item.variant.color, isNameVisible: true)
+        ProductSizeLabel(sizeName: item.variant.size, isNameVisible: true)
         Spacer()
-        Text(Constants.Cart.rowSizeLabel)
-        Text(item.variant.size)
-        Spacer()
-      }
-      HStack {
-        Text(Constants.Cart.rowCountLabel)
+        Image.xCircleFill
+          .foregroundColor(.accentColor)
         Text("\(item.count)")
-        Spacer()
+          .fontWeight(.bold)
+          .foregroundColor(.textColor)
       }
     }
   }

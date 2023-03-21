@@ -10,9 +10,7 @@ import Foundation
 enum Constants {
   enum General {
     static let headlineTextLineSpacing = 6.0
-
     static let unavailableString = "n/a"
-    static let newArrivalTag = "new"
   }
 
   enum Main {
@@ -29,15 +27,32 @@ enum Constants {
 
     static let productRowHeight = 100.0
     static let titleRowLineLimit = 2
-    static let colorCircleRowSize = 16.0
-    static let colorCircleBorderWidth = 1.0
-    static let colorCircleLimit = 5
-    static let tagRowCornerRadius = 4.0
-    static let tagRowHorizontalPadding = 4.0
   }
 
   enum Product {
     static let imagePlaceholderScale = 0.2
+
+    static let colorCircleSmallSize = 16.0
+    static let colorCircleLargeSize = 32.0
+    static let colorCircleBorderWidth = 1.0
+    static let colorCircleLimit = 5
+
+    static let newArrivalTag = "new"
+    static let tagCornerRadius = 4.0
+    static let tagHorizontalPadding = 4.0
+
+    static let sizeLabelSmallCornerRadius = 4.0
+    static let sizeLabelLargeCornerRadius = 8.0
+    static let sizeLabelSmallHorizontalPadding = 4.0
+    static let sizeLabelSmallVerticalPadding = 0.0
+    static let sizeLabelLargeHorizontalPadding = 12.0
+    static let sizeLabelLargeVerticalPadding = 6.0
+  }
+
+  enum ProductDetails {
+    static let addToCartButtonTitle = "Add to cart"
+    static let colorsListLabel = "Colors:"
+    static let sizesListLabel = "Sizes:"
   }
 
   enum NewArrivals {
@@ -68,6 +83,8 @@ enum Constants {
   }
 
   enum Cart {
+    static let titleRowLineLimit = 2
+
     static let navigationTitle = "Cart"
     static let checkoutButtonTitle = "Checkout"
     static let contentSectionTitle = "Content"

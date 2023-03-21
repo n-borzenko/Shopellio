@@ -48,12 +48,12 @@ struct ProductCellView: View {
           .defaultStyle()
           .lineLimit(Constants.Products.titleRowLineLimit)
         HStack {
-          ProductPriceTextView(product: product)
-          if product.tags.contains(Constants.General.newArrivalTag) {
-            ProductTagView(product: product)
+          ProductPriceContainerView(product: product)
+          if product.tags.contains(Constants.Product.newArrivalTag) {
+            ProductTagView(tag: Constants.Product.newArrivalTag)
           }
         }
-        ProductColorsView(product: product)
+        ProductColorsView(colors: product.colors)
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

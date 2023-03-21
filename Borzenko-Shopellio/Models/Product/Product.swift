@@ -62,6 +62,14 @@ extension Product {
   }
 }
 
+extension Product {
+  static func getPriceString(_ price: Decimal) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    return formatter.string(for: price) ?? Constants.General.unavailableString
+  }
+}
+
 extension Product: Hashable, Equatable {
   func hash(into hasher: inout Hasher) {
     hasher.combine(id)

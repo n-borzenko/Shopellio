@@ -30,7 +30,7 @@ class Cart: ObservableObject {
   }
 
   var discountedAmount: Decimal {
-    totalAmount - totalAmountBeforeDiscount
+    totalAmountBeforeDiscount - totalAmount
   }
 
   init(items: [CartItem] = []) {

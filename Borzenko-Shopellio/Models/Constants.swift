@@ -50,6 +50,8 @@ enum Constants {
   }
 
   enum ProductDetails {
+    static let animationStepDuration = 0.5
+
     static let addToCartButtonTitle = "Add to cart"
     static let colorsListLabel = "Colors:"
     static let sizesListLabel = "Sizes:"

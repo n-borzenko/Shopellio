@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct BorzenkoShopellioApp: App {
-
   var body: some Scene {
     WindowGroup {
       MainView()

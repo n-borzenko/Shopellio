@@ -18,21 +18,27 @@ extension Image {
   static let plusCircle = Image(systemName: "plus.circle")
   static let minusCircle = Image(systemName: "minus.circle")
   static let xCircleFill = Image(systemName: "x.circle.fill")
+  static let basket = Image(systemName: "basket")
 }
 
 struct Image_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 16) {
-      Image.infoCircle
-      Image.emptyCircle
-      Image.checkmarkCircle
-      Image.cart
-      Image.squareStack
-      Image.flame
-      Image.photo
-      Image.plusCircle
-      Image.minusCircle
-      Image.xCircleFill
+      HStack {
+        Image.infoCircle
+        Image.emptyCircle
+        Image.checkmarkCircle
+        Image.cart
+        Image.squareStack
+      }
+      HStack {
+        Image.flame
+        Image.photo
+        Image.plusCircle
+        Image.minusCircle
+        Image.xCircleFill
+        Image.basket
+      }
     }
   }
 }

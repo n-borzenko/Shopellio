@@ -27,7 +27,13 @@ class Shop: ObservableObject {
   @Published var orderedCategoryIds: [String]
   @Published var subcategories: [String: ProductSubcategory]
 
-  init(colors: [String: String], sizes: [String], categories: [String: ProductCategory], orderedCategoryIds: [String], subcategories: [String : ProductSubcategory]) {
+  init(
+    colors: [String: String],
+    sizes: [String],
+    categories: [String: ProductCategory],
+    orderedCategoryIds: [String],
+    subcategories: [String: ProductSubcategory]
+  ) {
     self.colors = colors
     self.sizes = sizes
     self.categories = categories

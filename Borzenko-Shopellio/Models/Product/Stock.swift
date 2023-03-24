@@ -17,13 +17,23 @@ struct ProductVariant: Equatable {
 }
 
 enum StockLevel: String {
+  case none = "Out of stock"
   case low = "Low availability"
   case normal = "In stock"
 
   var color: Color {
     switch self {
+    case .none: return .red
     case .low: return .orange
     case .normal: return .green
+    }
+  }
+
+  var imageName: String {
+    switch self {
+    case .none: return "tray"
+    case .low: return "tray.fill"
+    case .normal: return "tray.2.fill"
     }
   }
 }

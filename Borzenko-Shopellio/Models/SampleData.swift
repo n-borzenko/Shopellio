@@ -222,11 +222,10 @@ enum SampleData {
         StockItem(variant: ProductVariant(color: "blue", size: "M"), level: .normal),
         StockItem(variant: ProductVariant(color: "blue", size: "L"), level: .normal),
         StockItem(variant: ProductVariant(color: "green", size: "S"), level: .low),
-        StockItem(variant: ProductVariant(color: "green", size: "M"), level: .normal),
         StockItem(variant: ProductVariant(color: "green", size: "L"), level: .normal)
       ],
-      sizes: ["S", "M", "L"],
-      colors: ["white", "black", "gray", "red", "blue", "green"],
+      sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL", "4XL", "5XL"],
+      colors: ["white", "black", "gray", "navy blue", "red", "blue", "green"],
       overview: "A basic T-shirt made of soft cotton fabric. Round neckline and short sleeves.",
       tags: ["new"]
     ),

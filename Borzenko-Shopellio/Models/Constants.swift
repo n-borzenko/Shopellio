@@ -36,6 +36,9 @@ enum Constants {
     static let colorCircleLargeSize = 32.0
     static let colorCircleBorderWidth = 1.0
     static let colorCircleLimit = 5
+    static let colorCircleSmallLineWidth = 3.0
+    static let colorCircleLargeLineWidth = 5.0
+    static let colorCircleGradientStops = [ 0.46, 0.48, 0.52, 0.54 ]
 
     static let newArrivalTag = "new"
     static let tagCornerRadius = 4.0
@@ -47,14 +50,33 @@ enum Constants {
     static let sizeLabelSmallVerticalPadding = 0.0
     static let sizeLabelLargeHorizontalPadding = 12.0
     static let sizeLabelLargeVerticalPadding = 6.0
+    static let sizeLabelUnavailableOpacity = 0.5
+    static let sizeLabelDefaultOpacity = 1.0
+    static let sizeLabelBorderWidth = 1.0
   }
 
   enum ProductDetails {
     static let animationStepDuration = 0.5
 
-    static let addToCartButtonTitle = "Add to cart"
     static let colorsListLabel = "Colors:"
     static let sizesListLabel = "Sizes:"
+    static let selectVariantButtonLabel = "Select variant"
+
+    static let selectionBorderWidth = 2.0
+
+    static let selectColorLabel = "Select color:"
+    static let colorLabel = "Color:"
+    static let colorStackSpacing = 12.0
+    static let colorSelectionWidth = 44.0
+
+
+    static let selectSizeLabel = "Select size:"
+    static let sizeLabel = "Size:"
+    static let sizeCornerRadiusOffset = 2.0
+    static let sizesGridSpacing = 10.0
+    static let sizesMinColumnWidth = 70.0
+    
+    static let addToCartButtonTitle = "Add to cart"
   }
 
   enum NewArrivals {

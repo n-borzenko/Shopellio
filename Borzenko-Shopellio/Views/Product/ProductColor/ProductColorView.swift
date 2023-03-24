@@ -12,6 +12,7 @@ struct ProductColorView: View {
   var colorName: String
   var isNameVisible = false
   var scale = ProductSubviewScale.small
+  var isUnavailable = false
 
   var color: Color {
     Color(hex: shop.colors[colorName] ?? "") ?? .clear
@@ -28,9 +29,27 @@ struct ProductColorView: View {
           Color.textColor,
           lineWidth: Constants.Product.colorCircleBorderWidth
         )
-        .background(Circle().fill(color)
-        )
+        .background(Circle().fill(color))
         .frame(width: diameter, height: diameter)
+        .overlay(
+          isUnavailable ? Line()
+            .stroke(
+              LinearGradient(
+                gradient: Gradient(stops: [
+                  Gradient.Stop(color: .textColor, location: Constants.Product.colorCircleGradientStops[0]),
+                  Gradient.Stop(color: .backgroundColor, location: Constants.Product.colorCircleGradientStops[1]),
+                  Gradient.Stop(color: .backgroundColor, location: Constants.Product.colorCircleGradientStops[2]),
+                  Gradient.Stop(color: .textColor, location: Constants.Product.colorCircleGradientStops[3])
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+              ),
+              lineWidth: scale == .small ? Constants.Product.colorCircleSmallLineWidth :
+                Constants.Product.colorCircleLargeLineWidth
+            )
+            .clipShape(Circle())
+          : nil
+        )
       if isNameVisible {
         Text(colorName.capitalized)
           .foregroundColor(.textColor)
@@ -41,13 +60,24 @@ struct ProductColorView: View {
   }
 }
 
+struct Line: Shape {
+  func path(in rect: CGRect) -> Path {
+    var path = Path()
+    path.move(to: CGPoint(x: 0, y: rect.height))
+    path.addLine(to: CGPoint(x: rect.width, y: 0))
+    return path
+  }
+}
+
 struct ProductColorView_Previews: PreviewProvider {
   static var previews: some View {
     VStack(alignment: .leading) {
       ProductColorView(colorName: "red")
+      ProductColorView(colorName: "red", isUnavailable: true)
       ProductColorView(colorName: "red", isNameVisible: true)
-      ProductColorView(colorName: "navy blue", scale: .large)
-      ProductColorView(colorName: "navy blue", isNameVisible: true, scale: .large)
+      ProductColorView(colorName: "gray", scale: .large)
+      ProductColorView(colorName: "gray", scale: .large, isUnavailable: true)
+      ProductColorView(colorName: "gray", isNameVisible: true, scale: .large)
     }
     .environmentObject(SampleData.shop)
   }

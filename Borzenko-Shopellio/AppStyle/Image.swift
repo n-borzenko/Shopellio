@@ -8,25 +8,37 @@
 import SwiftUI
 
 extension Image {
-  static let logoLarge = Image("LogoLarge")
   static let infoCircle = Image(systemName: "info.circle")
   static let emptyCircle = Image(systemName: "circle")
   static let checkmarkCircle = Image(systemName: "checkmark.circle")
-  static let star = Image(systemName: "star")
-  static let starFill = Image(systemName: "star.fill")
   static let cart = Image(systemName: "cart")
+  static let squareStack = Image(systemName: "square.stack.3d.down.right")
+  static let flame = Image(systemName: "flame")
+  static let photo = Image(systemName: "photo")
+  static let plusCircle = Image(systemName: "plus.circle")
+  static let minusCircle = Image(systemName: "minus.circle")
+  static let xCircleFill = Image(systemName: "x.circle.fill")
+  static let basket = Image(systemName: "basket")
 }
 
 struct Image_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 16) {
-      Image.logoLarge
-      Image.infoCircle
-      Image.emptyCircle
-      Image.checkmarkCircle
-      Image.star
-      Image.starFill
-      Image.cart
+      HStack {
+        Image.infoCircle
+        Image.emptyCircle
+        Image.checkmarkCircle
+        Image.cart
+        Image.squareStack
+      }
+      HStack {
+        Image.flame
+        Image.photo
+        Image.plusCircle
+        Image.minusCircle
+        Image.xCircleFill
+        Image.basket
+      }
     }
   }
 }

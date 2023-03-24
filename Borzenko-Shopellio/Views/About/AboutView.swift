@@ -8,18 +8,9 @@
 import SwiftUI
 
 struct AboutView: View {
-  @Binding var aboutIsShown: Bool
-
   var body: some View {
-    NavigationView {
+    NavigationStack {
       AboutContentView()
-        .toolbar {
-          ToolbarItem(placement: .confirmationAction) {
-            Button(Constants.General.doneAction) {
-              aboutIsShown = false
-            }
-          }
-        }
         .background(Color.backgroundColor)
         .navigationTitle(Constants.About.navigationTitle)
     }
@@ -36,6 +27,14 @@ struct AboutContentView: View {
         Text(Constants.About.headlineText)
           .headlineStyle()
         FeatureListView()
+        ViewThatFits {
+          HStack {
+            ImageSourceView()
+          }
+          VStack(alignment: .leading) {
+            ImageSourceView()
+          }
+        }
         HStack {
           Spacer()
           Text(Constants.About.footnoteText)
@@ -45,6 +44,18 @@ struct AboutContentView: View {
       }
       .padding([.horizontal, .bottom])
     }
+  }
+}
+
+struct ImageSourceView: View {
+  var body: some View {
+    Text(Constants.About.creditsText)
+      .defaultStyle()
+    Link(
+      Constants.About.imageSourceTitle,
+      // swiftlint:disable:next force_unwrapping
+      destination: URL(string: Constants.About.imageSourceUrl)!
+    )
   }
 }
 
@@ -68,6 +79,6 @@ struct FeatureListView: View {
 
 struct AboutView_Previews: PreviewProvider {
   static var previews: some View {
-    AboutView(aboutIsShown: .constant(true))
+    AboutView()
   }
 }

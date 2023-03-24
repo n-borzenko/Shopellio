@@ -2,20 +2,18 @@
 //  ProductImageView.swift
 //  Borzenko-Shopellio
 //
-//  Created by Natalia Borzenko on 13/03/2023.
+//  Created by Natalia Borzenko on 20/03/2023.
 //
 
 import SwiftUI
 
 struct ProductImageView: View {
-  var imageURL: String
+  var imageUrl: String?
 
   var body: some View {
-    Rectangle()
-      .fill(.white)
-      .aspectRatio(Constants.General.imagesAspectRatio, contentMode: .fill)
-      .overlay {
-        AsyncImage(url: URL(string: imageURL)) { image in
+    Group {
+      if let imageUrl = imageUrl {
+        AsyncImage(url: URL(string: imageUrl)) { image in
           image
             .resizable()
             .scaledToFit()
@@ -23,12 +21,24 @@ struct ProductImageView: View {
           ProgressView()
             .tint(.accentColor)
         }
+      } else {
+        Image.photo
+          .resizable()
+          .scaledToFit()
+          .scaleEffect(Constants.Product.imagePlaceholderScale)
+          .foregroundColor(.accentColor)
       }
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .aspectRatio(1, contentMode: .fit)
   }
 }
 
 struct ProductImageView_Previews: PreviewProvider {
   static var previews: some View {
-    ProductImageView(imageURL: ProductList.items[0].imageURL)
+    VStack {
+      ProductImageView(imageUrl: SampleData.products[0].imageUrls.first)
+      ProductImageView(imageUrl: nil)
+    }
   }
 }

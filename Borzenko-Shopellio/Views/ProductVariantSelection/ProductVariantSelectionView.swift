@@ -9,31 +9,33 @@ import SwiftUI
 
 struct ProductVariantSelectionView: View {
   @Environment(\.dismiss) var dismiss
-  @StateObject private var model = ProductVariantSelectionViewModel()
+  @State var selectedColorName: String?
+  @State var selectedSizeName: String?
   let product: Product
 
   var body: some View {
     ScrollView {
       VStack(alignment: .leading) {
         ProductColorSelectionView(
-          colors: model.product?.colors ?? [],
-          availableColors: model.availableColors,
-          selectedColorName: $model.selectedColorName
+          colors: product.colors,
+          availableColors: product.getAvailableColors(size: selectedSizeName),
+          selectedColorName: $selectedColorName
         )
         ProductSizeSelectionView(
-          sizes: model.product?.sizes ?? [],
-          availableSizes: model.availableSizes,
-          selectedSizeName: $model.selectedSizeName
+          sizes: product.sizes,
+          availableSizes: product.getAvailableSizes(color: selectedColorName),
+          selectedSizeName: $selectedSizeName
         )
         Divider()
-        ProductVariantSelectionFooterView(model: model)
+        ProductVariantSelectionFooterView(
+          selectedColorName: $selectedColorName,
+          selectedSizeName: $selectedSizeName,
+          product: product
+        )
       }
       .padding()
     }
     .background(Color.backgroundColor)
-    .onAppear {
-      model.product = product
-    }
     .toolbar {
       ToolbarItem(placement: .cancellationAction) {
         Button("Close") {

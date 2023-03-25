@@ -79,3 +79,29 @@ extension Product: Hashable, Equatable {
     lhs.id == rhs.id
   }
 }
+
+extension Product {
+  func getAvailableColors(size: String?) -> Set<String> {
+    if let size = size {
+      return Set(
+        stock
+          .filter { $0.variant.size == size }
+          .map { $0.variant.color }
+      )
+    } else {
+      return Set(stock.map { $0.variant.color })
+    }
+  }
+  
+  func getAvailableSizes(color: String?) -> Set<String> {
+    if let color = color {
+      return Set(
+        stock
+          .filter { $0.variant.color == color }
+          .map { $0.variant.size }
+      )
+    } else {
+      return Set(stock.map { $0.variant.size })
+    }
+  }
+}

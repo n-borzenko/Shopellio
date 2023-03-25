@@ -10,25 +10,20 @@ import SwiftUI
 struct ProductVariantSelectionFooterView: View {
   @Environment(\.dismiss) var dismiss
   @EnvironmentObject var cart: Cart
-  @ObservedObject var model: ProductVariantSelectionViewModel
   @State private var isAddingToCart = false
-
-  var buttonTextColor: Color? {
-    let staticColor = model.isSelectionAvailableToBuy ? Color.invertedContrastColor : nil
-    return isAddingToCart ? .accentColor : staticColor
-  }
+  @Binding var selectedColorName: String?
+  @Binding var selectedSizeName: String?
+  let product: Product
 
   var body: some View {
     HStack(alignment: .lastTextBaseline) {
-      if let level = model.selectedStockLevel {
+      if let level = currentStockLevel {
         Label(level.rawValue, systemImage: level.imageName)
           .foregroundColor(level.color)
       }
       Spacer()
       Button {
-        if
-          let product = model.product,
-          let variant = model.selectedStockItem?.variant {
+        if let variant = selectedStockItem?.variant {
           isAddingToCart = true
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             cart.addProduct(product: product, variant: variant)
@@ -45,21 +40,52 @@ struct ProductVariantSelectionFooterView: View {
               .tint(.invertedContrastColor) : nil
           )
       }
-      .disabled(!model.isSelectionAvailableToBuy)
+      .disabled(!isSelectionAvailableToBuy)
       .buttonStyle(.borderedProminent)
     }
   }
 }
 
+extension ProductVariantSelectionFooterView {
+  var buttonTextColor: Color? {
+    let staticColor = isSelectionAvailableToBuy ? Color.invertedContrastColor : nil
+    return isAddingToCart ? .accentColor : staticColor
+  }
+
+  var currentStockLevel: StockLevel? {
+    guard
+      let selectedColor = selectedColorName,
+      let selectedSize = selectedSizeName else {
+      return nil
+    }
+    let item = product.stock.first { $0.variant.color == selectedColor && $0.variant.size == selectedSize }
+    return item?.level ?? StockLevel.none
+  }
+
+  var selectedStockItem: StockItem? {
+    guard
+      let selectedColor = selectedColorName,
+      let selectedSize = selectedSizeName else {
+      return nil
+    }
+    return product.stock.first { $0.variant.color == selectedColor && $0.variant.size == selectedSize }
+  }
+
+  var isSelectionAvailableToBuy: Bool {
+    guard let item = selectedStockItem else {
+      return false
+    }
+    return item.level != .none
+  }
+}
+
 struct ProductVariantSelectionFooterView_Previews: PreviewProvider {
   static var previews: some View {
-    let model = ProductVariantSelectionViewModel()
-    ProductVariantSelectionFooterView(model: model)
-      .environmentObject(Cart())
-      .onAppear {
-        model.product = SampleData.products[8]
-        model.selectedSizeName = "M"
-        model.selectedColorName = "blue"
-      }
+    ProductVariantSelectionFooterView(
+      selectedColorName: .constant("blue"),
+      selectedSizeName: .constant("M"),
+      product: SampleData.products[8]
+    )
+    .environmentObject(Cart())
   }
 }

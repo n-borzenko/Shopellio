@@ -8,13 +8,28 @@
 import Foundation
 
 struct Review {
-  let productId: Int
+  let id: UUID
   let productVariant: ProductVariant
-  let id: Int
   let author: String?
   let imageUrls: [String]?
   let text: String?
   let rating: Int
+
+  init(
+    id: UUID = UUID(),
+    productVariant: ProductVariant,
+    author: String? = nil,
+    imageUrls: [String]? = nil,
+    text: String? = nil,
+    rating: Int
+  ) {
+    self.id = id
+    self.productVariant = productVariant
+    self.author = author
+    self.imageUrls = imageUrls
+    self.text = text
+    self.rating = rating
+  }
 }
 
 protocol Reviewable {
@@ -22,10 +37,10 @@ protocol Reviewable {
 }
 
 extension Reviewable {
-  var rating: Int {
+  var rating: Double {
     guard !reviews.isEmpty else {
       return 0
     }
-    return reviews.reduce(0) { $0 + $1.rating } / reviews.count
+    return Double(reviews.reduce(0) { $0 + $1.rating }) / Double(reviews.count)
   }
 }

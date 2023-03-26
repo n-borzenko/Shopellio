@@ -58,15 +58,25 @@ extension Product {
   }
 
   var discountLabel: String {
-    "\(discount * 100)%"
+    Product.percentFormatter.string(for: discount) ?? Constants.General.unavailableString
   }
 }
 
 extension Product {
-  static func getPriceString(_ price: Decimal) -> String {
+  static private var currencyFormatter = {
     let formatter = NumberFormatter()
     formatter.numberStyle = .currency
-    return formatter.string(for: price) ?? Constants.General.unavailableString
+    return formatter
+  }()
+
+  static private let percentFormatter = {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .percent
+    return formatter
+  }()
+
+  static func getPriceString(_ price: Decimal) -> String {
+    return currencyFormatter.string(for: price) ?? Constants.General.unavailableString
   }
 }
 
@@ -81,27 +91,23 @@ extension Product: Hashable, Equatable {
 }
 
 extension Product {
-  func getAvailableColors(size: String?) -> Set<String> {
+  func getAvailableColors(size: String? = nil) -> Set<String> {
+    var filteredStockItems: [StockItem]
     if let size = size {
-      return Set(
-        stock
-          .filter { $0.variant.size == size }
-          .map { $0.variant.color }
-      )
+      filteredStockItems = stock.filter { $0.variant.size == size && $0.level != .none }
     } else {
-      return Set(stock.map { $0.variant.color })
+      filteredStockItems = stock.filter { $0.level != .none }
     }
+    return Set(filteredStockItems.map { $0.variant.color })
   }
 
-  func getAvailableSizes(color: String?) -> Set<String> {
+  func getAvailableSizes(color: String? = nil) -> Set<String> {
+    var filteredStockItems: [StockItem]
     if let color = color {
-      return Set(
-        stock
-          .filter { $0.variant.color == color }
-          .map { $0.variant.size }
-      )
+      filteredStockItems = stock.filter { $0.variant.color == color && $0.level != .none }
     } else {
-      return Set(stock.map { $0.variant.size })
+      filteredStockItems = stock.filter { $0.level != .none }
     }
+    return Set(filteredStockItems.map { $0.variant.size })
   }
 }

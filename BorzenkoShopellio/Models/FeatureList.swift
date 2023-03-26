@@ -31,7 +31,7 @@ enum FeatureList {
     Feature(title: "Home and Onboarding screens", implemented: true),
     Feature(title: "List of available items fetched from the API"),
     Feature(title: "Detailed item page"),
-    Feature(title: "Shopping cart"),
+    Feature(title: "Shopping cart", implemented: true),
     Feature(title: "Checkout page with option to apply the discount code"),
     Feature(title: "Order history"),
     Feature(title: "Review of purchased items with text description and photo"),

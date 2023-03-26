@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-  @State private var selectedTab = Constants.Main.productsTitle
+  @State private var selectedTab = Constants.Main.newArrivalsTitle
   @EnvironmentObject var cart: Cart
 
   var body: some View {

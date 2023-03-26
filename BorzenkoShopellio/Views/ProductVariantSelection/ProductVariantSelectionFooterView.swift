@@ -42,6 +42,7 @@ struct ProductVariantSelectionFooterView: View {
       }
       .disabled(!isSelectionAvailableToBuy)
       .buttonStyle(.borderedProminent)
+      .accessibilityIdentifier("Add items")
     }
   }
 }

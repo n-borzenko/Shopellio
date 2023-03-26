@@ -55,6 +55,7 @@ struct ProductDetailsDescriptionView: View {
     VStack(alignment: .leading) {
       Text(product.title)
         .titleStyle()
+        .accessibilityIdentifier("Product Details Title")
       ProductPriceContainerView(product: product)
       HStack {
         Text(Constants.ProductDetails.colorsListLabel)

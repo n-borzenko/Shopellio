@@ -63,6 +63,17 @@
                ReferencedContainer = "container:BorzenkoShopellio.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "19F50E9229CFFA8F00965E3D"
+               BuildableName = "BorzenkoShopellioUITests.xctest"
+               BlueprintName = "BorzenkoShopellioUITests"
+               ReferencedContainer = "container:BorzenkoShopellio.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

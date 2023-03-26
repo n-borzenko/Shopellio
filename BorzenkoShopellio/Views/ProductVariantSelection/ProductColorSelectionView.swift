@@ -48,6 +48,7 @@ struct ProductColorSelectionView: View {
                   )
                 : nil
               )
+              .accessibilityIdentifier(color)
             }
           }
         }

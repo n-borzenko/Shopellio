@@ -10,7 +10,7 @@ import XCTest
 enum UITestHelpers {
   static func checkCartBadge(quantity: Int) throws {
     let tabBar = XCUIApplication().tabBars["Tab Bar"]
-    let expectedValue = quantity > 0 ? "\(quantity) items" : ""
+    let expectedValue = quantity > 0 ? "\(quantity) item\(quantity == 1 ? "" : "s")" : ""
     try compareStringValue(item: tabBar.buttons["Cart"], title: "Cart badge value", value: expectedValue)
   }
 

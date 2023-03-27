@@ -84,7 +84,7 @@ final class NewArrivalsUITestCase: XCTestCase {
     let addButton = app.scrollViews.buttons["Add to cart"]
     XCTAssertTrue(addButton.isEnabled, "Variant is selected, add to cart button should be available, but it is not")
     addButton.tap()
-    if app.tabBars["Tab Bar"].waitForExistence(timeout: 2) {
+    if !app.tabBars["Tab Bar"].waitForExistence(timeout: 2) {
       XCTFail("Tab bar should have appeared in 2 seconds, but it didn't")
     }
 

@@ -74,7 +74,7 @@ final class CartUITestCase: XCTestCase {
 
     let trenchItem = collectionViews.cells.buttons["Basic trench coat with belt, $129.00, NEW"]
     if !trenchItem.waitForExistence(timeout: 3) {
-      XCTFail("Failed to load collection items")
+      XCTFail("Failed to load collection items in 3 seconds")
       return
     }
     trenchItem.tap()
@@ -84,7 +84,7 @@ final class CartUITestCase: XCTestCase {
 
     app.navigationBars.buttons["Coats & Jackets"].tap()
     collectionViews.cells.buttons["Faux leather oversize jacket, $95.00, $90.25"].tap()
-    scrollViews.staticTexts["Product Details Title"].swipeUp()
+    scrollViews.staticTexts["Product details title"].swipeUp()
     selectVariant(color: "black", size: "L")
 
     // cart summary and tab badge
@@ -95,7 +95,7 @@ final class CartUITestCase: XCTestCase {
 
     firstItem.swipeUp()
     checkCartSummary(quantity: 3, total: "348.25", beforeDiscount: "353.00", discounted: "4.75")
-    secondItem.swipeDown()
+    firstItem.swipeDown()
 
     // first cart item label
     let firstItemLabel = "Basic trench coat with belt, $129.00, Beige, M, Size, "
@@ -120,7 +120,7 @@ final class CartUITestCase: XCTestCase {
     try UITestHelpers.checkCartBadge(quantity: 4)
     firstItem.swipeUp()
     checkCartSummary(quantity: 4, total: "477.25", beforeDiscount: "482.00", discounted: "4.75")
-    secondItem.swipeDown()
+    firstItem.swipeDown()
 
     // second cart item label
     var secondItemLabel = "Basic trench coat with belt, $129.00, Black, M, Size, "
@@ -144,7 +144,7 @@ final class CartUITestCase: XCTestCase {
     try UITestHelpers.checkCartBadge(quantity: 3)
     firstItem.swipeUp()
     checkCartSummary(quantity: 3, total: "348.25", beforeDiscount: "353.00", discounted: "4.75")
-    secondItem.swipeDown()
+    firstItem.swipeDown()
 
     // third item label
     secondItemLabel = "Faux leather oversize jacket, $95.00, $90.25, Black, L, Size, "
@@ -158,7 +158,7 @@ final class CartUITestCase: XCTestCase {
     secondItem.swipeLeft()
     let deleteButton = collectionViews.buttons["Delete"]
     XCTAssertTrue(deleteButton.exists, "Swipe left should have opened Delete button, but it didn't")
-    secondItem.swipeLeft()
+    deleteButton.tap()
     XCTAssertFalse(secondItem.exists, "Initially third item should have been removed, but it didn't")
 
     // cart summary and tab badge
@@ -167,7 +167,7 @@ final class CartUITestCase: XCTestCase {
 
     // remove last item
     firstItem.swipeLeft()
-    firstItem.swipeLeft()
+    deleteButton.tap()
 
     // cart summary and tab badge
     try UITestHelpers.checkCartBadge(quantity: 0)

@@ -121,4 +121,12 @@ enum Constants {
     static let rowSizeLabel = "Size:"
     static let rowCountLabel = "Count:"
   }
+
+  enum Identifiers {
+    static let productDetailsTitle = "Product details title"
+    static let itemsCount = "Items count"
+    static let beforeDiscount = "Before discount"
+    static let discountedAmount = "Discounted amount"
+    static let totalAmount = "Total amount"
+  }
 }

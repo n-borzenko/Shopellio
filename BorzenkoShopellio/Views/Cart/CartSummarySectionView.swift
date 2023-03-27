@@ -19,6 +19,7 @@ struct CartSummarySectionView: View {
         Text("\(cart.totalItemQuantity)")
           .fontWeight(.bold)
           .foregroundColor(.textColor)
+          .accessibilityIdentifier(Constants.Identifiers.itemsCount)
       }
       if !cart.items.isEmpty {
         if cart.discountedAmount > 0 {
@@ -27,12 +28,16 @@ struct CartSummarySectionView: View {
               .defaultStyle()
             Spacer()
             ProductPriceView(price: cart.totalAmountBeforeDiscount)
+              .accessibilityIdentifier(Constants.Identifiers.beforeDiscount)
           }
           HStack {
             Text(Constants.Cart.summaryDiscountedAmount)
               .defaultStyle()
             Spacer()
             ProductPriceView(price: cart.discountedAmount)
+              .accessibilityIdentifier(
+                Constants.Identifiers.discountedAmount
+              )
           }
         }
         HStack {
@@ -41,6 +46,7 @@ struct CartSummarySectionView: View {
             .fontWeight(.bold)
           Spacer()
           ProductPriceView(price: cart.totalAmount)
+            .accessibilityIdentifier(Constants.Identifiers.totalAmount)
         }
       }
     }

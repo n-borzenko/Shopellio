@@ -5,7 +5,7 @@
 //  Created by Natalia Borzenko on 26/03/2023.
 //
 
-// swiftlint:disable overridden_super_call function_body_length
+// swiftlint:disable overridden_super_call
 
 import XCTest
 
@@ -28,23 +28,21 @@ final class NewArrivalsUITestCase: XCTestCase {
     )
 
     // empty cart badge
-    guard let cartBadgeValue = app.tabBars["Tab Bar"].buttons["Cart"].value as? String else {
-      XCTFail("Cart badge value should a string, but it is not")
-      return
-    }
-    XCTAssertEqual(cartBadgeValue, "", "Cart badge should not exist, but the the value is \(cartBadgeValue)")
+    try UITestHelpers.checkCartBadge(quantity: 0)
 
     // default segmented control selection
+    let segmentedControls = navigationBar.segmentedControls
     XCTAssertTrue(
-      navigationBar.segmentedControls.buttons["Women"].isSelected,
+      segmentedControls.buttons["Women"].isSelected,
       "Women category should be selected by default, but it is not"
     )
 
     // first item for women is a trench with an image
-    let firstItem = app.scrollViews.otherElements.buttons.element(boundBy: 0)
+    let scrollViews = app.scrollViews
+    let firstItem = scrollViews.buttons.element(boundBy: 0)
     XCTAssertEqual(
       firstItem.label,
-      "Basic trench coat with belt, £129.00, NEW",
+      "Basic trench coat with belt, $129.00, NEW",
       "First item should be \"Basic trench coat with belt\", but it is \(firstItem.label)"
     )
     XCTAssertEqual(
@@ -54,15 +52,14 @@ final class NewArrivalsUITestCase: XCTestCase {
     )
 
     // select men category
-    // swiftlint:disable:next line_length
-    navigationBar/*@START_MENU_TOKEN@*/.segmentedControls.buttons["Men"]/*[[".segmentedControls.buttons[\"Men\"]",".buttons[\"Men\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+    segmentedControls.buttons["Men"].tap()
     XCTAssertTrue(
-      navigationBar.segmentedControls.buttons["Men"].isSelected,
+      segmentedControls.buttons["Men"].isSelected,
       "Men category should be selected after tapping on it, but it is not"
     )
 
     // select an item for men
-    let tShirtItem = app.scrollViews.otherElements.buttons["Printed t-shirt with pocket, £18.00, NEW"]
+    let tShirtItem = scrollViews.buttons["Printed t-shirt with pocket, $18.00, NEW"]
     XCTAssertTrue(
       tShirtItem.isHittable,
       "Printed t-shirt with pocket should be available for selection, but it is not"
@@ -70,7 +67,7 @@ final class NewArrivalsUITestCase: XCTestCase {
     tShirtItem.tap()
 
     // check navigation to details view and it's title
-    let detailsTitle = app.scrollViews.staticTexts["Product Details Title"]
+    let detailsTitle = scrollViews.staticTexts["Product details title"]
     XCTAssertEqual(
       detailsTitle.label,
       "Printed t-shirt with pocket",
@@ -79,27 +76,19 @@ final class NewArrivalsUITestCase: XCTestCase {
 
     // open variant selection and select one
     detailsTitle.swipeUp()
-    app.scrollViews.buttons["Select variant"].tap()
-    app.scrollViews.buttons["black"].tap()
-    app.scrollViews.buttons["M"].tap()
+    scrollViews.buttons["Select variant"].tap()
+    scrollViews.buttons["black"].tap()
+    scrollViews.buttons["M"].tap()
 
     // add variant to the cart
-    let addButton = app.scrollViews.buttons["Add items"]
+    let addButton = app.scrollViews.buttons["Add to cart"]
     XCTAssertTrue(addButton.isEnabled, "Variant is selected, add to cart button should be available, but it is not")
     addButton.tap()
-    if !app.tabBars["Tab Bar"].buttons["Cart"].waitForExistence(timeout: 2) {
-      XCTFail("Cart tab bar item should appear in 2 seconds, but it doesn't")
+    if app.tabBars["Tab Bar"].waitForExistence(timeout: 2) {
+      XCTFail("Tab bar should have appeared in 2 seconds, but it didn't")
     }
 
     // check updated cart badge
-    guard let cartBadgeValue2 = app.tabBars["Tab Bar"].buttons["Cart"].value as? String else {
-      XCTFail("Cart badge value should a string, but it is not")
-      return
-    }
-    XCTAssertEqual(
-      cartBadgeValue2,
-      "1 item",
-      "Cart badge should be equal to 1, but it is \(cartBadgeValue2)"
-    )
+    try UITestHelpers.checkCartBadge(quantity: 1)
   }
 }

@@ -32,6 +32,7 @@ struct ProductDetailsView: View {
             isVariantSelectionShown = true
           }
           .buttonStyle(.borderedProminent)
+          .foregroundColor(.invertedContrastColor)
         }
         .padding()
       }
@@ -55,7 +56,7 @@ struct ProductDetailsDescriptionView: View {
     VStack(alignment: .leading) {
       Text(product.title)
         .titleStyle()
-        .accessibilityIdentifier("Product Details Title")
+        .accessibilityIdentifier(Constants.Identifiers.productDetailsTitle)
       ProductPriceContainerView(product: product)
       HStack {
         Text(Constants.ProductDetails.colorsListLabel)

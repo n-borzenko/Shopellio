@@ -66,8 +66,8 @@ struct ProductCellView: View {
 struct ProductGridView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
-      ProductGridView(products: SampleData.products)
+      ProductGridView(products: Shop.createFromFile().products)
     }
-    .environmentObject(SampleData.shop)
+    .environmentObject(Shop.createFromFile())
   }
 }

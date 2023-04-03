@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NewArrivalsView: View {
-  @State private var products = SampleData.products
   @EnvironmentObject var shop: Shop
   @State private var selectedCategoryId: String = ""
 
@@ -17,7 +16,7 @@ struct NewArrivalsView: View {
   }
 
   private var filteredProducts: [Product] {
-    products.filter { product in
+    shop.products.filter { product in
       guard
         let subcategory = shop.subcategories[product.subcategoryId],
         product.tags.contains(Constants.Product.newArrivalTag) else {
@@ -61,6 +60,6 @@ struct NewArrivalsView: View {
 struct NewArrivalsView_Previews: PreviewProvider {
   static var previews: some View {
     NewArrivalsView()
-      .environmentObject(SampleData.shop)
+      .environmentObject(Shop.createFromFile())
   }
 }

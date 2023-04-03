@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProductsView: View {
   @EnvironmentObject var shop: Shop
-  @State private var products = SampleData.products
   @State private var selectedSubcategoryId: String?
   @State private var selectedProduct: Product?
   @State private var splitViewVisibility = NavigationSplitViewVisibility.doubleColumn
@@ -24,7 +23,7 @@ struct ProductsView: View {
 
   var filteredProducts: [Product] {
     if let subcategoryId = selectedSubcategoryId {
-      return products.filter { $0.subcategoryId == subcategoryId }
+      return shop.products.filter { $0.subcategoryId == subcategoryId }
     } else {
       return []
     }
@@ -84,6 +83,6 @@ struct ProductsView: View {
 struct ProductsView_Previews: PreviewProvider {
   static var previews: some View {
     ProductsView()
-      .environmentObject(SampleData.shop)
+      .environmentObject(Shop.createFromFile())
   }
 }

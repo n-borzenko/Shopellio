@@ -46,16 +46,16 @@ struct CartContentSectionView_Previews: PreviewProvider {
     List {
       CartContentSectionView()
     }
-    .environmentObject(SampleData.shop)
+    .environmentObject(Shop.createFromFile())
     .environmentObject(Cart(items: [
       CartItem(
-        product: SampleData.products[0],
-        variant: SampleData.products[0].stock[3].variant,
+        product: Shop.createFromFile().products[0],
+        variant: Shop.createFromFile().products[0].stock[3].variant,
         quantity: 2
       ),
       CartItem(
-        product: SampleData.products[1],
-        variant: SampleData.products[1].stock[2].variant,
+        product: Shop.createFromFile().products[1],
+        variant: Shop.createFromFile().products[1].stock[2].variant,
         quantity: 1
       )
     ]))

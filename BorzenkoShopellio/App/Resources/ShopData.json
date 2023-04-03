@@ -1,0 +1,1934 @@
+{
+  "sizes" : [
+    "One size",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+  ],
+  "colors" : {
+    "blue" : "#0000FF",
+    "burgundy" : "#800020",
+    "baby pink" : "#F4C2C2",
+    "gray" : "#808080",
+    "red" : "#FF0000",
+    "white" : "#FFFFFF",
+    "black" : "#000000",
+    "steel blue" : "#4682B4",
+    "green" : "#00FF00",
+    "beige" : "#F5F5DC",
+    "brown" : "#964B00",
+    "navy blue" : "#000080",
+    "silver" : "#C0C0C0"
+  },
+  "categories" : [
+    {
+      "id" : "women",
+      "title" : "Women",
+      "subcategories" : [
+        {
+          "id" : "coats",
+          "title" : "Coats & Jackets"
+        },
+        {
+          "id" : "tops",
+          "title" : "Tops"
+        },
+        {
+          "id" : "dresses",
+          "title" : "Dresses"
+        },
+        {
+          "id" : "trousers",
+          "title" : "Trousers & Leggings"
+        },
+        {
+          "id" : "w_shoes",
+          "title" : "Shoes"
+        },
+        {
+          "id" : "accessories",
+          "title" : "Accessories"
+        }
+      ]
+    },
+    {
+      "id" : "men",
+      "title" : "Men",
+      "subcategories" : [
+        {
+          "id" : "t-shirts",
+          "title" : "T-shirts"
+        },
+        {
+          "id" : "m_jeans",
+          "title" : "Jeans"
+        },
+        {
+          "id" : "suits",
+          "title" : "Suits"
+        }
+      ]
+    }
+  ],
+  "products" : [
+    {
+      "id" : "7D06C888-2443-4718-94EF-2663A91DCEE8",
+      "discount" : 0,
+      "subcategoryId" : "coats",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "beige",
+        "black"
+      ],
+      "price" : 129,
+      "title" : "Basic trench coat with belt",
+      "reviews" : [
+
+      ],
+      "overview" : "Trench coat made of a cotton blend fabric. Lapel collar and long sleeves with tabs. Front welt pockets. Back vent at the hem, Double breasted button fastening",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1651491646869-3f18f4d30be0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "757484C0-3E5A-438A-AEBA-0A9586538886",
+      "discount" : 0.05,
+      "subcategoryId" : "coats",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XXL"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "black"
+      ],
+      "price" : 95,
+      "title" : "Faux leather oversize jacket",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1511280303142-0051e93baeeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80"
+      ],
+      "sizes" : [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "id" : "0AE6C983-CB0B-47EA-8515-0DC5175FFB4F",
+      "discount" : 0,
+      "subcategoryId" : "dresses",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "baby pink",
+            "size" : "XS"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "baby pink",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "baby pink",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "XS"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "baby pink",
+        "white"
+      ],
+      "price" : 32,
+      "title" : "Mini dress with floral print",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1617383619176-593fe8bfcde4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=747&q=80"
+      ],
+      "sizes" : [
+        "XS",
+        "S",
+        "M"
+      ]
+    },
+    {
+      "id" : "C502C065-E318-471C-88D6-BE5FE93D18F5",
+      "discount" : 0.2,
+      "subcategoryId" : "dresses",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "silver",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "silver",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "silver",
+        "navy blue"
+      ],
+      "price" : 55,
+      "title" : "Puff shoulder pencil dress",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1582533575066-75bd83ac91de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "7D09B9A5-FE0E-4863-984F-2DF380F128B4",
+      "discount" : 0,
+      "subcategoryId" : "trousers",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "baby pink",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "baby pink",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "baby pink",
+        "black"
+      ],
+      "price" : 35,
+      "title" : "Multi pocket cargo trouser",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "300865C5-56A0-45BF-BB57-29D2CDCA5928",
+      "discount" : 0,
+      "subcategoryId" : "w_shoes",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "4"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "5"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "6"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "7"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "black"
+      ],
+      "price" : 75,
+      "title" : "Black trainers for running",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1547586877-0351a7143cbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      ],
+      "sizes" : [
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "id" : "C75A52BC-E9C2-4787-AC8F-C63C6371D3B9",
+      "discount" : 0,
+      "subcategoryId" : "suits",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "black",
+        "navy blue"
+      ],
+      "price" : 129,
+      "title" : "Regular fit suit",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1585846416120-3a7354ed7d39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id" : "11CB8492-1ECA-4FF9-A1F0-A949745DA548",
+      "discount" : 0.05,
+      "subcategoryId" : "t-shirts",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "XL"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "XXL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XXL"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "XXL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "XXL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "XXXL"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "XXXL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "XXXL"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "white",
+        "black",
+        "red",
+        "steel blue"
+      ],
+      "price" : 15,
+      "title" : "Regular fit round-neck t-shirt",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "XXXL"
+      ]
+    },
+    {
+      "id" : "A201E75B-E10E-42F8-9081-AF7F74D9A5C1",
+      "discount" : 0,
+      "subcategoryId" : "t-shirts",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "gray",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "gray",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "gray",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "white",
+        "black",
+        "gray",
+        "navy blue",
+        "red",
+        "blue",
+        "green"
+      ],
+      "price" : 15,
+      "title" : "Basic T-shirt",
+      "reviews" : [
+
+      ],
+      "overview" : "A basic T-shirt made of soft cotton fabric. Round neckline and short sleeves.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
+      ],
+      "sizes" : [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "3XL",
+        "4XL",
+        "5XL"
+      ]
+    },
+    {
+      "id" : "E5B3F943-9D94-4674-B951-3D1370569EE2",
+      "discount" : 0,
+      "subcategoryId" : "t-shirts",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "navy blue",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "white",
+        "black",
+        "navy blue"
+      ],
+      "price" : 18,
+      "title" : "Printed t-shirt with pocket",
+      "reviews" : [
+
+      ],
+      "overview" : "Comfortable t-shirt made of soft cotton. V-neck and short sleeves. Chest pocket with printed design.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1613243706336-150bf7ec02f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "8D20DC17-0974-4154-BF73-132F42E326A8",
+      "discount" : 0,
+      "subcategoryId" : "tops",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "burgundy",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "burgundy",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "burgundy",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "burgundy",
+        "black",
+        "beige"
+      ],
+      "price" : 42,
+      "title" : "Satin wrap blouse",
+      "reviews" : [
+
+      ],
+      "overview" : "Elegant wrap blouse made of shiny satin fabric. V-neckline and long sleeves with buttoned cuffs. Wrap design with self-tie belt.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1655203091785-9b07e64e4459?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=710&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "47DD870B-3D13-4271-ACA4-A879FD198345",
+      "discount" : 0,
+      "subcategoryId" : "tops",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "XS"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "XS"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "white",
+        "steel blue"
+      ],
+      "price" : 45,
+      "title" : "Cropped hoodie",
+      "reviews" : [
+
+      ],
+      "overview" : "Cropped hoodie made of soft cotton blend fabric. Drawstring hood, long sleeves with dropped shoulders, and ribbed cuffs. Front pouch pocket, raw hem. Casual and comfortable design.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1600348077475-d4db860d06f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+      ],
+      "sizes" : [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "E36BB133-2013-4112-892F-9B4C000D58E8",
+      "discount" : 0.1,
+      "subcategoryId" : "coats",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "XL"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XL"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "steel blue",
+        "black"
+      ],
+      "price" : 69,
+      "title" : "Cropped denim jacket",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1485811843447-c0989c7b9aae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id" : "E4BE97C2-E460-4A65-9994-9FC2EBDA9102",
+      "discount" : 0,
+      "subcategoryId" : "trousers",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "white",
+        "black"
+      ],
+      "price" : 42,
+      "title" : "Wide-leg trousers",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1604136172384-b2e9c43271ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "AC865FA4-BB4C-4315-8E39-DD47958706EC",
+      "discount" : 0,
+      "subcategoryId" : "dresses",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "beige",
+        "green"
+      ],
+      "price" : 65,
+      "title" : "Boho midi dress",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1490505658643-e96d613eb642?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "5D41D1AB-8FB8-48F9-A1FF-CF28778084AE",
+      "discount" : 0,
+      "subcategoryId" : "accessories",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "One size"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "One size"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "white",
+        "black"
+      ],
+      "price" : 89,
+      "title" : "Leather crossbody bag",
+      "reviews" : [
+
+      ],
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1505892458649-41be8480bb4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80"
+      ],
+      "sizes" : [
+        "One size"
+      ]
+    },
+    {
+      "id" : "99B33DC2-9780-484F-B31C-98B4BCD57022",
+      "discount" : 0.1,
+      "subcategoryId" : "dresses",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "baby pink",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "baby pink",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "red",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "black",
+        "red",
+        "baby pink"
+      ],
+      "price" : 45,
+      "title" : "Wrap front midi dress",
+      "reviews" : [
+
+      ],
+      "overview" : "Midi dress made of a soft, lightweight fabric. Wrap front design with v-neckline and short sleeves. Elasticated waist with tie belt. Flowy A-line skirt. Hits at mid-calf length.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1494578379344-d6c710782a3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "0CF0E6B0-EDEE-4121-A5DA-873F9D5C7D05",
+      "discount" : 0,
+      "subcategoryId" : "trousers",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "blue",
+        "black"
+      ],
+      "price" : 29.99,
+      "title" : "Denim Shorts",
+      "reviews" : [
+
+      ],
+      "overview" : "Denim shorts with frayed hem. High waisted with belt loops. Front and back pockets. Zip fly and button closure.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1585145197082-dba095ba01ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=702&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "1F68FF80-CFDF-41FD-B107-7E61ED530195",
+      "discount" : 0.15,
+      "subcategoryId" : "coats",
+      "tags" : [
+
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "XL"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XL"
+          },
+          "level" : "Low availability"
+        }
+      ],
+      "colors" : [
+        "blue",
+        "black"
+      ],
+      "price" : 79,
+      "title" : "Denim Jacket with Fleece Collar",
+      "reviews" : [
+
+      ],
+      "overview" : "Denim jacket featuring a fleece collar, front button fastening, and long sleeves with buttoned cuffs. Four front pockets with buttoned flaps.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1521073535089-c3fe0eae04cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id" : "AB5F4ECC-5098-4A1F-9CE4-1E9A5B62F2D4",
+      "discount" : 0,
+      "subcategoryId" : "trousers",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "S"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "steel blue",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "steel blue",
+        "black"
+      ],
+      "price" : 45,
+      "title" : "Cropped mom jeans with embroidery",
+      "reviews" : [
+
+      ],
+      "overview" : "Cropped mom jeans featuring embroidery and ripped details. High waist with belt loops, five pockets and zip fly and metal top button fastening.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1510734790177-c931e3956547?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "13E0DB16-AE29-4C04-959A-19410C7907CF",
+      "discount" : 0,
+      "subcategoryId" : "t-shirts",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "white",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "L"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "white",
+        "black"
+      ],
+      "price" : 39,
+      "title" : "Cotton shirt with pockets",
+      "reviews" : [
+
+      ],
+      "overview" : "Cotton shirt with a lapel collar and short sleeves. Front patch pockets. Front button closure.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1517231426114-1ed5cdbe7248?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id" : "CBB24723-15E4-4260-92B2-10DB3773312A",
+      "discount" : 0,
+      "subcategoryId" : "tops",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "green",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "M"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "blue",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "green",
+        "blue"
+      ],
+      "price" : 59.99,
+      "title" : "Knit sweater with geometric pattern",
+      "reviews" : [
+
+      ],
+      "overview" : "Knit sweater with a geometric pattern in a relaxed fit. Rib-knit neckline, cuffs and hem.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1527424803383-098895227b9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "id" : "27723292-DE19-4420-97EF-A455E0EFBF2D",
+      "discount" : 0,
+      "subcategoryId" : "tops",
+      "tags" : [
+        "new"
+      ],
+      "stock" : [
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "L"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "beige",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "S"
+          },
+          "level" : "In stock"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "M"
+          },
+          "level" : "Low availability"
+        },
+        {
+          "variant" : {
+            "color" : "black",
+            "size" : "XL"
+          },
+          "level" : "In stock"
+        }
+      ],
+      "colors" : [
+        "beige",
+        "black"
+      ],
+      "price" : 49,
+      "title" : "Cotton blend sweater",
+      "reviews" : [
+
+      ],
+      "overview" : "Cotton blend sweater with a round neckline and long sleeves.",
+      "keywords" : [
+
+      ],
+      "imageUrls" : [
+        "https:\/\/images.unsplash.com\/photo-1589697547048-962940abc062?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ],
+      "sizes" : [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    }
+  ]
+}

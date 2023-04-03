@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Review {
+struct Review: Codable {
   let id: UUID
   let productVariant: ProductVariant
   let author: String?
@@ -29,6 +29,15 @@ struct Review {
     self.imageUrls = imageUrls
     self.text = text
     self.rating = rating
+  }
+
+  enum CodingKeys: CodingKey {
+    case id
+    case productVariant
+    case author
+    case imageUrls
+    case text
+    case rating
   }
 }
 

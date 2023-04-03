@@ -37,7 +37,7 @@ struct ProductImageView: View {
 struct ProductImageView_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      ProductImageView(imageUrl: SampleData.products[0].imageUrls.first)
+      ProductImageView(imageUrl: Shop.createFromFile().products[0].imageUrls.first)
       ProductImageView(imageUrl: nil)
     }
   }

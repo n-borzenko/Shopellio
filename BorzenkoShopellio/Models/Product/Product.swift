@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Product: Reviewable, Discountable, Identifiable {
-  let id = UUID()
+struct Product: Reviewable, Discountable, Identifiable, Codable {
+  let id: UUID
   let title: String
   let imageUrls: [String]
   let subcategoryId: String
@@ -29,7 +29,8 @@ struct Product: Reviewable, Discountable, Identifiable {
 
   // other possible characteristics: materials, oversized, high/low waist, ...
 
-  init(title: String, imageUrls: [String] = [], subcategoryId: String, price: Decimal, discount: Decimal = 0.0, stock: [StockItem] = [], sizes: [String] = [], colors: [String] = [], overview: String? = nil, careInstruction: String? = nil, reviews: [Review] = [], keywords: [String] = [], tags: [String] = []) {
+  init(id: UUID = UUID(), title: String, imageUrls: [String] = [], subcategoryId: String, price: Decimal, discount: Decimal = 0.0, stock: [StockItem] = [], sizes: [String] = [], colors: [String] = [], overview: String? = nil, careInstruction: String? = nil, reviews: [Review] = [], keywords: [String] = [], tags: [String] = []) {
+    self.id = id
     self.title = title
     self.imageUrls = imageUrls
     self.subcategoryId = subcategoryId
@@ -43,6 +44,23 @@ struct Product: Reviewable, Discountable, Identifiable {
     self.reviews = reviews
     self.keywords = keywords
     self.tags = tags
+  }
+
+  enum CodingKeys: CodingKey {
+    case id
+    case title
+    case imageUrls
+    case subcategoryId
+    case price
+    case discount
+    case stock
+    case sizes
+    case colors
+    case overview
+    case careInstruction
+    case reviews
+    case keywords
+    case tags
   }
 }
 

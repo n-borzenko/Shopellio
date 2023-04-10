@@ -45,7 +45,7 @@ struct MainTabView: View {
 struct MainView: View {
   // shop settings data is expected to be loaded from the API
   // and shared throughout the application
-  @StateObject private var shop = SampleData.shop
+  @StateObject private var shop = Shop.createFromFile(updateCachedFile: true)
   @StateObject private var cart = Cart()
 
   var body: some View {

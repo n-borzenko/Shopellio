@@ -79,6 +79,6 @@ struct ProductColorView_Previews: PreviewProvider {
       ProductColorView(colorName: "gray", scale: .large, isUnavailable: true)
       ProductColorView(colorName: "gray", isNameVisible: true, scale: .large)
     }
-    .environmentObject(SampleData.shop)
+    .environmentObject(Shop.createFromFile())
   }
 }

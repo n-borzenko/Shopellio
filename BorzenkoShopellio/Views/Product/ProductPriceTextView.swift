@@ -38,8 +38,8 @@ struct ProductPriceContainerView: View {
 struct ProductPriceTextView_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      ProductPriceContainerView(product: SampleData.products[0])
-      ProductPriceContainerView(product: SampleData.products[1])
+      ProductPriceContainerView(product: Shop.createFromFile().products[0])
+      ProductPriceContainerView(product: Shop.createFromFile().products[1])
     }
   }
 }

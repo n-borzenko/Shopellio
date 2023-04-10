@@ -84,7 +84,7 @@ struct ProductVariantSelectionFooterView_Previews: PreviewProvider {
     ProductVariantSelectionFooterView(
       selectedColorName: .constant("blue"),
       selectedSizeName: .constant("M"),
-      product: SampleData.products[8]
+      product: Shop.createFromFile().products[8]
     )
     .environmentObject(Cart())
   }

@@ -61,14 +61,16 @@ struct ProductColorSelectionView: View {
 struct ProductColorSelectionView_Previews: PreviewProvider {
   static var previews: some View {
     ProductColorSelectionView(
-      colors: SampleData.products[8].colors,
+      colors: Shop.createFromFile().products[8].colors,
       availableColors: Set(
-        SampleData.products[8].stock
+        Shop.createFromFile()
+          .products[8]
+          .stock
           .filter { $0.variant.size == "M" }
           .map { $0.variant.color }
       ),
-      selectedColorName: .constant(SampleData.products[8].stock[0].variant.color)
+      selectedColorName: .constant(Shop.createFromFile().products[8].stock[0].variant.color)
     )
-    .environmentObject(SampleData.shop)
+    .environmentObject(Shop.createFromFile())
   }
 }

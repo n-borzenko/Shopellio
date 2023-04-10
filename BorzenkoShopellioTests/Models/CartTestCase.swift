@@ -42,8 +42,8 @@ final class CartTestCase: XCTestCase {
 
   // MARK: - calculations for the cart with several different items
   func testCartWithSeveralDifferentItems() throws {
-    let product1 = SampleData.products[0]
-    let product2 = SampleData.products[1]
+    let product1 = Shop.createFromFile().products[0]
+    let product2 = Shop.createFromFile().products[1]
     let variant1Quantity = 1
     let variant2Quantity = 2
     let variant3Quantity = 1

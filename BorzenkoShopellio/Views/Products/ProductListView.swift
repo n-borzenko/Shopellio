@@ -57,8 +57,8 @@ struct ProductsRowView: View {
 struct ProductListView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
-      ProductListView(products: SampleData.products)
+      ProductListView(products: Shop.createFromFile().products)
     }
-    .environmentObject(SampleData.shop)
+    .environmentObject(Shop.createFromFile())
   }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CartItem: Identifiable {
+struct CartItem: Identifiable, Codable {
   let id: UUID
   let product: Product
   let variant: ProductVariant
@@ -19,10 +19,23 @@ struct CartItem: Identifiable {
     self.variant = variant
     self.quantity = quantity
   }
+
+  enum CodingKeys: CodingKey {
+    case id
+    case product
+    case variant
+    case quantity
+  }
 }
 
 class Cart: ObservableObject {
-  @Published private(set) var items: [CartItem]
+  static let cartJsonURL = URL(filePath: "CartData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
+
+  @Published private(set) var items: [CartItem] {
+    didSet {
+      saveToFile()
+    }
+  }
 
   var totalItemQuantity: Int {
     items.reduce(0) { $0 + $1.quantity }
@@ -40,8 +53,36 @@ class Cart: ObservableObject {
     totalAmountBeforeDiscount - totalAmount
   }
 
-  init(items: [CartItem] = []) {
+  init(items: [CartItem]) {
     self.items = items
+  }
+
+  init() {
+    guard FileManager.default.fileExists(atPath: Cart.cartJsonURL.path) else {
+      items = []
+      return
+    }
+
+    let decoder = JSONDecoder()
+    do {
+      let cartData = try Data(contentsOf: Cart.cartJsonURL)
+      items = try decoder.decode([CartItem].self, from: cartData)
+    } catch let error {
+      print(error)
+      items = []
+    }
+  }
+
+  private func saveToFile() {
+    // assignment 4
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
+    do {
+      let cartData = try encoder.encode(items)
+      try cartData.write(to: Cart.cartJsonURL, options: .atomicWrite)
+    } catch let error {
+      print(error)
+    }
   }
 }
 

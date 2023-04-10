@@ -7,16 +7,21 @@
 
 import SwiftUI
 
-struct ProductVariant: Equatable {
+struct ProductVariant: Equatable, Codable {
   let color: String
   let size: String
 
   static func == (lhs: ProductVariant, rhs: ProductVariant) -> Bool {
     return lhs.color == rhs.color && lhs.size == rhs.size
   }
+
+  enum CodingKeys: CodingKey {
+    case color
+    case size
+  }
 }
 
-enum StockLevel: String {
+enum StockLevel: String, Codable {
   case none = "Out of stock"
   case low = "Low availability"
   case normal = "In stock"
@@ -38,7 +43,12 @@ enum StockLevel: String {
   }
 }
 
-struct StockItem {
+struct StockItem: Codable {
   let variant: ProductVariant
   let level: StockLevel
+
+  enum CodingKeys: CodingKey {
+    case variant
+    case level
+  }
 }

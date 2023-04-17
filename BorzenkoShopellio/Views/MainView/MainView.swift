@@ -60,6 +60,10 @@ struct MainView: View {
       await withTaskGroup(of: Void.self) { group in
         group.addTask { await shop.getCachedOrFetch() }
         group.addTask { await products.getCachedOrFetch() }
+
+        // Week09 test assignments
+        group.addTask { await ATSTestModel.fetchShopellioProducts() }
+        group.addTask { await ATSTestModel.fetchFakeStoreProducts() }
       }
       isInitialLoading = false
     }

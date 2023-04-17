@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 @MainActor
 final class Products: ObservableObject {
@@ -60,7 +59,7 @@ extension Products {
       state = .finished
     } catch let error {
       if let error = error as? APIClient.Error {
-        errorMessage = error.userDescription
+        errorMessage = error.shortDescription
         #if DEBUG
         print("Products fetch request failed: \(errorMessage ?? "")")
         #endif

@@ -75,7 +75,7 @@ extension Shop {
       state = .finished
     } catch let error {
       if let error = error as? APIClient.Error {
-        errorMessage = error.userDescription
+        errorMessage = error.shortDescription
         #if DEBUG
         print("Shop fetch request failed: \(errorMessage ?? "")")
         #endif

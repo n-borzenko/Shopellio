@@ -17,6 +17,7 @@
 		1913835929ECAE9F008E8718 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913835829ECAE9F008E8718 /* ErrorStateView.swift */; };
 		1913835D29ECC5B7008E8718 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913835C29ECC5B7008E8718 /* MainTabView.swift */; };
 		1913835F29ECE346008E8718 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913835E29ECE346008E8718 /* Router.swift */; };
+		1913836129ED7838008E8718 /* ATSTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913836029ED7838008E8718 /* ATSTestModel.swift */; };
 		1924504629C783A4008CFDC1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924504529C783A4008CFDC1 /* Product.swift */; };
 		1924504829C784B4008CFDC1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924504729C784B4008CFDC1 /* Review.swift */; };
 		1924504A29C78821008CFDC1 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924504929C78821008CFDC1 /* Shop.swift */; };
@@ -94,6 +95,7 @@
 		1913835829ECAE9F008E8718 /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
 		1913835C29ECC5B7008E8718 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1913835E29ECE346008E8718 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1913836029ED7838008E8718 /* ATSTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSTestModel.swift; sourceTree = "<group>"; };
 		1924504529C783A4008CFDC1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		1924504729C784B4008CFDC1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		1924504929C78821008CFDC1 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				1924504F29C78C66008CFDC1 /* Products */,
 				19BB565A29A28646006B768E /* FeatureList.swift */,
 				1913835E29ECE346008E8718 /* Router.swift */,
+				1913836029ED7838008E8718 /* ATSTestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				1924505129C7A577008CFDC1 /* MainView.swift in Sources */,
 				1924505A29C7BFD5008CFDC1 /* NewArrivalsView.swift in Sources */,
 				19A9B8C629A2A93E00A1A81D /* Color.swift in Sources */,
+				1913836129ED7838008E8718 /* ATSTestModel.swift in Sources */,
 				19BB565829A26D39006B768E /* AboutView.swift in Sources */,
 				19099E8A29CE4CD80010DA05 /* ProductSizeSelectionView.swift in Sources */,
 				1962939A29E62B4600C09A2A /* ProductGroup.swift in Sources */,

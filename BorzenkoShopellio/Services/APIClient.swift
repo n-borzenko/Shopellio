@@ -17,7 +17,7 @@ class APIClient {
     case notFound
     case failedDecoding
 
-    var userDescription: String {
+    var shortDescription: String {
       switch self {
       case .invalidURL: return "Failed to create the request the server"
       case .connectionError: return "Failed to establish connection to the server"
@@ -31,21 +31,20 @@ class APIClient {
   }
 
   static let shared = APIClient()
+  private static let baseURL = URL(string: "https://shopellio.nborzenko.me/api/")
 
   private let configuration: URLSessionConfiguration
   private let session: URLSession
-  private let baseURL: URL?
 
   private init() {
     self.configuration = URLSessionConfiguration.default
     self.configuration.timeoutIntervalForRequest = 30
     self.session = URLSession(configuration: configuration)
-    self.baseURL = URL(string: "https://shopellio.nborzenko.me/api/")
   }
 
   // swiftlint:disable:next cyclomatic_complexity
-  func performGetRequest<T: Decodable>(endpoint: String) async throws -> T {
-    guard let url = baseURL?.appendingPathComponent(endpoint) else {
+  func performGetRequest<T: Decodable>(url: URL? = APIClient.baseURL, endpoint: String) async throws -> T {
+    guard let url = url?.appendingPathComponent(endpoint) else {
       throw Error.invalidURL
     }
 
@@ -87,7 +86,7 @@ class APIClient {
 
       // Week09 #1
       #if DEBUG
-      print("Successfully received and parsed \(data.count) bytes")
+      print("Successfully received and parsed \(data.count) bytes from \(url)")
       #endif
       return result
     } catch {

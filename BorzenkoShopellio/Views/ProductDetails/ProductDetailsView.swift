@@ -36,7 +36,6 @@ struct ProductDetailsView: View {
         }
         .padding()
       }
-      .scrollContentBackground(.hidden)
       .background(Color.backgroundColor)
       .sheet(isPresented: $isVariantSelectionShown) {
         NavigationStack {
@@ -45,6 +44,7 @@ struct ProductDetailsView: View {
         .presentationDetents([.medium, .large])
       }
       .navigationBarTitleDisplayMode(.inline)
+      .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
     }
   }
 }

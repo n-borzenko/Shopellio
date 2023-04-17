@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+  @StateObject private var router = Router()
   @StateObject private var cart = Cart()
   @StateObject private var shop: Shop
   @StateObject private var products: Products
@@ -36,6 +37,7 @@ struct MainView: View {
           .environmentObject(cart)
           .environmentObject(shop)
           .environmentObject(products)
+          .environmentObject(router)
       } else {
         if isInitialLoading {
           MainLoadingView()

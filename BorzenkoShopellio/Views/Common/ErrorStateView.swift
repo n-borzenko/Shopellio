@@ -44,52 +44,61 @@ struct ErrorStateView: View {
   var action: (() -> Void)?
 
   var body: some View {
-    VStack {
-      Spacer(minLength: Constants.ErrorStateView.minSpacerLength)
+    GeometryReader { geo in
+      ScrollView {
+        VStack {
+          Spacer(minLength: Constants.ErrorStateView.minSpacerLength)
 
-      if isLoading {
-        LoadingView(scale: .large)
-          .frame(
-            maxWidth: Constants.ErrorStateView.imageMaxWidth,
-            maxHeight: Constants.ErrorStateView.imageMaxWidth
-          )
-          .aspectRatio(Constants.ErrorStateView.loadingAspectRatio, contentMode: .fit)
-          .padding(.horizontal, Constants.ErrorStateView.imageHorizontalPadding)
-      }
-      if !isLoading, let state = state {
-        Image(state.imageName)
-          .resizable()
-          .scaledToFit()
-          .frame(maxWidth: Constants.ErrorStateView.imageMaxWidth)
-          .padding(.horizontal, Constants.ErrorStateView.imageHorizontalPadding)
-      }
-
-      VStack(spacing: Constants.ErrorStateView.verticalStackSpacing) {
-        if state == .requestError {
-          NetworkStatusView(isAvailable: networkMonitor.isNetworkAvailable)
-        }
-        if let state = state {
-          Text(state.message)
-            .font(.headline)
-            .multilineTextAlignment(.center)
-            .foregroundColor(.textColor)
-            .frame(maxWidth: Constants.ErrorStateView.errorMessageMaxWidth)
-        }
-        if let action = action {
-          Button(actionTitle) {
-            action()
+          if isLoading {
+            LoadingView(scale: .large)
+              .frame(
+                maxWidth: Constants.ErrorStateView.imageMaxWidth,
+                maxHeight: geo.size.height / 2
+              )
+              .aspectRatio(Constants.ErrorStateView.loadingAspectRatio, contentMode: .fit)
+              .padding(.horizontal, Constants.ErrorStateView.imageHorizontalPadding)
           }
-          .buttonStyle(.borderedProminent)
-          .foregroundColor(.invertedContrastColor)
-          .disabled(!networkMonitor.isNetworkAvailable || isLoading)
-        }
-      }
-      .padding(.top, Constants.ErrorStateView.verticalStackTopPadding)
+          if !isLoading, let state = state {
+            Image(state.imageName)
+              .resizable()
+              .scaledToFit()
+              .frame(
+                maxWidth: Constants.ErrorStateView.imageMaxWidth,
+                maxHeight: geo.size.height / 2
+              )
+              .padding(.horizontal, Constants.ErrorStateView.imageHorizontalPadding)
+          }
 
-      Spacer(minLength: Constants.ErrorStateView.minSpacerLength)
-      Spacer(minLength: Constants.ErrorStateView.minSpacerLength)
+          VStack(spacing: Constants.ErrorStateView.verticalStackSpacing) {
+            if state == .requestError {
+              NetworkStatusView(isAvailable: networkMonitor.isNetworkAvailable)
+            }
+            if let state = state {
+              Text(state.message)
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.textColor)
+                .frame(maxWidth: Constants.ErrorStateView.errorMessageMaxWidth)
+            }
+            if let action = action {
+              Button(actionTitle) {
+                action()
+              }
+              .buttonStyle(.borderedProminent)
+              .foregroundColor(.invertedContrastColor)
+              .disabled(!networkMonitor.isNetworkAvailable || isLoading)
+            }
+          }
+          .padding(.top, Constants.ErrorStateView.verticalStackTopPadding)
+
+          Spacer(minLength: Constants.ErrorStateView.minSpacerLength)
+          Spacer(minLength: Constants.ErrorStateView.minSpacerLength)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, minHeight: geo.size.height)
+      }
+      .background(Color.backgroundColor)
     }
-    .padding()
   }
 }
 
@@ -115,13 +124,10 @@ struct NetworkStatusView: View {
 
 struct ErrorStateView_Previews: PreviewProvider {
   static var previews: some View {
-    Group {
-      ErrorStateView(isLoading: true, state: .requestError) {}
-      ErrorStateView(state: .requestError) {}
-      ErrorStateView(state: .emptyCart, actionTitle: "Go shopping") {}
-      ErrorStateView(state: .emptyProductGroup)
-      ErrorStateView(state: .emptySearchResults)
-    }
-    .background(Color.backgroundColor)
+    ErrorStateView(isLoading: true, state: .requestError) {}
+    ErrorStateView(state: .requestError) {}
+    ErrorStateView(state: .emptyCart, actionTitle: "Go shopping") {}
+    ErrorStateView(state: .emptyProductGroup)
+    ErrorStateView(state: .emptySearchResults)
   }
 }

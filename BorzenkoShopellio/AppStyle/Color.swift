@@ -9,8 +9,10 @@ import SwiftUI
 
 extension Color {
   static let backgroundColor = Color("BackgroundColor")
+  static let cellBackgroundColor = Color("CellBackgroundColor")
   static let textColor = Color("TextColor")
   static let invertedContrastColor = Color("InvertedContrastColor")
+  static let toolbarColor = Color("ToolbarColor")
 }
 
 extension Color {
@@ -41,15 +43,28 @@ extension Color {
 
 struct Color_Previews: PreviewProvider {
   static var previews: some View {
-    VStack {
-      Text("Text")
-        .titleStyle()
-      Image.plusCircle
-        .foregroundColor(Color.invertedContrastColor)
-        .background(Color.accentColor)
+    NavigationStack {
+      ScrollView {
+        VStack {
+          Text("Text")
+            .titleStyle()
+          Button("TestButton") {}
+            .buttonStyle(.borderedProminent)
+            .foregroundColor(.invertedContrastColor)
+          RoundedRectangle(cornerRadius: 10)
+            .fill(Color.cellBackgroundColor)
+            .frame(width: 200, height: 200)
+            .overlay {
+              Text("Text")
+                .defaultStyle()
+            }
+        }
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .foregroundColor(Color.textColor)
+      .background(Color.backgroundColor)
+      .navigationTitle("Title")
+      .toolbarBackground(Color.toolbarColor)
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .foregroundColor(Color.textColor)
-    .background(Color.backgroundColor)
   }
 }

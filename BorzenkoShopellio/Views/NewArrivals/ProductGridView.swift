@@ -31,7 +31,6 @@ struct ProductGridView: View {
       }
       .padding([.horizontal, .bottom])
     }
-    .scrollContentBackground(.hidden)
     .background(Color.backgroundColor)
   }
 }
@@ -58,7 +57,7 @@ struct ProductCellView: View {
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     .padding(Constants.NewArrivals.cellPadding)
-    .background(Color.invertedContrastColor)
+    .background(Color.cellBackgroundColor)
     .clipShape(RoundedRectangle(cornerRadius: Constants.NewArrivals.cellCornerRadius))
   }
 }

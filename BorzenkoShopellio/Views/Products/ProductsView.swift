@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductsView: View {
   @EnvironmentObject var shop: Shop
+  @EnvironmentObject var router: Router
   @State private var selectedSubcategoryId: String?
   @State private var selectedProduct: Product?
   @State private var splitViewVisibility = NavigationSplitViewVisibility.doubleColumn
@@ -85,5 +86,6 @@ struct ProductsView_Previews: PreviewProvider {
   static var previews: some View {
     ProductsView()
       .environmentObject(SampleData.shop)
+      .environmentObject(Router())
   }
 }

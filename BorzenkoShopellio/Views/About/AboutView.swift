@@ -13,6 +13,7 @@ struct AboutView: View {
       AboutContentView()
         .background(Color.backgroundColor)
         .navigationTitle(Constants.About.navigationTitle)
+        .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
     }
   }
 }

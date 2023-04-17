@@ -43,6 +43,7 @@ struct ProductVariantSelectionView: View {
         }
       }
     }
+    .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
   }
 }
 

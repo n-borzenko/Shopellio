@@ -10,10 +10,11 @@ import SwiftUI
 struct NewArrivalsView: View {
   @EnvironmentObject var shop: Shop
   @EnvironmentObject var products: Products
+  @EnvironmentObject var router: Router
   @State private var selectedCategoryId: String = ""
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $router.newArrivalsPath) {
       ProductGridView(products: products.filteredItems)
       .navigationDestination(for: Product.self) { product in
         ProductDetailsView(product: product)
@@ -32,6 +33,7 @@ struct NewArrivalsView: View {
           .pickerStyle(.segmented)
         }
       }
+      .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
 //      .onChange(of: products.state) { _ in
 //        guard products.state == .finished else { return }
 //        products.filterItems()
@@ -54,5 +56,6 @@ struct NewArrivalsView_Previews: PreviewProvider {
     NewArrivalsView()
       .environmentObject(SampleData.shop)
       .environmentObject(SampleData.products)
+      .environmentObject(Router())
   }
 }

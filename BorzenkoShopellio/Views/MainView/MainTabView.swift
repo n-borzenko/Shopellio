@@ -8,36 +8,36 @@
 import SwiftUI
 
 struct MainTabView: View {
-  @State private var selectedTab = Constants.Main.newArrivalsTitle
   @EnvironmentObject var cart: Cart
+  @EnvironmentObject var router: Router
 
   var body: some View {
-    TabView(selection: $selectedTab) {
+    TabView(selection: $router.selectedTab) {
       NewArrivalsView()
         .tabItem {
           Image.flame
           Text(Constants.Main.newArrivalsTitle)
         }
-        .tag(Constants.Main.newArrivalsTitle)
+        .tag(MainTab.newArrivals)
       ProductsView()
         .tabItem {
           Image.squareStack
           Text(Constants.Main.productsTitle)
         }
-        .tag(Constants.Main.productsTitle)
+        .tag(MainTab.products)
       CartView()
         .tabItem {
           Image.cart
           Text(Constants.Main.cartTitle)
         }
         .badge(cart.totalItemQuantity > 0 ? "\(cart.totalItemQuantity)" : nil)
-        .tag(Constants.Main.cartTitle)
+        .tag(MainTab.cart)
       AboutView()
         .tabItem {
           Image.infoCircle
           Text(Constants.Main.aboutTitle)
         }
-        .tag(Constants.Main.aboutTitle)
+        .tag(MainTab.about)
     }
   }
 }

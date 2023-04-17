@@ -39,6 +39,7 @@ final class Shop: ObservableObject {
     }
     await fetchShop()
     if await state == .finished {
+      // Week09 save response to documents directory
       await save()
     }
   }

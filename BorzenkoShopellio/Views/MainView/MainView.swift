@@ -61,9 +61,10 @@ struct MainView: View {
         group.addTask { await shop.getCachedOrFetch() }
         group.addTask { await products.getCachedOrFetch() }
 
-        // Week09 test assignments
+        // Week09
         group.addTask { await ATSTestModel.fetchShopellioProducts() }
         group.addTask { await ATSTestModel.fetchFakeStoreProducts() }
+        group.addTask { await KodecoClient.fetchCookies() }
       }
       isInitialLoading = false
     }

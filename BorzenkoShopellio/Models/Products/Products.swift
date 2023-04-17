@@ -27,6 +27,7 @@ final class Products: ObservableObject {
     errorMessage = nil
     await fetchProducts()
     if state == .finished {
+      // Week09 save response to documents directory
       save()
     }
   }

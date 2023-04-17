@@ -18,6 +18,7 @@
 		1913835D29ECC5B7008E8718 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913835C29ECC5B7008E8718 /* MainTabView.swift */; };
 		1913835F29ECE346008E8718 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913835E29ECE346008E8718 /* Router.swift */; };
 		1913836129ED7838008E8718 /* ATSTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913836029ED7838008E8718 /* ATSTestModel.swift */; };
+		1913836329ED8B61008E8718 /* KodecoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913836229ED8B61008E8718 /* KodecoClient.swift */; };
 		1924504629C783A4008CFDC1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924504529C783A4008CFDC1 /* Product.swift */; };
 		1924504829C784B4008CFDC1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924504729C784B4008CFDC1 /* Review.swift */; };
 		1924504A29C78821008CFDC1 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924504929C78821008CFDC1 /* Shop.swift */; };
@@ -96,6 +97,7 @@
 		1913835C29ECC5B7008E8718 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1913835E29ECE346008E8718 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1913836029ED7838008E8718 /* ATSTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSTestModel.swift; sourceTree = "<group>"; };
+		1913836229ED8B61008E8718 /* KodecoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodecoClient.swift; sourceTree = "<group>"; };
 		1924504529C783A4008CFDC1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		1924504729C784B4008CFDC1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		1924504929C78821008CFDC1 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
@@ -216,6 +218,15 @@
 				196293A129E77B5700C09A2A /* MainLoadingView.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		1913836429ED8B6F008E8718 /* TemporalModels */ = {
+			isa = PBXGroup;
+			children = (
+				1913836029ED7838008E8718 /* ATSTestModel.swift */,
+				1913836229ED8B61008E8718 /* KodecoClient.swift */,
+			);
+			path = TemporalModels;
 			sourceTree = "<group>";
 		};
 		1924504F29C78C66008CFDC1 /* Products */ = {
@@ -378,12 +389,12 @@
 		19BB565929A28632006B768E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1913836429ED8B6F008E8718 /* TemporalModels */,
 				1962939C29E6F90800C09A2A /* Shop */,
 				1962939B29E6F8FC00C09A2A /* Cart */,
 				1924504F29C78C66008CFDC1 /* Products */,
 				19BB565A29A28646006B768E /* FeatureList.swift */,
 				1913835E29ECE346008E8718 /* Router.swift */,
-				1913836029ED7838008E8718 /* ATSTestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -635,6 +646,7 @@
 				196293A229E77B5700C09A2A /* MainLoadingView.swift in Sources */,
 				1913835D29ECC5B7008E8718 /* MainTabView.swift in Sources */,
 				1924504829C784B4008CFDC1 /* Review.swift in Sources */,
+				1913836329ED8B61008E8718 /* KodecoClient.swift in Sources */,
 				1924505829C7BFC3008CFDC1 /* CartView.swift in Sources */,
 				196293A629E8BEBA00C09A2A /* NetworkMonitor.swift in Sources */,
 				1962939629E626BF00C09A2A /* RequestState.swift in Sources */,

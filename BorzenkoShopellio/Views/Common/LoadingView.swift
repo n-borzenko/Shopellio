@@ -56,6 +56,7 @@ struct LoadingView: View {
         .easeInOut(duration: Constants.LoadingView.animationDuration)
         .repeatForever(autoreverses: false)
       ) {
+        // Week09 new animation, but the old one was deleted
         angle = Constants.LoadingView.startAngle
       }
     }

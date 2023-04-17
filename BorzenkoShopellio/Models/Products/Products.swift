@@ -14,7 +14,6 @@ final class Products: ObservableObject {
   private weak var shop: Shop?
 
   @Published var allItems: [Product] = []
-  @Published var filteredItems: [Product] = []
   @Published var state = RequestState.idle
   @Published var errorMessage: String?
 
@@ -42,10 +41,6 @@ final class Products: ObservableObject {
       } catch {}
     }
     await fetchAndCache()
-  }
-
-  func filterItems(color: String = "black") {
-    filteredItems = allItems.filter { $0.colors.contains(color) }
   }
 }
 
@@ -77,5 +72,65 @@ extension Products {
 
   private func read() throws {
     allItems = try Cache.shared.readFromFile(for: .products)
+  }
+}
+
+// MARK: - Filter products
+extension Products {
+  func filterProducts(collectionId: String? = nil, categoryId: String? = nil, subcategoryId: String? = nil) -> [Product] {
+    // currently 2 hardcoded collections are supported
+    if let collectionId = collectionId {
+      switch collectionId {
+      case "new": return filterNewProducts(categoryId: categoryId)
+      case "sale": return filterDiscountedProducts(categoryId: categoryId)
+      default: return []
+      }
+    }
+
+    if let subcategoryId = subcategoryId {
+      return allItems.filter { $0.subcategoryId == subcategoryId }
+    }
+
+    if let categoryId = categoryId {
+      guard let category = shop?.categories.first(where: { $0.id == categoryId }) else {
+        return []
+      }
+      let ids = Set(category.subcategories.map { $0.id })
+      return allItems.filter { ids.contains($0.subcategoryId) }
+    }
+
+    return []
+  }
+
+  private func filterNewProducts(categoryId: String? = nil) -> [Product] {
+    var ids = Set<String>()
+
+    if let shop = shop, let categoryId = categoryId,
+       let category = shop.categories.first(where: { $0.id == categoryId }) {
+      ids = Set(category.subcategories.map { $0.id })
+    }
+
+    return allItems.filter { product in
+      guard product.tags.contains(Constants.Product.newArrivalTag) else {
+        return false
+      }
+      return categoryId != nil ? ids.contains(product.subcategoryId) : true
+    }
+  }
+
+  private func filterDiscountedProducts(categoryId: String? = nil) -> [Product] {
+    var ids = Set<String>()
+
+    if let shop = shop, let categoryId = categoryId,
+       let category = shop.categories.first(where: { $0.id == categoryId }) {
+      ids = Set(category.subcategories.map { $0.id })
+    }
+
+    return allItems.filter { product in
+      guard product.discount > 0 else {
+        return false
+      }
+      return categoryId != nil ? ids.contains(product.subcategoryId) : true
+    }
   }
 }

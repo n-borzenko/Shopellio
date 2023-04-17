@@ -125,6 +125,7 @@ enum Constants {
     static let rowColorLabel = "Color:"
     static let rowSizeLabel = "Size:"
     static let rowCountLabel = "Count:"
+    static let emptyCartButtonTitle = "Go shopping"
   }
 
   enum Identifiers {

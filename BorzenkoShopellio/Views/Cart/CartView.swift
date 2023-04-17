@@ -14,8 +14,11 @@ struct CartView: View {
   var body: some View {
     NavigationStack(path: $router.cartPath) {
       if cart.items.isEmpty {
-        ErrorStateView(state: .emptyCart, actionTitle: "Go shopping") {
-          router.selectedTab = .newArrivals
+        ErrorStateView(
+          state: .emptyCart,
+          actionTitle: Constants.Cart.emptyCartButtonTitle
+        ) {
+          router.selectedTab = .products
         }
         .navigationTitle(Constants.Cart.navigationTitle)
         .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)

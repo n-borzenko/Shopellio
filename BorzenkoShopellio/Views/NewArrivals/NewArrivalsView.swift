@@ -12,10 +12,11 @@ struct NewArrivalsView: View {
   @EnvironmentObject var products: Products
   @EnvironmentObject var router: Router
   @State private var selectedCategoryId: String = ""
+  @State private var filteredProducts: [Product] = []
 
   var body: some View {
     NavigationStack(path: $router.newArrivalsPath) {
-      ProductGridView(products: products.filteredItems)
+      ProductGridView(products: filteredProducts)
       .navigationDestination(for: Product.self) { product in
         ProductDetailsView(product: product)
       }
@@ -34,18 +35,18 @@ struct NewArrivalsView: View {
         }
       }
       .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
-//      .onChange(of: products.state) { _ in
-//        guard products.state == .finished else { return }
-//        products.filterItems()
-//      }
+      .onChange(of: selectedCategoryId) { _ in
+        filteredProducts = products.filterProducts(
+          collectionId: "new",
+          categoryId: selectedCategoryId
+        )
+      }
       .onAppear {
-        products.filterItems()
-
-//        DispatchQueue.main.async {
-//          if self.selectedCategoryId.isEmpty && !self.categories.isEmpty {
-//            self.selectedCategoryId = self.categories[0].id
-//          }
-//        }
+        Task {
+          if self.selectedCategoryId.isEmpty && !self.shop.categories.isEmpty {
+            self.selectedCategoryId = self.shop.categories[0].id
+          }
+        }
       }
     }
   }

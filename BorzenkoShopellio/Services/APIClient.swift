@@ -38,7 +38,7 @@ class APIClient {
 
   private init() {
     self.configuration = URLSessionConfiguration.default
-    self.configuration.timeoutIntervalForRequest = 10
+    self.configuration.timeoutIntervalForRequest = 30
     self.session = URLSession(configuration: configuration)
     self.baseURL = URL(string: "https://shopellio.nborzenko.me/api/")
   }

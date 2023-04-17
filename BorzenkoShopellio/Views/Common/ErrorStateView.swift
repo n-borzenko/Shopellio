@@ -51,11 +51,11 @@ struct ErrorStateView: View {
 
           if isLoading {
             LoadingView(scale: .large)
+              .aspectRatio(Constants.ErrorStateView.loadingAspectRatio, contentMode: .fit)
               .frame(
                 maxWidth: Constants.ErrorStateView.imageMaxWidth,
                 maxHeight: geo.size.height / 2
               )
-              .aspectRatio(Constants.ErrorStateView.loadingAspectRatio, contentMode: .fit)
               .padding(.horizontal, Constants.ErrorStateView.imageHorizontalPadding)
           }
           if !isLoading, let state = state {

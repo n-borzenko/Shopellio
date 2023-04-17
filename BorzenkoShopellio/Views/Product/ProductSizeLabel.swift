@@ -78,6 +78,6 @@ struct ProductSizeLabel_Previews: PreviewProvider {
       ProductSizeLabel(sizeName: "XXL", isNameVisible: true, scale: .large, isUnavailable: true)
       ProductSizeLabel(sizeName: "XXL", isNameVisible: true, scale: .large, isLimited: false)
     }
-    .environmentObject(Shop.createFromFile())
+    .environmentObject(SampleData.shop)
   }
 }

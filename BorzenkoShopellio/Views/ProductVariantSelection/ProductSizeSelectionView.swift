@@ -62,18 +62,19 @@ struct ProductSizeSelectionView: View {
 }
 
 struct ProductSizeSelectionView_Previews: PreviewProvider {
+  static let product = SampleData.products.allItems[2]
+
   static var previews: some View {
     ProductSizeSelectionView(
-      sizes: Shop.createFromFile().products[8].sizes,
+      sizes: product.sizes,
       availableSizes: Set(
-        Shop.createFromFile()
-          .products[8]
+        product
           .stock
           .filter { $0.variant.color == "green" }
           .map { $0.variant.size }
       ),
-      selectedSizeName: .constant(Shop.createFromFile().products[8].stock[5].variant.size)
+      selectedSizeName: .constant(product.stock[5].variant.size)
     )
-    .environmentObject(Shop.createFromFile())
+    .environmentObject(SampleData.shop)
   }
 }

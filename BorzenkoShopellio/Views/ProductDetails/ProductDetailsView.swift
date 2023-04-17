@@ -85,9 +85,9 @@ struct ProductDetailsDescriptionView: View {
 struct ProductDetailsView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
-      ProductDetailsView(product: Shop.createFromFile().products[0])
+      ProductDetailsView(product: SampleData.products.allItems[0])
     }
-    .environmentObject(Shop.createFromFile())
-    .environmentObject(Cart())
+    .environmentObject(SampleData.shop)
+    .environmentObject(SampleData.emptyCart)
   }
 }

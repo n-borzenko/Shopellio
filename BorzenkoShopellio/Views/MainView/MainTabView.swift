@@ -1,8 +1,8 @@
 //
-//  MainView.swift
+//  MainTabView.swift
 //  BorzenkoShopellio
 //
-//  Created by Natalia Borzenko on 19/03/2023.
+//  Created by Natalia Borzenko on 17/04/2023.
 //
 
 import SwiftUI
@@ -42,21 +42,8 @@ struct MainTabView: View {
   }
 }
 
-struct MainView: View {
-  // shop settings data is expected to be loaded from the API
-  // and shared throughout the application
-  @StateObject private var shop = Shop.createFromFile(updateCachedFile: true)
-  @StateObject private var cart = Cart()
-
-  var body: some View {
-    MainTabView()
-      .environmentObject(cart)
-      .environmentObject(shop)
-  }
-}
-
-struct MainView_Previews: PreviewProvider {
+struct MainTabView_Previews: PreviewProvider {
   static var previews: some View {
-    MainView()
+    MainTabView()
   }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension Image {
+  static let logoLarge = Image("LogoLarge")
   static let infoCircle = Image(systemName: "info.circle")
   static let emptyCircle = Image(systemName: "circle")
   static let checkmarkCircle = Image(systemName: "checkmark.circle")
@@ -19,25 +20,30 @@ extension Image {
   static let minusCircle = Image(systemName: "minus.circle")
   static let xCircleFill = Image(systemName: "x.circle.fill")
   static let basket = Image(systemName: "basket")
+  static let wifi = Image(systemName: "wifi")
+  static let wifiSlash = Image(systemName: "wifi.slash")
 }
 
 struct Image_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 16) {
+      Image.logoLarge
       HStack {
         Image.infoCircle
         Image.emptyCircle
         Image.checkmarkCircle
         Image.cart
         Image.squareStack
-      }
-      HStack {
         Image.flame
         Image.photo
+      }
+      HStack {
         Image.plusCircle
         Image.minusCircle
         Image.xCircleFill
         Image.basket
+        Image.wifi
+        Image.wifiSlash
       }
     }
   }

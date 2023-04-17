@@ -7,33 +7,10 @@
 
 import Foundation
 
-struct CartItem: Identifiable, Codable {
-  let id: UUID
-  let product: Product
-  let variant: ProductVariant
-  var quantity: Int
-
-  init(id: UUID = UUID(), product: Product, variant: ProductVariant, quantity: Int) {
-    self.id = id
-    self.product = product
-    self.variant = variant
-    self.quantity = quantity
-  }
-
-  enum CodingKeys: CodingKey {
-    case id
-    case product
-    case variant
-    case quantity
-  }
-}
-
 class Cart: ObservableObject {
-  static let cartJsonURL = URL(filePath: "CartData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
-
   @Published private(set) var items: [CartItem] {
     didSet {
-      saveToFile()
+      saveItems()
     }
   }
 
@@ -58,35 +35,21 @@ class Cart: ObservableObject {
   }
 
   init() {
-    guard FileManager.default.fileExists(atPath: Cart.cartJsonURL.path) else {
-      items = []
-      return
-    }
-
-    let decoder = JSONDecoder()
     do {
-      let cartData = try Data(contentsOf: Cart.cartJsonURL)
-      items = try decoder.decode([CartItem].self, from: cartData)
-    } catch let error {
-      print(error)
-      items = []
+      self.items = try Cache.shared.readFromFile(for: .cartItems)
+    } catch {
+      self.items = []
     }
   }
 
-  private func saveToFile() {
-    // assignment 4
-    let encoder = JSONEncoder()
-    encoder.outputFormatting = .prettyPrinted
+  private func saveItems() {
     do {
-      let cartData = try encoder.encode(items)
-      try cartData.write(to: Cart.cartJsonURL, options: .atomicWrite)
-    } catch let error {
-      print(error)
-    }
+      try Cache.shared.saveToFile(items, for: .cartItems)
+    } catch { }
   }
 }
 
-// operations with cart items
+// MARK: - Operations with cart items
 extension Cart {
   private func getItemIndex(product: Product, variant: ProductVariant) -> Int? {
     items.firstIndex { $0.product.id == product.id && $0.variant == variant }

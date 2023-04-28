@@ -9,25 +9,13 @@ import SwiftUI
 
 struct NewArrivalsView: View {
   @EnvironmentObject var shop: Shop
+  @EnvironmentObject var products: Products
+  @EnvironmentObject var router: Router
   @State private var selectedCategoryId: String = ""
-
-  var categories: [ProductCategory] {
-    shop.orderedCategoryIds.compactMap { shop.categories[$0] }
-  }
-
-  private var filteredProducts: [Product] {
-    shop.products.filter { product in
-      guard
-        let subcategory = shop.subcategories[product.subcategoryId],
-        product.tags.contains(Constants.Product.newArrivalTag) else {
-        return false
-      }
-      return subcategory.categoryId == selectedCategoryId
-    }
-  }
+  @State private var filteredProducts: [Product] = []
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $router.newArrivalsPath) {
       ProductGridView(products: filteredProducts)
       .navigationDestination(for: Product.self) { product in
         ProductDetailsView(product: product)
@@ -39,17 +27,24 @@ struct NewArrivalsView: View {
             Constants.NewArrivals.categoryPickerLabel,
             selection: $selectedCategoryId
           ) {
-            ForEach(categories) { category in
+            ForEach(shop.categories) { category in
               Text(category.title)
             }
           }
           .pickerStyle(.segmented)
         }
       }
+      .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
+      .onChange(of: selectedCategoryId) { _ in
+        filteredProducts = products.filterProducts(
+          collectionId: "new",
+          categoryId: selectedCategoryId
+        )
+      }
       .onAppear {
-        DispatchQueue.main.async {
-          if self.selectedCategoryId.isEmpty && !self.categories.isEmpty {
-            self.selectedCategoryId = self.categories[0].id
+        Task {
+          if self.selectedCategoryId.isEmpty && !self.shop.categories.isEmpty {
+            self.selectedCategoryId = self.shop.categories[0].id
           }
         }
       }
@@ -60,6 +55,8 @@ struct NewArrivalsView: View {
 struct NewArrivalsView_Previews: PreviewProvider {
   static var previews: some View {
     NewArrivalsView()
-      .environmentObject(Shop.createFromFile())
+      .environmentObject(SampleData.shop)
+      .environmentObject(SampleData.products)
+      .environmentObject(Router())
   }
 }

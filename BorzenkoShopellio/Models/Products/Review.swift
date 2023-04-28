@@ -30,15 +30,6 @@ struct Review: Codable {
     self.text = text
     self.rating = rating
   }
-
-  enum CodingKeys: CodingKey {
-    case id
-    case productVariant
-    case author
-    case imageUrls
-    case text
-    case rating
-  }
 }
 
 protocol Reviewable {

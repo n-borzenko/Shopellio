@@ -13,20 +13,20 @@ struct ProductImageView: View {
   var body: some View {
     Group {
       if let imageUrl = imageUrl {
-        AsyncImage(url: URL(string: imageUrl)) { image in
-          image
-            .resizable()
-            .scaledToFit()
-        } placeholder: {
-          ProgressView()
-            .tint(.accentColor)
+        AsyncImage(url: URL(string: imageUrl)) { stage in
+          switch stage {
+          case .empty:
+            LoadingView()
+          case .success(let image):
+            image
+              .resizable()
+              .scaledToFit()
+          default:
+            ProductPlaceholderImageView()
+          }
         }
       } else {
-        Image.photo
-          .resizable()
-          .scaledToFit()
-          .scaleEffect(Constants.Product.imagePlaceholderScale)
-          .foregroundColor(.accentColor)
+        ProductPlaceholderImageView()
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -34,10 +34,21 @@ struct ProductImageView: View {
   }
 }
 
+struct ProductPlaceholderImageView: View {
+  var body: some View {
+    Image.photo
+      .resizable()
+      .scaledToFit()
+      .scaleEffect(Constants.Product.imagePlaceholderScale)
+      .foregroundColor(.accentColor)
+
+  }
+}
+
 struct ProductImageView_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      ProductImageView(imageUrl: Shop.createFromFile().products[0].imageUrls.first)
+      ProductImageView(imageUrl: SampleData.products.allItems[0].imageUrls.first)
       ProductImageView(imageUrl: nil)
     }
   }

@@ -35,10 +35,10 @@ struct CartRowView: View {
 struct CartRowView_Previews: PreviewProvider {
   static var previews: some View {
     CartRowView(item: CartItem(
-      product: Shop.createFromFile().products[0],
-      variant: Shop.createFromFile().products[0].stock[0].variant,
+      product: SampleData.products.allItems[0],
+      variant: SampleData.products.allItems[0].stock[0].variant,
       quantity: 2
     ))
-    .environmentObject(Shop.createFromFile())
+    .environmentObject(SampleData.shop)
   }
 }

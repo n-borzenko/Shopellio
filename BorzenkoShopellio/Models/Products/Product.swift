@@ -45,23 +45,6 @@ struct Product: Reviewable, Discountable, Identifiable, Codable {
     self.keywords = keywords
     self.tags = tags
   }
-
-  enum CodingKeys: CodingKey {
-    case id
-    case title
-    case imageUrls
-    case subcategoryId
-    case price
-    case discount
-    case stock
-    case sizes
-    case colors
-    case overview
-    case careInstruction
-    case reviews
-    case keywords
-    case tags
-  }
 }
 
 protocol Discountable {

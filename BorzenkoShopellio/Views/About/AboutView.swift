@@ -13,6 +13,7 @@ struct AboutView: View {
       AboutContentView()
         .background(Color.backgroundColor)
         .navigationTitle(Constants.About.navigationTitle)
+        .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
     }
   }
 }
@@ -29,10 +30,10 @@ struct AboutContentView: View {
         FeatureListView()
         ViewThatFits {
           HStack {
-            ImageSourceView()
+            ImageSourcesView()
           }
           VStack(alignment: .leading) {
-            ImageSourceView()
+            ImageSourcesView()
           }
         }
         HStack {
@@ -47,14 +48,21 @@ struct AboutContentView: View {
   }
 }
 
-struct ImageSourceView: View {
+struct ImageSourcesView: View {
   var body: some View {
-    Text(Constants.About.creditsText)
+    Text(Constants.About.productImagesDescription)
       .defaultStyle()
     Link(
-      Constants.About.imageSourceTitle,
+      Constants.About.productImagesSourceTitle,
       // swiftlint:disable:next force_unwrapping
-      destination: URL(string: Constants.About.imageSourceUrl)!
+      destination: URL(string: Constants.About.productImagesSourceUrl)!
+    )
+    Text(Constants.About.illustrationsDescription)
+      .defaultStyle()
+    Link(
+      Constants.About.illustrationsSourceTitle,
+      // swiftlint:disable:next force_unwrapping
+      destination: URL(string: Constants.About.illustrationsSourceUrl)!
     )
   }
 }

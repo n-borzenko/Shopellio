@@ -9,32 +9,19 @@ import SwiftUI
 
 struct ProductsView: View {
   @EnvironmentObject var shop: Shop
+  @EnvironmentObject var products: Products
+  @EnvironmentObject var router: Router
   @State private var selectedSubcategoryId: String?
   @State private var selectedProduct: Product?
+  @State private var filteredProducts: [Product]?
   @State private var splitViewVisibility = NavigationSplitViewVisibility.doubleColumn
-
-  var categories: [ProductCategory] {
-    shop.orderedCategoryIds.compactMap { shop.categories[$0] }
-  }
-
-  func getSubcategories(category: ProductCategory) -> [ProductSubcategory] {
-    category.subcategoryIds.compactMap { shop.subcategories[$0] }
-  }
-
-  var filteredProducts: [Product] {
-    if let subcategoryId = selectedSubcategoryId {
-      return shop.products.filter { $0.subcategoryId == subcategoryId }
-    } else {
-      return []
-    }
-  }
 
   var body: some View {
     NavigationSplitView {
       List(selection: $selectedSubcategoryId) {
-        ForEach(categories) { category in
+        ForEach(shop.categories) { category in
           Section(header: Text(category.title)) {
-            ForEach(getSubcategories(category: category)) { subcategory in
+            ForEach(category.subcategories) { subcategory in
               NavigationLink(value: subcategory.id) {
                 Text(subcategory.title)
               }
@@ -49,11 +36,12 @@ struct ProductsView: View {
       .navigationBarTitleDisplayMode(.large)
       .onChange(of: selectedSubcategoryId) { _ in
         selectedProduct = nil
+        filteredProducts = products.filterProducts(
+          subcategoryId: selectedSubcategoryId
+        )
       }
     } content: {
-      if
-        let selectedSubcategoryId = selectedSubcategoryId,
-        let selectedSubcategory = shop.subcategories[selectedSubcategoryId] {
+      if selectedSubcategoryId != nil, let filteredProducts = filteredProducts {
         List(filteredProducts, selection: $selectedProduct) { product in
           NavigationLink(value: product) {
             ProductsRowView(product: product)
@@ -65,7 +53,7 @@ struct ProductsView: View {
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
         .background(Color.backgroundColor)
-        .navigationTitle("\(selectedSubcategory.title)")
+        .navigationTitle("Subcategory")
       } else {
         Text(Constants.Products.unselectedSubcategoryText)
       }
@@ -83,6 +71,8 @@ struct ProductsView: View {
 struct ProductsView_Previews: PreviewProvider {
   static var previews: some View {
     ProductsView()
-      .environmentObject(Shop.createFromFile())
+      .environmentObject(SampleData.shop)
+      .environmentObject(SampleData.products)
+      .environmentObject(Router())
   }
 }

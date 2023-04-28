@@ -14,11 +14,6 @@ struct ProductVariant: Equatable, Codable {
   static func == (lhs: ProductVariant, rhs: ProductVariant) -> Bool {
     return lhs.color == rhs.color && lhs.size == rhs.size
   }
-
-  enum CodingKeys: CodingKey {
-    case color
-    case size
-  }
 }
 
 enum StockLevel: String, Codable {
@@ -46,9 +41,4 @@ enum StockLevel: String, Codable {
 struct StockItem: Codable {
   let variant: ProductVariant
   let level: StockLevel
-
-  enum CodingKeys: CodingKey {
-    case variant
-    case level
-  }
 }

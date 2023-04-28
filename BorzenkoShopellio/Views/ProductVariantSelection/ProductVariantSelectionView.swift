@@ -43,13 +43,14 @@ struct ProductVariantSelectionView: View {
         }
       }
     }
+    .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
   }
 }
 
 struct ProductVariantSelectionView_Previews: PreviewProvider {
   static var previews: some View {
-    ProductVariantSelectionView(product: Shop.createFromFile().products[8])
-      .environmentObject(Shop.createFromFile())
-      .environmentObject(Cart())
+    ProductVariantSelectionView(product: SampleData.products.allItems[2])
+      .environmentObject(SampleData.shop)
+      .environmentObject(SampleData.emptyCart)
   }
 }

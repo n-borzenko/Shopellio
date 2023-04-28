@@ -47,6 +47,6 @@ struct ProductColorsView_Previews: PreviewProvider {
         isLimited: false
       )
     }
-    .environmentObject(Shop.createFromFile())
+    .environmentObject(SampleData.shop)
   }
 }

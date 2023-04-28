@@ -31,7 +31,6 @@ struct ProductGridView: View {
       }
       .padding([.horizontal, .bottom])
     }
-    .scrollContentBackground(.hidden)
     .background(Color.backgroundColor)
   }
 }
@@ -58,7 +57,7 @@ struct ProductCellView: View {
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     .padding(Constants.NewArrivals.cellPadding)
-    .background(Color.invertedContrastColor)
+    .background(Color.cellBackgroundColor)
     .clipShape(RoundedRectangle(cornerRadius: Constants.NewArrivals.cellCornerRadius))
   }
 }
@@ -66,8 +65,8 @@ struct ProductCellView: View {
 struct ProductGridView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
-      ProductGridView(products: Shop.createFromFile().products)
+      ProductGridView(products: SampleData.products.allItems)
     }
-    .environmentObject(Shop.createFromFile())
+    .environmentObject(SampleData.shop)
   }
 }

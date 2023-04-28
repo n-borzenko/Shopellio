@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Cart: ObservableObject {
+@MainActor class Cart: ObservableObject {
   @Published private(set) var items: [CartItem] {
     didSet {
       saveItems()

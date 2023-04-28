@@ -30,7 +30,6 @@ struct MainLoadingView: View {
       withAnimation(
         .easeIn(duration: Constants.Main.mainAnimationDuration)
       ) {
-        // Week09 initial loading animation
         isLoading = true
       }
     }

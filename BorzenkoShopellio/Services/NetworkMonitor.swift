@@ -9,18 +9,28 @@ import Foundation
 import Network
 
 final class NetworkMonitor: ObservableObject {
-  private let monitor = NWPathMonitor()
-  private let queue = DispatchQueue(label: "Monitor")
-  @Published private(set) var isNetworkAvailable = false
+  @MainActor @Published private(set) var isNetworkAvailable = false
 
-  init() {
-    monitor.pathUpdateHandler = { path in
-      Task {
-        await MainActor.run {
-          self.isNetworkAvailable = path.status == .satisfied
-        }
+  func startMonitoring() async {
+    let monitor = NWPathMonitor()
+    for await path in monitor.createStream() {
+      await MainActor.run {
+        isNetworkAvailable = path.status == .satisfied
       }
     }
-    monitor.start(queue: queue)
+  }
+}
+
+extension NWPathMonitor {
+  func createStream() -> AsyncStream<NWPath> {
+    return AsyncStream { continuation in
+      continuation.onTermination = { [weak self] _ in
+        self?.cancel()
+      }
+      pathUpdateHandler = { path in
+        continuation.yield(path)
+      }
+      start(queue: DispatchQueue(label: "Shopellio.Monitor"))
+    }
   }
 }

@@ -15,7 +15,6 @@ final class Products: ObservableObject {
 
   @Published var allItems: [Product] = []
   @Published var state = RequestState.idle
-  @Published var errorMessage: String?
 
   init(shop: Shop, products: [Product] = []) {
     self.shop = shop
@@ -23,17 +22,14 @@ final class Products: ObservableObject {
   }
 
   func fetchAndCache() async {
-    errorMessage = nil
     await fetchProducts()
     if state == .finished {
-      // Week09 save response to documents directory
       save()
     }
   }
 
   func getCachedOrFetch() async {
-    errorMessage = nil
-    if Cache.shared.isCachedFileExists(for: .products) {
+    if Cache.shared.doesCachedFileExist(for: .products) {
       do {
         try read()
         state = .finished
@@ -50,14 +46,12 @@ extension Products {
     state = .loading
 
     do {
-      // Week09 #2
       allItems = try await APIClient.shared.performGetRequest(endpoint: productsEndpoint)
       state = .finished
     } catch let error {
       if let error = error as? APIClient.Error {
-        errorMessage = error.shortDescription
         #if DEBUG
-        print("Products fetch request failed: \(errorMessage ?? "")")
+        print("Products fetch request failed: \(error.shortDescription)")
         #endif
       }
       state = .failed
@@ -106,7 +100,7 @@ extension Products {
     var ids = Set<String>()
 
     if let shop = shop, let categoryId = categoryId,
-       let category = shop.categories.first(where: { $0.id == categoryId }) {
+      let category = shop.categories.first(where: { $0.id == categoryId }) {
       ids = Set(category.subcategories.map { $0.id })
     }
 
@@ -122,7 +116,7 @@ extension Products {
     var ids = Set<String>()
 
     if let shop = shop, let categoryId = categoryId,
-       let category = shop.categories.first(where: { $0.id == categoryId }) {
+      let category = shop.categories.first(where: { $0.id == categoryId }) {
       ids = Set(category.subcategories.map { $0.id })
     }
 

@@ -18,7 +18,6 @@ final class Shop: ObservableObject {
   @MainActor @Published var categories: [ProductCategory]
   @MainActor @Published var colors: [String: String]
   @MainActor @Published var state = RequestState.idle
-  @Published var errorMessage: String?
 
   private let shopEndpoint = "shop"
 
@@ -34,21 +33,14 @@ final class Shop: ObservableObject {
   }
 
   func fetchAndCache() async {
-    await MainActor.run {
-      errorMessage = nil
-    }
     await fetchShop()
     if await state == .finished {
-      // Week09 save response to documents directory
       await save()
     }
   }
 
   func getCachedOrFetch() async {
-    await MainActor.run {
-      errorMessage = nil
-    }
-    if Cache.shared.isCachedFileExists(for: .shop) {
+    if Cache.shared.doesCachedFileExist(for: .shop) {
       do {
         try await read()
         await MainActor.run {
@@ -68,7 +60,6 @@ extension Shop {
     state = .loading
 
     do {
-      // Week09 #2
       let content: ShopContent = try await APIClient.shared.performGetRequest(endpoint: shopEndpoint)
       collections = content.collections
       categories = content.categories
@@ -76,9 +67,8 @@ extension Shop {
       state = .finished
     } catch let error {
       if let error = error as? APIClient.Error {
-        errorMessage = error.shortDescription
         #if DEBUG
-        print("Shop fetch request failed: \(errorMessage ?? "")")
+        print("Shop fetch request failed: \(error.shortDescription)")
         #endif
       }
       state = .failed

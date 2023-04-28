@@ -12,12 +12,12 @@ class Cache {
 
   private init() {}
 
-  func isCachedFileExists(for item: CachedItem) -> Bool {
+  func doesCachedFileExist(for item: CachedItem) -> Bool {
     return FileManager.default.fileExists(atPath: item.fileURL.path)
   }
 
   func readFromFile<T: Decodable>(for item: CachedItem) throws -> T {
-    guard isCachedFileExists(for: item) else {
+    guard doesCachedFileExist(for: item) else {
       throw Error.fileNotFound
     }
 
@@ -35,7 +35,7 @@ class Cache {
     encoder.outputFormatting = .prettyPrinted
 
     do {
-      if isCachedFileExists(for: item) {
+      if doesCachedFileExist(for: item) {
         try FileManager.default.removeItem(at: item.fileURL)
       }
       let data = try encoder.encode(element)

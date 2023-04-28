@@ -10,6 +10,29 @@
 import XCTest
 @testable import BorzenkoShopellio
 
+actor CacheMock: Cacher {
+  private let cartItems: [CartItem]
+
+  init(cartItems: [CartItem] = []) {
+    self.cartItems = cartItems
+  }
+
+  func doesCachedFileExist(for item: CachedItem) -> Bool {
+    return !cartItems.isEmpty
+  }
+
+  func readFromFile<T: Decodable>(for item: CachedItem) throws -> T {
+    guard item == .cartItems, !cartItems.isEmpty else {
+      throw CacheError.fileNotFound
+    }
+    // swiftlint:disable:next force_cast
+    return cartItems as! T
+  }
+
+  func saveToFile<T: Encodable>(_ element: T, for item: CachedItem) throws { }
+}
+
+
 final class CartTestCase: XCTestCase {
   let product1 = Product(
     title: "Basic trench coat with belt",
@@ -41,7 +64,7 @@ final class CartTestCase: XCTestCase {
   )
 
   // MARK: - calculations for the cart with several different items
-  func testCartWithSeveralDifferentItems() throws {
+  @MainActor func testCartWithSeveralDifferentItems() async throws {
     let variant1Quantity = 1
     let variant2Quantity = 2
     let variant3Quantity = 1
@@ -54,7 +77,9 @@ final class CartTestCase: XCTestCase {
       CartItem(product: product2, variant: product2.stock[1].variant, quantity: variant4Quantity)
     ]
 
-    let cart = Cart(items: items)
+    let cart = Cart(cache: CacheMock(cartItems: items))
+    await cart.getCachedItems()
+
     XCTAssertEqual(
       cart.items.count,
       items.count,
@@ -93,13 +118,16 @@ final class CartTestCase: XCTestCase {
   }
 
   // MARK: - adding products to the cart
-  func testAddingProductsToTheCart() throws {
+  @MainActor func testAddingProductsToTheCart() async throws {
     let variant1 = product1.stock[0].variant
     let variant2 = product1.stock[1].variant
     let variant3 = product2.stock[0].variant
     var quantity: Int
 
-    let cart = Cart()
+    let cacheMock = CacheMock()
+    let cart = Cart(cache: cacheMock)
+    await cart.getCachedItems()
+
     XCTAssertTrue(cart.items.isEmpty, "Cart should be empty, but it is not")
     XCTAssertEqual(
       cart.getItemQuantity(product: product1, variant: variant1),
@@ -189,17 +217,20 @@ final class CartTestCase: XCTestCase {
   }
 
   // MARK: - removing products from the cart by variant
-  func testRemovingProductsFromTheCartByVariant() throws {
+  @MainActor func testRemovingProductsFromTheCartByVariant() async throws {
     let variant1 = product1.stock[0].variant
     let variant2 = product1.stock[1].variant
     let variant3 = product2.stock[0].variant
     var quantity: Int
 
-    let cart = Cart(items: [
+    let cacheMock = CacheMock(cartItems: [
       CartItem(product: product1, variant: variant1, quantity: 2),
       CartItem(product: product1, variant: variant2, quantity: 1),
       CartItem(product: product2, variant: variant3, quantity: 1)
     ])
+    let cart = Cart(cache: cacheMock)
+    await cart.getCachedItems()
+
     XCTAssertEqual(cart.items.count, 3, "Cart should contain 3 product variants, but it contains \(cart.items.count)")
     XCTAssertEqual(
       cart.totalItemQuantity,
@@ -270,17 +301,20 @@ final class CartTestCase: XCTestCase {
   }
 
   // MARK: - removing products from the cart one by offset
-  func testRemovingProductsFromTheCartByOffset() throws {
+  @MainActor func testRemovingProductsFromTheCartByOffset() async throws {
     let variant1 = product1.stock[0].variant
     let variant2 = product1.stock[1].variant
     let variant3 = product2.stock[0].variant
     var quantity: Int
 
-    let cart = Cart(items: [
+    let cacheMock = CacheMock(cartItems: [
       CartItem(product: product1, variant: variant1, quantity: 2),
       CartItem(product: product1, variant: variant2, quantity: 1),
       CartItem(product: product2, variant: variant3, quantity: 2)
     ])
+    let cart = Cart(cache: cacheMock)
+    await cart.getCachedItems()
+
     XCTAssertEqual(cart.items.count, 3, "Cart should contain 3 product variants, but it contains \(cart.items.count)")
     XCTAssertEqual(
       cart.totalItemQuantity,

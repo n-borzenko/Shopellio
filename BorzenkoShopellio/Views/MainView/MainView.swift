@@ -47,6 +47,7 @@ struct MainView: View {
       await withTaskGroup(of: Void.self) { group in
         group.addTask { await shop.getCachedOrFetch() }
         group.addTask { await products.getCachedOrFetch() }
+        group.addTask { await cart.getCachedItems() }
       }
       isInitialLoading = false
     }

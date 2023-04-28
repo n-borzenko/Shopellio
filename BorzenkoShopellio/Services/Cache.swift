@@ -7,7 +7,36 @@
 
 import Foundation
 
-class Cache {
+protocol Cacher {
+  func doesCachedFileExist(for item: CachedItem) async -> Bool
+  func readFromFile<T: Decodable>(for item: CachedItem) async throws -> T
+  func saveToFile<T: Encodable>(_ element: T, for item: CachedItem) async throws
+}
+
+enum CacheError: Error {
+  case fileNotFound
+  case decodingFailure
+  case encodingFailure
+}
+
+enum CachedItem {
+  case shop
+  case products
+  case cartItems
+
+  var fileURL: URL {
+    switch self {
+    case .shop:
+      return URL(filePath: "ShopData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
+    case .products:
+      return URL(filePath: "ProductsData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
+    case .cartItems:
+      return URL(filePath: "CartItemsData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
+    }
+  }
+}
+
+actor Cache: Cacher {
   static let shared = Cache()
 
   private init() {}
@@ -18,7 +47,7 @@ class Cache {
 
   func readFromFile<T: Decodable>(for item: CachedItem) throws -> T {
     guard doesCachedFileExist(for: item) else {
-      throw Error.fileNotFound
+      throw CacheError.fileNotFound
     }
 
     do {
@@ -26,7 +55,7 @@ class Cache {
       let result = try JSONDecoder().decode(T.self, from: data)
       return result
     } catch {
-      throw Error.decodingFailure
+      throw CacheError.decodingFailure
     }
   }
 
@@ -41,32 +70,7 @@ class Cache {
       let data = try encoder.encode(element)
       try data.write(to: item.fileURL, options: .atomicWrite)
     } catch {
-      throw Error.encodingFailure
+      throw CacheError.encodingFailure
     }
-  }
-}
-
-extension Cache {
-  enum CachedItem {
-    case shop
-    case products
-    case cartItems
-
-    var fileURL: URL {
-      switch self {
-      case .shop:
-        return URL(filePath: "ShopData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
-      case .products:
-        return URL(filePath: "ProductsData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
-      case .cartItems:
-        return URL(filePath: "CartItemsData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
-      }
-    }
-  }
-
-  enum Error: Swift.Error {
-    case fileNotFound
-    case decodingFailure
-    case encodingFailure
   }
 }

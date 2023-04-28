@@ -7,17 +7,22 @@
 
 import Foundation
 
-@MainActor class Cart: ObservableObject {
+@MainActor
+class Cart: ObservableObject {
+  private let cache: Cacher
+
   @Published private(set) var items: [CartItem] {
     didSet {
-      saveItems()
+      Task {
+        await saveItems()
+      }
     }
   }
 
   var totalItemQuantity: Int {
     items.reduce(0) { $0 + $1.quantity }
   }
-
+  
   var totalAmount: Decimal {
     items.reduce(Decimal(0.0)) { $0 + $1.product.discountedPrice * Decimal($1.quantity) }
   }
@@ -30,21 +35,20 @@ import Foundation
     totalAmountBeforeDiscount - totalAmount
   }
 
-  init(items: [CartItem]) {
+  init(items: [CartItem] = [], cache: Cacher = Cache.shared) {
+    self.cache = cache
     self.items = items
   }
 
-  init() {
+  func getCachedItems() async {
     do {
-      self.items = try Cache.shared.readFromFile(for: .cartItems)
-    } catch {
-      self.items = []
-    }
+      items = try await cache.readFromFile(for: .cartItems)
+    } catch {}
   }
 
-  private func saveItems() {
+  private func saveItems() async {
     do {
-      try Cache.shared.saveToFile(items, for: .cartItems)
+      try await cache.saveToFile(items, for: .cartItems)
     } catch { }
   }
 }

@@ -10,13 +10,17 @@
 import XCTest
 
 final class NewArrivalsUITestCase: XCTestCase {
+  let device = XCUIDevice.shared
+  
   override func setUpWithError() throws {
     continueAfterFailure = false
+    device.orientation = .portrait
   }
 
   // MARK: - New Arrivals screen and default TabView settings
   func testMenTShirtSelection() throws {
-    // UI tests must launch the application that they test.
+    UITestHelpers.deleteTheApp()
+
     let app = XCUIApplication()
     app.launch()
 

@@ -61,7 +61,6 @@
 		19EAEB4029C903950003CF5A /* ProductSubviewScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EAEB3F29C903950003CF5A /* ProductSubviewScale.swift */; };
 		19F50E8E29CFE5E200965E3D /* ProductTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F50E8D29CFE5E200965E3D /* ProductTestCase.swift */; };
 		19F50E9629CFFA8F00965E3D /* NewArrivalsUITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F50E9529CFFA8F00965E3D /* NewArrivalsUITestCase.swift */; };
-		19F50E9829CFFA8F00965E3D /* BorzenkoShopellioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F50E9729CFFA8F00965E3D /* BorzenkoShopellioUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,7 +139,6 @@
 		19F50E8D29CFE5E200965E3D /* ProductTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTestCase.swift; sourceTree = "<group>"; };
 		19F50E9329CFFA8F00965E3D /* BorzenkoShopellioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorzenkoShopellioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F50E9529CFFA8F00965E3D /* NewArrivalsUITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArrivalsUITestCase.swift; sourceTree = "<group>"; };
-		19F50E9729CFFA8F00965E3D /* BorzenkoShopellioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorzenkoShopellioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,7 +426,6 @@
 				19F50E9529CFFA8F00965E3D /* NewArrivalsUITestCase.swift */,
 				195EED5129D0BFA200D34005 /* CartUITestCase.swift */,
 				195EED5329D1DBD200D34005 /* UITestHelpers.swift */,
-				19F50E9729CFFA8F00965E3D /* BorzenkoShopellioUITestsLaunchTests.swift */,
 			);
 			path = BorzenkoShopellioUITests;
 			sourceTree = "<group>";
@@ -648,7 +645,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19F50E9829CFFA8F00965E3D /* BorzenkoShopellioUITestsLaunchTests.swift in Sources */,
 				195EED5229D0BFA200D34005 /* CartUITestCase.swift in Sources */,
 				19F50E9629CFFA8F00965E3D /* NewArrivalsUITestCase.swift in Sources */,
 				195EED5429D1DBD200D34005 /* UITestHelpers.swift in Sources */,

@@ -55,7 +55,7 @@ extension Products {
       allItems = try await apiClient.performGetRequest(endpoint: productsEndpoint)
       state = .finished
     } catch let error {
-      if let error = error as? APIClientError{
+      if let error = error as? APIClientError {
         #if DEBUG
         print("Products fetch request failed: \(error.shortDescription)")
         #endif

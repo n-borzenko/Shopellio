@@ -11,7 +11,7 @@ import XCTest
 
 final class NewArrivalsUITestCase: XCTestCase {
   let device = XCUIDevice.shared
-  
+
   override func setUpWithError() throws {
     continueAfterFailure = false
     device.orientation = .portrait

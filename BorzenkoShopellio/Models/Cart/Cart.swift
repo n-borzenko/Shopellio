@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class Cart: ObservableObject {
+final class Cart: ObservableObject {
   private let cache: Cacher
 
   @Published private(set) var items: [CartItem] {
@@ -22,7 +22,7 @@ class Cart: ObservableObject {
   var totalItemQuantity: Int {
     items.reduce(0) { $0 + $1.quantity }
   }
-  
+
   var totalAmount: Decimal {
     items.reduce(Decimal(0.0)) { $0 + $1.product.discountedPrice * Decimal($1.quantity) }
   }

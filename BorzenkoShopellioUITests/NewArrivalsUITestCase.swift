@@ -24,6 +24,10 @@ final class NewArrivalsUITestCase: XCTestCase {
     let app = XCUIApplication()
     app.launch()
 
+    if !app.navigationBars["New Arrivals"].waitForExistence(timeout: 5) {
+      XCTFail("New Arrivals tab should have appeared in 2 seconds, but it didn't")
+    }
+
     // default tab view selection
     let navigationBar = app.navigationBars["New Arrivals"]
     XCTAssertTrue(

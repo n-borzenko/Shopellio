@@ -69,6 +69,13 @@ final class CartUITestCase: XCTestCase {
     // set up, add 3 items to the cart
     let tabBar = app.tabBars["Tab Bar"]
     tabBar.buttons["Products"].tap()
+
+    // open navigation split view on iPad
+    if app.navigationBars.buttons["Show Sidebar"].exists {
+      app.navigationBars.buttons["Show Sidebar"].tap()
+      app.navigationBars.buttons["Show Sidebar"].tap()
+    }
+
     let collectionViews = app.collectionViews
     collectionViews.cells.buttons["Coats & Jackets"].tap()
 
@@ -82,7 +89,10 @@ final class CartUITestCase: XCTestCase {
     selectVariant(color: "beige", size: "M")
     selectVariant(color: "black", size: "M")
 
-    app.navigationBars.buttons["Subcategory"].tap()
+    // go back on iPhone navigation stack
+    if app.navigationBars.buttons["Subcategory"].exists {
+      app.navigationBars.buttons["Subcategory"].tap()
+    }
     collectionViews.cells.buttons["Faux leather oversize jacket, $95.00, $90.25"].tap()
     scrollViews.staticTexts["Product details title"].swipeUp()
     selectVariant(color: "black", size: "L")

@@ -174,4 +174,26 @@ enum Constants {
     static let errorMessageMaxWidth = 500.0
     static let networkStatusOpacity = 0.8
   }
+
+  enum OnboardingView {
+    static let page1Image = "OnboardingPage1"
+    static let page2Image = "OnboardingPage2"
+    static let page3Image = "OnboardingPage3"
+
+    static let page1Title = "Discover the full catalog"
+    static let page2Title = "Check out our hot deals"
+    static let page3Title = "Easy to order whatever you like"
+
+    static let page1Subtitle = "Explore perfectly organized categories"
+    static let page2Subtitle = "Buy our new items first or save on regular sales"
+    static let page3Subtitle = "Save items to cart and buy later"
+
+    static let startButtonTitle = "Start"
+    static let skipButtonTitle = "Skip"
+    static let nextButtonTitle = "Next"
+
+    static let imageMaxWidth = 300.0
+    static let textMaxWidth = 500.0
+    static let pageIndicatorOpacity = 0.2
+  }
 }

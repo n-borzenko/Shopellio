@@ -9,9 +9,17 @@ import SwiftUI
 
 @MainActor
 final class Router: ObservableObject {
+  static private let onboardingWasShownKey = "OnboardingWasShown"
+
   @Published var newArrivalsPath = NavigationPath()
   @Published var productsPath = NavigationPath()
   @Published var cartPath = NavigationPath()
+
+  @Published var onboardingWasShown = false {
+    didSet {
+      UserDefaults.standard.set(onboardingWasShown, forKey: Router.onboardingWasShownKey)
+    }
+  }
 
   @Published var selectedTab = MainTab.newArrivals {
     didSet {
@@ -19,6 +27,10 @@ final class Router: ObservableObject {
         popToRoot(tab: selectedTab)
       }
     }
+  }
+
+  init() {
+    self.onboardingWasShown = UserDefaults.standard.bool(forKey: Router.onboardingWasShownKey)
   }
 
   private func popToRoot(tab: MainTab) {

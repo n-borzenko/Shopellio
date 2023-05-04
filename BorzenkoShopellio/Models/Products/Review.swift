@@ -7,26 +7,20 @@
 
 import Foundation
 
-struct Review: Codable {
+struct Review: Codable, Identifiable {
   let id: UUID
   let productVariant: ProductVariant
-  let author: String?
-  let imageUrls: [String]?
   let text: String?
   let rating: Int
 
   init(
     id: UUID = UUID(),
     productVariant: ProductVariant,
-    author: String? = nil,
-    imageUrls: [String]? = nil,
     text: String? = nil,
     rating: Int
   ) {
     self.id = id
     self.productVariant = productVariant
-    self.author = author
-    self.imageUrls = imageUrls
     self.text = text
     self.rating = rating
   }
@@ -42,5 +36,11 @@ extension Reviewable {
       return 0
     }
     return Double(reviews.reduce(0) { $0 + $1.rating }) / Double(reviews.count)
+  }
+
+  func getRatingString() -> String {
+    let formatter = NumberFormatter()
+    formatter.maximumFractionDigits = 1
+    return formatter.string(for: rating) ?? Constants.General.unavailableString
   }
 }

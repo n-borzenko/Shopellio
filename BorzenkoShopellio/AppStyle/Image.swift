@@ -22,6 +22,8 @@ extension Image {
   static let basket = Image(systemName: "basket")
   static let wifi = Image(systemName: "wifi")
   static let wifiSlash = Image(systemName: "wifi.slash")
+  static let starFill = Image(systemName: "star.fill")
+  static let star = Image(systemName: "star")
 }
 
 struct Image_Previews: PreviewProvider {
@@ -44,6 +46,8 @@ struct Image_Previews: PreviewProvider {
         Image.basket
         Image.wifi
         Image.wifiSlash
+        Image.starFill
+        Image.star
       }
     }
   }

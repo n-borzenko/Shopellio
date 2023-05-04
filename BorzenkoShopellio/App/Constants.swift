@@ -58,12 +58,9 @@ enum Constants {
   }
 
   enum ProductDetails {
-    static let animationStepDuration = 0.5
-
     static let colorsListLabel = "Colors:"
     static let sizesListLabel = "Sizes:"
     static let selectVariantButtonLabel = "Select variant"
-
     static let selectionBorderWidth = 2.0
 
     static let selectColorLabel = "Select color:"
@@ -79,6 +76,19 @@ enum Constants {
     static let sizesMinColumnWidth = 70.0
 
     static let addToCartButtonTitle = "Add to cart"
+
+    static let minWidthForVerticalGallery = 800.0
+    static let imageWidthScale = 2.5
+    static let imageHeightScale = 1.5
+
+    static let ratingSpacing = 2.0
+    static let reviewsSpacing = 12.0
+    static let reviewSpacing = 4.0
+
+    static let reviewsListLabel = "Reviews:"
+    static let emptyReviewList = "No reviews are available"
+    static let emptyReviewMessage = "Review message is unavailable"
+    static let emptyReviewMessageOpacity = 0.5
   }
 
   enum NewArrivals {

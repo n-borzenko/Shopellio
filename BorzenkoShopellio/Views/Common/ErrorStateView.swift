@@ -74,9 +74,8 @@ struct ErrorStateView: View {
             }
             if let state = state {
               Text(state.message)
-                .font(.headline)
+                .headlineStyle()
                 .multilineTextAlignment(.center)
-                .foregroundColor(.textColor)
                 .frame(maxWidth: Constants.ErrorStateView.errorMessageMaxWidth)
             }
             if let action = action {
@@ -113,9 +112,8 @@ struct NetworkStatusView: View {
         Constants.ErrorStateView.networkOnlineTitle :
           Constants.ErrorStateView.networkOfflineTitle
       )
-      .font(.footnote)
+      .footnoteStyle()
       .multilineTextAlignment(.center)
-      .foregroundColor(.textColor)
       .opacity(Constants.ErrorStateView.networkStatusOpacity)
     }
     .task {

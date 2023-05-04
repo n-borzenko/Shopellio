@@ -40,6 +40,8 @@ struct AboutContentView: View {
           Spacer()
           Text(Constants.About.footnoteText)
             .footnoteStyle()
+            .textCase(.uppercase)
+            .multilineTextAlignment(.center)
           Spacer()
         }
       }

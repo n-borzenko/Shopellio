@@ -22,7 +22,6 @@ struct ProductDetailsView: View {
                 maxWidth: proxy.size.width / Constants.ProductDetails.imageWidthScale
               )
             Divider()
-              .ignoresSafeArea(.container)
             ScrollView {
               ProductDetailsDescriptionView(
                 isVariantSelectionShown: $isVariantSelectionShown,

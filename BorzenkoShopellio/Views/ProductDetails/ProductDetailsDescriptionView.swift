@@ -19,18 +19,14 @@ struct ProductDetailsDescriptionView: View {
       ProductPriceContainerView(product: product)
       HStack {
         Text(Constants.ProductDetails.colorsListLabel)
-          .foregroundColor(.textColor)
-          .font(.callout)
-          .fontWeight(.semibold)
+          .labelStyle()
         ScrollView(.horizontal) {
           ProductColorsView(colors: product.colors, isLimited: false)
         }
       }
       HStack {
         Text(Constants.ProductDetails.sizesListLabel)
-          .foregroundColor(.textColor)
-          .font(.callout)
-          .fontWeight(.semibold)
+          .labelStyle()
         ScrollView(.horizontal) {
           HStack {
             ForEach(product.sizes, id: \.self) { sizeName in

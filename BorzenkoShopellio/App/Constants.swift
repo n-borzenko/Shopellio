@@ -68,7 +68,7 @@ enum Constants {
     static let colorStackSpacing = 12.0
     static let colorSelectionWidth = 44.0
 
-
+    static let sizeTitle = "Size"
     static let selectSizeLabel = "Select size:"
     static let sizeLabel = "Size:"
     static let sizeCornerRadiusOffset = 2.0

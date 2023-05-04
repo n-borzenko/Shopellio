@@ -29,6 +29,7 @@ struct NewArrivalsView: View {
           ) {
             ForEach(shop.categories) { category in
               Text(category.title)
+                .defaultStyle()
             }
           }
           .pickerStyle(.segmented)

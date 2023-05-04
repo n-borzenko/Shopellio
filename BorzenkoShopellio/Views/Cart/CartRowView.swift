@@ -14,9 +14,8 @@ struct CartRowView: View {
   var body: some View {
     VStack(alignment: .leading) {
       Text(item.product.title)
-        .font(.title3)
+        .titleStyle()
         .lineLimit(Constants.Cart.titleRowLineLimit)
-        .foregroundColor(.textColor)
       ProductPriceContainerView(product: item.product)
       HStack {
         ProductColorView(colorName: item.variant.color, isNameVisible: true)
@@ -25,8 +24,8 @@ struct CartRowView: View {
         Image.xCircleFill
           .foregroundColor(.accentColor)
         Text("\(item.quantity)")
+          .defaultStyle()
           .fontWeight(.bold)
-          .foregroundColor(.textColor)
       }
     }
   }

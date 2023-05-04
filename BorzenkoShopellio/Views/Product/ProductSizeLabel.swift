@@ -19,10 +19,8 @@ struct ProductSizeLabel: View {
     HStack {
       if scale == .small {
         Text(sizeName.uppercased())
-          .font(.callout)
-          .fontWeight(.semibold)
+          .labelStyle()
           .strikethrough(isUnavailable)
-          .foregroundColor(.textColor)
           .padding(.horizontal, Constants.Product.sizeLabelSmallHorizontalPadding)
           .padding(.vertical, Constants.Product.sizeLabelSmallVerticalPadding)
           .frame(maxWidth: isLimited ? .none : .infinity)
@@ -38,10 +36,9 @@ struct ProductSizeLabel: View {
           )
       } else {
         Text(sizeName.uppercased())
-          .font(.body)
+          .defaultStyle()
           .fontWeight(.semibold)
           .strikethrough(isUnavailable)
-          .foregroundColor(.textColor)
           .padding(.horizontal, Constants.Product.sizeLabelLargeHorizontalPadding)
           .padding(.vertical, Constants.Product.sizeLabelLargeVerticalPadding)
           .frame(maxWidth: isLimited ? .none : .infinity)
@@ -57,7 +54,7 @@ struct ProductSizeLabel: View {
           )
       }
       if isNameVisible {
-        Text("Size")
+        Text(Constants.ProductDetails.sizeTitle)
           .foregroundColor(.textColor)
           .font(scale == .small ? .callout : .title3)
           .fontWeight(.semibold)

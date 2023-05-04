@@ -14,9 +14,7 @@ struct ProductDetailsDescriptionReviewsView: View {
     VStack(alignment: .center) {
       HStack {
         Text(Constants.ProductDetails.reviewsListLabel)
-          .foregroundColor(.textColor)
-          .font(.callout)
-          .fontWeight(.semibold)
+          .labelStyle()
         Spacer()
         HStack(
           alignment: .lastTextBaseline,
@@ -24,11 +22,8 @@ struct ProductDetailsDescriptionReviewsView: View {
         ) {
           Image.starFill
             .foregroundColor(.accentColor)
-          Text("\(product.getRatingString())")
-            .fontWeight(.bold)
-            .foregroundColor(.textColor)
-          Text("(\(product.reviews.count))")
-            .foregroundColor(.textColor)
+          Text("\(product.getRatingString()) (\(product.reviews.count))")
+            .headlineStyle()
         }
       }
       .padding(.bottom)

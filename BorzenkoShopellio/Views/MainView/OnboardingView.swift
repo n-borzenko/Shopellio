@@ -114,14 +114,12 @@ struct OnboardingPageView: View {
         )
       VStack {
         Text(page.title)
-          .font(.title3)
-          .fontWeight(.bold)
+          .titleStyle()
           .multilineTextAlignment(.center)
-          .foregroundColor(.textColor)
           .frame(maxWidth: Constants.OnboardingView.textMaxWidth)
         Text(page.subtitle)
+          .defaultStyle()
           .multilineTextAlignment(.center)
-          .foregroundColor(.textColor)
           .frame(maxWidth: Constants.OnboardingView.textMaxWidth)
       }
       Spacer()

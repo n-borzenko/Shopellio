@@ -18,8 +18,11 @@ struct ProductVariantSelectionFooterView: View {
   var body: some View {
     HStack(alignment: .lastTextBaseline) {
       if let level = currentStockLevel {
-        Label(level.rawValue, systemImage: level.imageName)
-          .foregroundColor(level.color)
+        HStack {
+          level.image
+          Text(level.rawValue)
+        }
+        .foregroundColor(level.color)
       }
       Spacer()
       Button {

@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 final class Router: ObservableObject {
-  static private let onboardingWasShownKey = "OnboardingWasShown"
+  static private let onboardingWasShownKey = Constants.Main.onboardingWasShownKey
 
   @Published var productsPath = NavigationPath()
   @Published var cartPath = NavigationPath()

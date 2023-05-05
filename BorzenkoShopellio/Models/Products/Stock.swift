@@ -29,11 +29,11 @@ enum StockLevel: String, Codable {
     }
   }
 
-  var imageName: String {
+  var image: Image {
     switch self {
-    case .none: return "tray"
-    case .low: return "tray.fill"
-    case .normal: return "tray.2.fill"
+    case .none: return Image.tray
+    case .low: return Image.trayFill
+    case .normal: return Image.trayTwoFill
     }
   }
 }

@@ -56,10 +56,14 @@ struct ProductGroupsCellView: View {
 extension ProductGroupsCellView {
   var image: Image? {
     switch group.id {
-    case "men": return Image.mCircle
-    case "women": return Image.wCircle
-    case "sale": return Image.percent
-    case "new": return Image.flame
+    case Constants.ProductGroups.menGroupKey:
+      return Image.mCircle
+    case Constants.ProductGroups.womenGroupKey:
+      return Image.wCircle
+    case Constants.ProductGroups.saleGroupKey:
+      return Image.percent
+    case Constants.ProductGroups.newGroupKey:
+      return Image.flame
     default: return nil
     }
   }

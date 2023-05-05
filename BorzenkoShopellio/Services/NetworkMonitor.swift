@@ -30,7 +30,7 @@ extension NWPathMonitor {
       pathUpdateHandler = { path in
         continuation.yield(path)
       }
-      start(queue: DispatchQueue(label: "Shopellio.Monitor"))
+      start(queue: DispatchQueue(label: Constants.Network.networkMonitorQueue))
     }
   }
 }

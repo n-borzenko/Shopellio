@@ -27,6 +27,9 @@ extension Image {
   static let mCircle = Image(systemName: "m.circle")
   static let wCircle = Image(systemName: "w.circle")
   static let percent = Image(systemName: "percent")
+  static let tray = Image(systemName: "tray")
+  static let trayFill = Image(systemName: "tray.fill")
+  static let trayTwoFill = Image(systemName: "tray.2.fill")
 }
 
 struct Image_Previews: PreviewProvider {
@@ -40,20 +43,25 @@ struct Image_Previews: PreviewProvider {
         Image.cart
         Image.squareStack
         Image.photo
-        Image.starFill
-        Image.star
       }
       HStack {
+        Image.starFill
+        Image.star
         Image.plusCircle
         Image.minusCircle
         Image.xCircleFill
         Image.basket
         Image.wifi
         Image.wifiSlash
+      }
+      HStack {
         Image.flame
         Image.percent
         Image.mCircle
         Image.wCircle
+        Image.tray
+        Image.trayFill
+        Image.trayTwoFill
       }
     }
   }

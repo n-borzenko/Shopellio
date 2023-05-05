@@ -19,25 +19,23 @@ enum APIClientError: Error {
   case serverError
   case notFound
   case failedDecoding
-  case cookiesNotFound
 
   var shortDescription: String {
     switch self {
-    case .invalidURL: return "Failed to create the request the server"
-    case .connectionError: return "Failed to establish connection to the server"
-    case .failedRequest: return "Failed to query the server"
-    case .invalidResponse: return "Failed to parse the response"
-    case .serverError: return "Server error occurred"
-    case .notFound: return "Requested data was not found"
-    case .failedDecoding: return "Failed to parse the response"
-    case .cookiesNotFound: return "Failed to parse cookies"
+    case .invalidURL: return Constants.Network.invalidURLText
+    case .connectionError: return Constants.Network.connectionErrorText
+    case .failedRequest: return Constants.Network.failedRequestText
+    case .invalidResponse: return Constants.Network.invalidResponseText
+    case .serverError: return Constants.Network.serverErrorText
+    case .notFound: return Constants.Network.notFoundText
+    case .failedDecoding: return Constants.Network.failedDecodingText
     }
   }
 }
 
 class ShopellioAPIClient: APIClient {
   static let shared = ShopellioAPIClient()
-  private static let baseURL = URL(string: "https://shopellio.nborzenko.me/api/")
+  private static let baseURL = URL(string: Constants.Network.baseURLString)
 
   private let configuration: URLSessionConfiguration
   private let session: URLSession

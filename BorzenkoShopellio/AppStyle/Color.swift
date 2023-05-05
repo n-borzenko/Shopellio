@@ -16,7 +16,7 @@ extension Color {
 }
 
 extension Color {
-  /// expects color #FF0000
+  // expects color in hex format: #FF0000
   init?(hex: String) {
     if hex.hasPrefix("#") {
       let red, green, blue: CGFloat

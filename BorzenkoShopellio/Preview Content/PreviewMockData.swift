@@ -10,6 +10,20 @@ import Foundation
 @MainActor
 enum SampleData {
   static let shop = Shop(
+    collections: [
+      ProductCollection(id: "new", title: "New Arrivals"),
+      ProductCollection(id: "sale", title: "Sale")
+    ],
+    categories: [
+      ProductCategory(id: "women", title: "Women", subcategories: [
+        ProductSubcategory(id: "coats", title: "Coats & Jackets"),
+        ProductSubcategory(id: "tops", title: "Tops")
+      ]),
+      ProductCategory(id: "men", title: "Men", subcategories: [
+        ProductSubcategory(id: "m_jeans", title: "Jeans"),
+        ProductSubcategory(id: "suits", title: "Suits")
+      ])
+    ],
     colors: [
       "beige": "#F5F5DC",
       "white": "#FFFFFF",

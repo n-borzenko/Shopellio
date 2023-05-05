@@ -24,6 +24,9 @@ extension Image {
   static let wifiSlash = Image(systemName: "wifi.slash")
   static let starFill = Image(systemName: "star.fill")
   static let star = Image(systemName: "star")
+  static let mCircle = Image(systemName: "m.circle")
+  static let wCircle = Image(systemName: "w.circle")
+  static let percent = Image(systemName: "percent")
 }
 
 struct Image_Previews: PreviewProvider {
@@ -36,8 +39,9 @@ struct Image_Previews: PreviewProvider {
         Image.checkmarkCircle
         Image.cart
         Image.squareStack
-        Image.flame
         Image.photo
+        Image.starFill
+        Image.star
       }
       HStack {
         Image.plusCircle
@@ -46,8 +50,10 @@ struct Image_Previews: PreviewProvider {
         Image.basket
         Image.wifi
         Image.wifiSlash
-        Image.starFill
-        Image.star
+        Image.flame
+        Image.percent
+        Image.mCircle
+        Image.wCircle
       }
     }
   }

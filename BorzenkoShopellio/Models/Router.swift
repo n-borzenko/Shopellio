@@ -11,7 +11,6 @@ import SwiftUI
 final class Router: ObservableObject {
   static private let onboardingWasShownKey = "OnboardingWasShown"
 
-  @Published var newArrivalsPath = NavigationPath()
   @Published var productsPath = NavigationPath()
   @Published var cartPath = NavigationPath()
 
@@ -21,7 +20,7 @@ final class Router: ObservableObject {
     }
   }
 
-  @Published var selectedTab = MainTab.newArrivals {
+  @Published var selectedTab = MainTab.products {
     didSet {
       if oldValue == selectedTab {
         popToRoot(tab: selectedTab)
@@ -35,7 +34,6 @@ final class Router: ObservableObject {
 
   private func popToRoot(tab: MainTab) {
     switch tab {
-    case .newArrivals: newArrivalsPath.removeLast(newArrivalsPath.count)
     case .products: productsPath.removeLast(productsPath.count)
     case .cart: cartPath.removeLast(cartPath.count)
     default: return
@@ -44,7 +42,6 @@ final class Router: ObservableObject {
 }
 
 enum MainTab {
-  case newArrivals
   case products
   case cart
   case about

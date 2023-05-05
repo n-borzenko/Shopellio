@@ -47,14 +47,14 @@ struct ProductDetailsView: View {
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .background(Color.backgroundColor)
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
       .sheet(isPresented: $isVariantSelectionShown) {
         NavigationStack {
           ProductVariantSelectionView(product: product)
         }
         .presentationDetents([.medium, .large])
       }
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
     }
   }
 }

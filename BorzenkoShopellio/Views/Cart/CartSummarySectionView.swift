@@ -21,33 +21,31 @@ struct CartSummarySectionView: View {
           .foregroundColor(.textColor)
           .accessibilityIdentifier(Constants.Identifiers.itemsCount)
       }
-      if !cart.items.isEmpty {
-        if cart.discountedAmount > 0 {
-          HStack {
-            Text(Constants.Cart.summaryBeforeDiscount)
-              .defaultStyle()
-            Spacer()
-            ProductPriceView(price: cart.totalAmountBeforeDiscount)
-              .accessibilityIdentifier(Constants.Identifiers.beforeDiscount)
-          }
-          HStack {
-            Text(Constants.Cart.summaryDiscountedAmount)
-              .defaultStyle()
-            Spacer()
-            ProductPriceView(price: cart.discountedAmount)
-              .accessibilityIdentifier(
-                Constants.Identifiers.discountedAmount
-              )
-          }
+      if cart.discountedAmount > 0 {
+        HStack {
+          Text(Constants.Cart.summaryBeforeDiscount)
+            .defaultStyle()
+          Spacer()
+          ProductPriceView(price: cart.totalAmountBeforeDiscount)
+            .accessibilityIdentifier(Constants.Identifiers.beforeDiscount)
         }
         HStack {
-          Text(Constants.Cart.summaryTotalAmount)
+          Text(Constants.Cart.summaryDiscountedAmount)
             .defaultStyle()
-            .fontWeight(.bold)
           Spacer()
-          ProductPriceView(price: cart.totalAmount)
-            .accessibilityIdentifier(Constants.Identifiers.totalAmount)
+          ProductPriceView(price: cart.discountedAmount)
+            .accessibilityIdentifier(
+              Constants.Identifiers.discountedAmount
+            )
         }
+      }
+      HStack {
+        Text(Constants.Cart.summaryTotalAmount)
+          .defaultStyle()
+          .fontWeight(.bold)
+        Spacer()
+        ProductPriceView(price: cart.totalAmount)
+          .accessibilityIdentifier(Constants.Identifiers.totalAmount)
       }
     }
   }

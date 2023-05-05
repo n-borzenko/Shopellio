@@ -41,7 +41,6 @@ struct ProductPlaceholderImageView: View {
       .scaledToFit()
       .scaleEffect(Constants.Product.imagePlaceholderScale)
       .foregroundColor(.accentColor)
-
   }
 }
 

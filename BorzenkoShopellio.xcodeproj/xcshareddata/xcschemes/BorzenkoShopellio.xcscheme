@@ -53,6 +53,13 @@
             BlueprintName = "BorzenkoShopellio"
             ReferencedContainer = "container:BorzenkoShopellio.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "19F50E9229CFFA8F00965E3D"
+            BuildableName = "BorzenkoShopellioUITests.xctest"
+            BlueprintName = "BorzenkoShopellioUITests"
+            ReferencedContainer = "container:BorzenkoShopellio.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference

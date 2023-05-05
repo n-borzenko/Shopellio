@@ -10,15 +10,23 @@
 import XCTest
 
 final class NewArrivalsUITestCase: XCTestCase {
+  let device = XCUIDevice.shared
+
   override func setUpWithError() throws {
     continueAfterFailure = false
+    device.orientation = .portrait
   }
 
   // MARK: - New Arrivals screen and default TabView settings
   func testMenTShirtSelection() throws {
-    // UI tests must launch the application that they test.
+    UITestHelpers.deleteTheApp()
+
     let app = XCUIApplication()
     app.launch()
+
+    if !app.navigationBars["New Arrivals"].waitForExistence(timeout: 5) {
+      XCTFail("New Arrivals tab should have appeared in 2 seconds, but it didn't")
+    }
 
     // default tab view selection
     let navigationBar = app.navigationBars["New Arrivals"]

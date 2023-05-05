@@ -27,4 +27,36 @@ enum UITestHelpers {
       "\(title) should be equal to \"\(expectedValue)\", but it is \(visibleValue)"
     )
   }
+
+  static func deleteTheApp() {
+    let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+
+    XCUIApplication().terminate()
+
+    let icon = springboard.otherElements["Home screen icons"].icons["Shopellio"]
+    if icon.exists {
+      icon.press(forDuration: 1)
+
+      let buttonRemoveApp = springboard.buttons["Remove App"]
+      if buttonRemoveApp.waitForExistence(timeout: 3) {
+        buttonRemoveApp.tap()
+      } else {
+        XCTFail("Button \"Remove App\" not found")
+      }
+
+      let buttonDeleteApp = springboard.alerts.buttons["Delete App"]
+      if buttonDeleteApp.waitForExistence(timeout: 3) {
+        buttonDeleteApp.tap()
+      } else {
+        XCTFail("Button \"Delete App\" not found")
+      }
+
+      let buttonDelete = springboard.alerts.buttons["Delete"]
+      if buttonDelete.waitForExistence(timeout: 5) {
+        buttonDelete.tap()
+      } else {
+        XCTFail("Button \"Delete\" not found")
+      }
+    }
+  }
 }

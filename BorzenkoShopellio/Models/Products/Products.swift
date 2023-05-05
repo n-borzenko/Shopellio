@@ -10,36 +10,38 @@ import Foundation
 @MainActor
 final class Products: ObservableObject {
   private let productsEndpoint = "products"
-
+  private let cache: Cacher
+  private let apiClient: APIClient
   private weak var shop: Shop?
 
   @Published var allItems: [Product] = []
   @Published var state = RequestState.idle
-  @Published var errorMessage: String?
 
-  init(shop: Shop, products: [Product] = []) {
+  init(
+    shop: Shop,
+    products: [Product] = [],
+    cache: Cacher = Cache.shared,
+    apiClient: APIClient = ShopellioAPIClient.shared
+  ) {
     self.shop = shop
     self.allItems = products
+    self.cache = cache
+    self.apiClient = apiClient
   }
 
   func fetchAndCache() async {
-    errorMessage = nil
     await fetchProducts()
     if state == .finished {
-      // Week09 save response to documents directory
-      save()
+      await save()
     }
   }
 
   func getCachedOrFetch() async {
-    errorMessage = nil
-    if Cache.shared.isCachedFileExists(for: .products) {
-      do {
-        try read()
-        state = .finished
-        return
-      } catch {}
-    }
+    do {
+      try await read()
+      state = .finished
+      return
+    } catch {}
     await fetchAndCache()
   }
 }
@@ -50,28 +52,26 @@ extension Products {
     state = .loading
 
     do {
-      // Week09 #2
-      allItems = try await APIClient.shared.performGetRequest(endpoint: productsEndpoint)
+      allItems = try await apiClient.performGetRequest(endpoint: productsEndpoint)
       state = .finished
     } catch let error {
-      if let error = error as? APIClient.Error {
-        errorMessage = error.shortDescription
+      if let error = error as? APIClientError {
         #if DEBUG
-        print("Products fetch request failed: \(errorMessage ?? "")")
+        print("Products fetch request failed: \(error.shortDescription)")
         #endif
       }
       state = .failed
     }
   }
 
-  private func save() {
+  private func save() async {
     do {
-      try Cache.shared.saveToFile(allItems, for: .products)
+      try await cache.saveToFile(allItems, for: .products)
     } catch { }
   }
 
-  private func read() throws {
-    allItems = try Cache.shared.readFromFile(for: .products)
+  private func read() async throws {
+    allItems = try await cache.readFromFile(for: .products)
   }
 }
 
@@ -106,7 +106,7 @@ extension Products {
     var ids = Set<String>()
 
     if let shop = shop, let categoryId = categoryId,
-       let category = shop.categories.first(where: { $0.id == categoryId }) {
+      let category = shop.categories.first(where: { $0.id == categoryId }) {
       ids = Set(category.subcategories.map { $0.id })
     }
 
@@ -122,7 +122,7 @@ extension Products {
     var ids = Set<String>()
 
     if let shop = shop, let categoryId = categoryId,
-       let category = shop.categories.first(where: { $0.id == categoryId }) {
+      let category = shop.categories.first(where: { $0.id == categoryId }) {
       ids = Set(category.subcategories.map { $0.id })
     }
 

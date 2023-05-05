@@ -24,9 +24,9 @@ struct CartView: View {
         .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
       } else {
         List {
-          CartContentSectionView()
-            .listRowBackground(Color.cellBackgroundColor)
           CartSummarySectionView()
+            .listRowBackground(Color.cellBackgroundColor)
+          CartContentSectionView()
             .listRowBackground(Color.cellBackgroundColor)
         }
         .listStyle(.insetGrouped)

@@ -14,13 +14,6 @@ struct MainView: View {
   @StateObject private var products: Products
   @State private var isInitialLoading = true
 
-  private var errorMessage: String? {
-    if let message = shop.errorMessage {
-      return message
-    }
-    return products.errorMessage
-  }
-
   init() {
     let shop = Shop()
     _shop = StateObject(wrappedValue: { shop }())
@@ -50,21 +43,11 @@ struct MainView: View {
         }
       }
     }
-    .onAppear {
-      getCachedOrFetch()
-    }
-  }
-
-  private func getCachedOrFetch() {
-    Task {
+    .task {
       await withTaskGroup(of: Void.self) { group in
         group.addTask { await shop.getCachedOrFetch() }
         group.addTask { await products.getCachedOrFetch() }
-
-        // Week09
-        group.addTask { await ATSTestModel.fetchShopellioProducts() }
-        group.addTask { await ATSTestModel.fetchFakeStoreProducts() }
-        group.addTask { await KodecoClient.fetchCookies() }
+        group.addTask { await cart.getCachedItems() }
       }
       isInitialLoading = false
     }

@@ -107,5 +107,5 @@ enum SampleData {
       quantity: 1
     )
   ])
-  static let emptyCart = Cart(items: [])
+  static let emptyCart = Cart()
 }

@@ -13,72 +13,62 @@ struct ShopContent: Codable {
   var colors: [String: String]
 }
 
+@MainActor
 final class Shop: ObservableObject {
-  @MainActor @Published var collections: [ProductCollection]
-  @MainActor @Published var categories: [ProductCategory]
-  @MainActor @Published var colors: [String: String]
-  @MainActor @Published var state = RequestState.idle
-  @Published var errorMessage: String?
-
   private let shopEndpoint = "shop"
+  private let cache: Cacher
+  private let apiClient: APIClient
 
-  @MainActor
+  @Published var collections: [ProductCollection]
+  @Published var categories: [ProductCategory]
+  @Published var colors: [String: String]
+  @Published var state = RequestState.idle
+
   init(
     collections: [ProductCollection] = [],
     categories: [ProductCategory] = [],
-    colors: [String: String] = [:]
+    colors: [String: String] = [:],
+    cache: Cacher = Cache.shared,
+    apiClient: APIClient = ShopellioAPIClient.shared
   ) {
     self.collections = collections
     self.categories = categories
     self.colors = colors
+    self.cache = cache
+    self.apiClient = apiClient
   }
 
   func fetchAndCache() async {
-    await MainActor.run {
-      errorMessage = nil
-    }
     await fetchShop()
-    if await state == .finished {
-      // Week09 save response to documents directory
+    if state == .finished {
       await save()
     }
   }
 
   func getCachedOrFetch() async {
-    await MainActor.run {
-      errorMessage = nil
-    }
-    if Cache.shared.isCachedFileExists(for: .shop) {
-      do {
-        try await read()
-        await MainActor.run {
-          state = .finished
-        }
-        return
-      } catch { }
-    }
+    do {
+      try await read()
+      state = .finished
+      return
+    } catch { }
     await fetchAndCache()
   }
 }
 
 // MARK: - Network and Cache
 extension Shop {
-  @MainActor
   private func fetchShop() async {
     state = .loading
-
     do {
-      // Week09 #2
-      let content: ShopContent = try await APIClient.shared.performGetRequest(endpoint: shopEndpoint)
+      let content: ShopContent = try await apiClient.performGetRequest(endpoint: shopEndpoint)
       collections = content.collections
       categories = content.categories
       colors = content.colors
       state = .finished
     } catch let error {
-      if let error = error as? APIClient.Error {
-        errorMessage = error.shortDescription
+      if let error = error as? APIClientError {
         #if DEBUG
-        print("Shop fetch request failed: \(errorMessage ?? "")")
+        print("Shop fetch request failed: \(error.shortDescription)")
         #endif
       }
       state = .failed
@@ -87,17 +77,15 @@ extension Shop {
 
   private func save() async {
     do {
-      let shopContent = await ShopContent(collections: collections, categories: categories, colors: colors)
-      try Cache.shared.saveToFile(shopContent, for: .shop)
+      let shopContent = ShopContent(collections: collections, categories: categories, colors: colors)
+      try await Cache.shared.saveToFile(shopContent, for: .shop)
     } catch { }
   }
 
   private func read() async throws {
-    let content: ShopContent = try Cache.shared.readFromFile(for: .shop)
-    await MainActor.run {
-      collections = content.collections
-      categories = content.categories
-      colors = content.colors
-    }
+    let content: ShopContent = try await Cache.shared.readFromFile(for: .shop)
+    collections = content.collections
+    categories = content.categories
+    colors = content.colors
   }
 }

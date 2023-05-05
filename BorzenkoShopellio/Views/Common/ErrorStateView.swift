@@ -37,7 +37,6 @@ enum ErrorState {
 }
 
 struct ErrorStateView: View {
-  @StateObject private var networkMonitor = NetworkMonitor()
   var isLoading = false
   var state: ErrorState?
   var actionTitle = Constants.ErrorStateView.requestErrorActionTitle
@@ -71,7 +70,7 @@ struct ErrorStateView: View {
 
           VStack(spacing: Constants.ErrorStateView.verticalStackSpacing) {
             if state == .requestError {
-              NetworkStatusView(isAvailable: networkMonitor.isNetworkAvailable)
+              NetworkStatusView()
             }
             if let state = state {
               Text(state.message)
@@ -86,7 +85,7 @@ struct ErrorStateView: View {
               }
               .buttonStyle(.borderedProminent)
               .foregroundColor(.invertedContrastColor)
-              .disabled(!networkMonitor.isNetworkAvailable || isLoading)
+              .disabled(isLoading)
             }
           }
           .padding(.top, Constants.ErrorStateView.verticalStackTopPadding)
@@ -103,14 +102,14 @@ struct ErrorStateView: View {
 }
 
 struct NetworkStatusView: View {
-  var isAvailable: Bool
+  @StateObject private var networkMonitor = NetworkMonitor()
 
   var body: some View {
     HStack {
-      (isAvailable ? Image.wifi : Image.wifiSlash)
-        .foregroundColor(isAvailable ? .green : .red)
+      (networkMonitor.isNetworkAvailable ? Image.wifi : Image.wifiSlash)
+        .foregroundColor(networkMonitor.isNetworkAvailable ? .green : .red)
       Text(
-        isAvailable ?
+        networkMonitor.isNetworkAvailable ?
         Constants.ErrorStateView.networkOnlineTitle :
           Constants.ErrorStateView.networkOfflineTitle
       )
@@ -118,6 +117,9 @@ struct NetworkStatusView: View {
       .multilineTextAlignment(.center)
       .foregroundColor(.textColor)
       .opacity(Constants.ErrorStateView.networkStatusOpacity)
+    }
+    .task {
+      await networkMonitor.startMonitoring()
     }
   }
 }

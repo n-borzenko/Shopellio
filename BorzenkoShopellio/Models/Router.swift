@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-class Router: ObservableObject {
+@MainActor
+final class Router: ObservableObject {
   @Published var newArrivalsPath = NavigationPath()
   @Published var productsPath = NavigationPath()
   @Published var cartPath = NavigationPath()

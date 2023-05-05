@@ -25,7 +25,8 @@ struct ProductVariantSelectionFooterView: View {
       Button {
         if let variant = selectedStockItem?.variant {
           isAddingToCart = true
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          Task {
+            try await Task.sleep(for: .seconds(0.5))
             cart.addProduct(product: product, variant: variant)
             isAddingToCart = false
             dismiss()

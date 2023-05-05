@@ -45,5 +45,9 @@ struct MainTabView: View {
 struct MainTabView_Previews: PreviewProvider {
   static var previews: some View {
     MainTabView()
+      .environmentObject(SampleData.filledCart)
+      .environmentObject(SampleData.shop)
+      .environmentObject(SampleData.products)
+      .environmentObject(Router())
   }
 }

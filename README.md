@@ -41,6 +41,8 @@ Application includes:
 
 - static `LaunchScreen.storyboard` with the logo
 - animated screen `MainLoadingView.swift` which appears rarely (you need to skip onboarding without network connection first, and on the second launch with poor network connection it will be visible)
+- animated loading screen, which appears after network connection errors (turn off all network connections, reinstall the app, skip onboarding, you will get the screen, in case of network link conditioner usage you have to wait until URLSession timeout expires)
 
-![Launch screen](https://www.nborzenko.me/assets/shopellio/report/launch-screen.png)
-![Animated splash screen](https://www.nborzenko.me/assets/shopellio/report/animated-splash-screen.mp4)
+![Launch screen](https://shopellio.nborzenko.me/report/launch-screen.png)
+![Animated splash screen](https://shopellio.nborzenko.me/report/animated-splash-screen.mp4)
+![Animated network connection issues](https://shopellio.nborzenko.me/report/animated-network-issues.mp4)

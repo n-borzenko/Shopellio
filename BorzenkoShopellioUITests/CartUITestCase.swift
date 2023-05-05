@@ -14,7 +14,6 @@ final class CartUITestCase: XCTestCase {
 
   override func setUpWithError() throws {
     continueAfterFailure = false
-    device.orientation = .portrait
   }
 
   func selectVariant(color: String, size: String) {
@@ -61,8 +60,6 @@ final class CartUITestCase: XCTestCase {
 
   // MARK: - Cart screen actions and summary labels
   func testCartActions() throws {
-    UITestHelpers.deleteTheApp()
-
     let app = XCUIApplication()
     app.launch()
 

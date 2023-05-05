@@ -369,4 +369,29 @@ final class CartTestCase: XCTestCase {
     cart.removeItems(atOffsets: IndexSet(integer: 0))
     XCTAssertTrue(cart.items.isEmpty, "Cart should be empty, but it is not")
   }
+
+  // MARK: - removing all products from the cart
+  @MainActor func testRemovingAllProductsFromTheCart() async throws {
+    let variant1 = product1.stock[0].variant
+    let variant2 = product1.stock[1].variant
+    let variant3 = product2.stock[0].variant
+
+    let cacheMock = CacheMock(cartItems: [
+      CartItem(product: product1, variant: variant1, quantity: 2),
+      CartItem(product: product1, variant: variant2, quantity: 1),
+      CartItem(product: product2, variant: variant3, quantity: 2)
+    ])
+    let cart = Cart(cache: cacheMock)
+    await cart.getCachedItems()
+
+    XCTAssertEqual(cart.items.count, 3, "Cart should contain 3 product variants, but it contains \(cart.items.count)")
+    XCTAssertEqual(
+      cart.totalItemQuantity,
+      5,
+      "Cart should contain 5 items in total, but it contains \(cart.totalItemQuantity)"
+    )
+
+    cart.removeAllItems()
+    XCTAssertTrue(cart.items.isEmpty, "Cart should be empty, but it is not")
+  }
 }

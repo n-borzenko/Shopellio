@@ -49,6 +49,15 @@ struct ProductDetailsView: View {
       .background(Color.backgroundColor)
       .navigationBarTitleDisplayMode(.inline)
       .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
+      .toolbar {
+        ToolbarItem(placement: .primaryAction) {
+          Button(Constants.ProductDetails.addToCartButtonTitle) {
+            isVariantSelectionShown = true
+          }
+          .fontWeight(.bold)
+          .disabled(isVariantSelectionShown)
+        }
+      }
       .sheet(isPresented: $isVariantSelectionShown) {
         NavigationStack {
           ProductVariantSelectionView(product: product)

@@ -40,18 +40,7 @@ struct ProductDetailsDescriptionView: View {
           .defaultStyle()
       }
 
-      HStack {
-        Spacer()
-        Button(Constants.ProductDetails.selectVariantButtonLabel) {
-          isVariantSelectionShown = true
-        }
-        .disabled(isVariantSelectionShown)
-        .buttonStyle(.borderedProminent)
-        .foregroundColor(.invertedContrastColor)
-        Spacer()
-      }
-      .padding(.vertical)
-
+      Divider()
       ProductDetailsDescriptionReviewsView(product: product)
     }
   }

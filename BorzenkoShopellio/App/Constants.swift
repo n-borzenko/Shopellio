@@ -90,7 +90,6 @@ enum Constants {
   enum ProductDetails {
     static let colorsListLabel = "Colors:"
     static let sizesListLabel = "Sizes:"
-    static let selectVariantButtonLabel = "Select variant"
     static let selectionBorderWidth = 2.0
 
     static let selectColorLabel = "Select color:"
@@ -136,6 +135,11 @@ enum Constants {
     static let rowSizeLabel = "Size:"
     static let rowCountLabel = "Count:"
     static let emptyCartButtonTitle = "Go shopping"
+
+    static let removeAllButtonTitle = "Remove all"
+    static let removeAllAlertTitle = "Empty the cart"
+    static let cancelButtonTitle = "Cancel"
+    static let removeAllAlertMessage = "Are you sure you want to empty the cart?"
   }
 
   enum LoadingView {

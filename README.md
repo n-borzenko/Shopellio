@@ -1,50 +1,46 @@
 ![Shopellio logo](https://www.nborzenko.me/assets/shopellio/logo-large.png)
 
 # Borzenko-Shopellio
-Capstone project for [Kodeco iOS Bootcamp](https://store.kodeco.com/bootcamp/ios) 2023 
+
+Capstone project for [Kodeco iOS Bootcamp](https://store.kodeco.com/bootcamp/ios) 2023
 
 ## Description
 
-This project represents user experience in a shopping application.
+Shopellio is an online shop where you can choose a huge variety of different products that can fit anyone's needs. User-friendly interface will help you navigate easily and find the best item possible in almost one touch.
 
-Planned feature list ordered by priority:
-- ☑️ Basic home and onboarding screens
-- Screen with the list of items
+Implemented feature list:
+
+- Onboarding screens
+- Hierarchically organazied structure of collections and categories
+- Screens with the list of products
 - Detailed item screen
-- Fetching items from an external API
-- Shopping cart list
-- Interaction with the shopping cart
-- Checkout screen
-- Applying discount code on the checkout screen
-- Order history
-- Review of the purchased item with an attached photo of the product
-- Editable wishlists
-- Shareable wishlists
-
-## Programming to-do list (for week 1)
-
-Must have:
-- ☑️ Setup project
-- ☑️ App icon, display name
-- ☑️ Home screen
-  - ☑️ Welcome text
-  - ☑️ Button leading to the Onboarding screen
-- ☑️ Onboarding screen
-  - ☑️ Text array of features
-  - ☑️ Close screen button
-- ☑️ Correct colors for light and dark modes
-- ☑️ Correct alignment for both orientations and small screens
-  
-Nice to have:
-- ☑️ Constants file
+- Editable shopping cart list
+- Fetching products and shop structure from an external API
+- Persisting of products data and cart content
 
 ## Implementation details and installation
 
 Project technologies:
+
 - Swift
 - SwiftUI
+- Modern concurrency
 
 Minimum requirements:
+
 - Screen size: iPhone SE
+- iOS 16+
 
 You don't need to install any additional packages to run this application.
+
+## Capstone submission details
+
+### Splash screen
+
+Application includes:
+
+- static `LaunchScreen.storyboard` with the logo
+- animated screen `MainLoadingView.swift` which appears rarely (you need to skip onboarding without network connection first, and on the second launch with poor network connection it will be visible)
+
+![Launch screen](https://www.nborzenko.me/assets/shopellio/report/launch-screen.png)
+![Animated splash screen](https://www.nborzenko.me/assets/shopellio/report/animated-splash-screen.mp4)

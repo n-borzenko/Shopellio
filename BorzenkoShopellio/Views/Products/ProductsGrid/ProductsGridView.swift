@@ -42,7 +42,7 @@ struct ProductsGridView: View {
                 for: .milliseconds(Constants.ProductsGrid.scrollTimeout)
               )
               await MainActor.run {
-                proxy.scrollTo(products.first?.id)
+                proxy.scrollTo(products.first?.id, anchor: .top)
               }
             }
           }

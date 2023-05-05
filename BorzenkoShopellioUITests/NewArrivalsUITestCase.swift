@@ -10,8 +10,6 @@
 import XCTest
 
 final class NewArrivalsUITestCase: XCTestCase {
-  let device = XCUIDevice.shared
-
   override func setUpWithError() throws {
     continueAfterFailure = false
   }
@@ -49,8 +47,12 @@ final class NewArrivalsUITestCase: XCTestCase {
       "All categories should be selected by default, but it is not"
     )
 
+    if !scrollViews.buttons["Basic trench coat with belt, $129.00, NEW"].waitForExistence(timeout: 4) {
+      XCTFail("Products grid should have appeared in 4 seconds, but it didn't")
+    }
+
     // first item for all categories is a trench with an image
-    let firstItem = scrollViews.buttons.element(boundBy: 4)
+    let firstItem = scrollViews.buttons.element(boundBy: 0)
     XCTAssertEqual(
       firstItem.label,
       "Basic trench coat with belt, $129.00, NEW",
@@ -65,7 +67,7 @@ final class NewArrivalsUITestCase: XCTestCase {
     )
 
     // select an item for men
-    let tShirtItem = scrollViews.buttons["Printed t-shirt with pocket, $18.00, NEW"]
+    let tShirtItem = scrollViews.otherElements.buttons["Printed t-shirt with pocket, $18.00, NEW"]
     XCTAssertTrue(
       tShirtItem.isHittable,
       "Printed t-shirt with pocket should be available for selection, but it is not"

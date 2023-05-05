@@ -10,8 +10,6 @@
 import XCTest
 
 final class CartUITestCase: XCTestCase {
-  let device = XCUIDevice.shared
-
   override func setUpWithError() throws {
     continueAfterFailure = false
   }
@@ -19,8 +17,7 @@ final class CartUITestCase: XCTestCase {
   func selectVariant(color: String, size: String) {
     let app = XCUIApplication()
     let scrollViews = app.scrollViews
-    let selectVariantButton = scrollViews.buttons["Select variant"]
-    selectVariantButton.tap()
+    app.navigationBars.buttons["Add to cart"].tap()
     scrollViews.buttons[color].tap()
     scrollViews.buttons[size].tap()
     scrollViews.buttons["Add to cart"].tap()
@@ -62,35 +59,30 @@ final class CartUITestCase: XCTestCase {
   func testCartActions() throws {
     let app = XCUIApplication()
     app.launch()
-
-    // set up, add 3 items to the cart
     let tabBar = app.tabBars["Tab Bar"]
-    tabBar.buttons["Products"].tap()
 
-    // open navigation split view on iPad
-    if app.navigationBars.buttons["Show Sidebar"].exists {
-      app.navigationBars.buttons["Show Sidebar"].tap()
-      app.navigationBars.buttons["Show Sidebar"].tap()
-    }
+    // set up the environment
+    UITestHelpers.skipOnboarding()
+    try UITestHelpers.emptyTheCart()
 
-    let collectionViews = app.collectionViews
-    collectionViews.cells.buttons["Coats & Jackets"].tap()
+    // add 3 items to the cart
+    app.scrollViews.otherElements.buttons["Women, 6 subcategories"].tap()
+    let scrollViews = app.scrollViews
 
-    let trenchItem = collectionViews.cells.buttons["Basic trench coat with belt, $129.00, NEW"]
+    let trenchItem = scrollViews.buttons["Basic trench coat with belt, $129.00, NEW"]
     if !trenchItem.waitForExistence(timeout: 3) {
-      XCTFail("Failed to load collection items in 3 seconds")
+      XCTFail("Failed to load items in 3 seconds")
       return
     }
     trenchItem.tap()
-    let scrollViews = app.scrollViews
     selectVariant(color: "beige", size: "M")
     selectVariant(color: "black", size: "M")
 
-    // go back on iPhone navigation stack
-    if app.navigationBars.buttons["Subcategory"].exists {
-      app.navigationBars.buttons["Subcategory"].tap()
+    if app.navigationBars.buttons["Women"].exists {
+      app.navigationBars.buttons["Women"].tap()
     }
-    collectionViews.cells.buttons["Faux leather oversize jacket, $95.00, $90.25"].tap()
+
+    scrollViews.buttons["Faux leather oversize jacket, $95.00, $90.25"].tap()
     scrollViews.staticTexts["Product details title"].swipeUp()
     selectVariant(color: "black", size: "L")
 
@@ -98,15 +90,13 @@ final class CartUITestCase: XCTestCase {
     try UITestHelpers.checkCartBadge(quantity: 3)
     tabBar.buttons["Cart"].tap()
 
+    let collectionViews = app.collectionViews
     let itemsCountItem = collectionViews.cells.staticTexts["Items count"]
     let firstItem = collectionViews.cells.buttons.element(boundBy: 0)
     let secondItem = collectionViews.cells.buttons.element(boundBy: 1)
-
     checkCartSummary(quantity: 3, total: "348.25", beforeDiscount: "353.00", discounted: "4.75")
 
-    while !firstItem.isHittable {
-      app.swipeUp()
-    }
+    firstItem.accessibilityScroll(.down)
 
     // first cart item label
     let firstItemLabel = "Basic trench coat with belt, $129.00, Beige, M, Size, "
@@ -116,6 +106,7 @@ final class CartUITestCase: XCTestCase {
       "First item label should be equal to \(firstItemLabel)1, but it is \(firstItem.label)"
     )
 
+    collectionViews.firstMatch.swipeUp()
     // first cart item quantity should change
     firstItem.swipeRight()
     let addButton = collectionViews.buttons["Add"]
@@ -130,11 +121,11 @@ final class CartUITestCase: XCTestCase {
     // cart summary and tab badge
     try UITestHelpers.checkCartBadge(quantity: 4)
     while !itemsCountItem.isHittable {
-      app.swipeUp()
+      collectionViews.firstMatch.swipeDown()
     }
     checkCartSummary(quantity: 4, total: "477.25", beforeDiscount: "482.00", discounted: "4.75")
     while !secondItem.isHittable {
-      app.swipeDown()
+      collectionViews.firstMatch.swipeUp()
     }
 
     // second cart item label
@@ -158,11 +149,11 @@ final class CartUITestCase: XCTestCase {
     // cart summary and tab badge
     try UITestHelpers.checkCartBadge(quantity: 3)
     while !itemsCountItem.isHittable {
-      app.swipeUp()
+      collectionViews.firstMatch.swipeDown()
     }
     checkCartSummary(quantity: 3, total: "348.25", beforeDiscount: "353.00", discounted: "4.75")
     while !secondItem.isHittable {
-      app.swipeDown()
+      collectionViews.firstMatch.swipeUp()
     }
 
     // third item label
@@ -178,6 +169,7 @@ final class CartUITestCase: XCTestCase {
     let deleteButton = collectionViews.buttons["Delete"]
     XCTAssertTrue(deleteButton.exists, "Swipe left should have opened Delete button, but it didn't")
     deleteButton.tap()
+    sleep(2)
     XCTAssertFalse(secondItem.exists, "Initially third item should have been removed, but it didn't")
 
     // cart summary and tab badge

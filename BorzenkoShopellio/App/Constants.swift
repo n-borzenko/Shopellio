@@ -189,13 +189,10 @@ enum Constants {
   enum ErrorStateView {
     static let requestErrorImage = "ConnectionError"
     static let emptyCartImage = "EmptyCart"
-    static let emptySearchResultsImage = "EmptySearch"
     static let emptyProductGroupImage = "EmptyGroup"
     static let requestErrorMessage = "There was an error while processing the request. " +
     "Please, check the connection and try again"
     static let emptyCartMessage = "Your cart is empty. Please, explore our products catalogue"
-    static let emptySearchResultsMessage = "Nothing was found for your search request. " +
-    "Please, change request parameters and filters"
     static let emptyProductGroupMessage = "Unfortunately, there are no items in this group of products"
 
     static let requestErrorActionTitle = "Try again"

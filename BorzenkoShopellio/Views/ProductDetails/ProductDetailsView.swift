@@ -10,73 +10,59 @@ import SwiftUI
 struct ProductDetailsView: View {
   @EnvironmentObject var shop: Shop
   @State private var isVariantSelectionShown = false
-
   var product: Product
 
   var body: some View {
     GeometryReader { proxy in
-      ScrollView {
-        Group {
-          if proxy.size.width > proxy.size.height {
-            HStack(alignment: .top) {
-              ProductImageView(imageUrl: product.imageUrls.first)
-              ProductDetailsDescriptionView(product: product)
+      Group {
+        if proxy.size.width > Constants.ProductDetails.minWidthForVerticalGallery {
+          HStack(alignment: .top, spacing: 0) {
+            VerticalImageGallery(imageUrls: product.imageUrls)
+              .frame(
+                maxWidth: proxy.size.width / Constants.ProductDetails.imageWidthScale
+              )
+            Divider()
+            ScrollView {
+              ProductDetailsDescriptionView(
+                isVariantSelectionShown: $isVariantSelectionShown,
+                product: product
+              )
             }
-          } else {
-            VStack(alignment: .leading) {
-              ProductImageView(imageUrl: product.imageUrls.first)
-              ProductDetailsDescriptionView(product: product)
-            }
+            .padding()
           }
-          Button(Constants.ProductDetails.selectVariantButtonLabel) {
+        } else {
+          ScrollView {
+            HorizontalImageGallery(imageUrls: product.imageUrls)
+              .frame(
+                maxHeight: proxy.size.height / Constants.ProductDetails.imageHeightScale
+              )
+            Divider()
+            ProductDetailsDescriptionView(
+              isVariantSelectionShown: $isVariantSelectionShown,
+              product: product
+            )
+            .padding()
+          }
+        }
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(Color.backgroundColor)
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
+      .toolbar {
+        ToolbarItem(placement: .primaryAction) {
+          Button(Constants.ProductDetails.addToCartButtonTitle) {
             isVariantSelectionShown = true
           }
-          .buttonStyle(.borderedProminent)
-          .foregroundColor(.invertedContrastColor)
+          .fontWeight(.bold)
+          .disabled(isVariantSelectionShown)
         }
-        .padding()
       }
-      .background(Color.backgroundColor)
       .sheet(isPresented: $isVariantSelectionShown) {
         NavigationStack {
           ProductVariantSelectionView(product: product)
         }
         .presentationDetents([.medium, .large])
-      }
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
-    }
-  }
-}
-
-struct ProductDetailsDescriptionView: View {
-  var product: Product
-
-  var body: some View {
-    VStack(alignment: .leading) {
-      Text(product.title)
-        .titleStyle()
-        .accessibilityIdentifier(Constants.Identifiers.productDetailsTitle)
-      ProductPriceContainerView(product: product)
-      HStack {
-        Text(Constants.ProductDetails.colorsListLabel)
-          .foregroundColor(.textColor)
-          .font(.callout)
-          .fontWeight(.semibold)
-        ProductColorsView(colors: product.colors, isLimited: false)
-      }
-      HStack {
-        Text(Constants.ProductDetails.sizesListLabel)
-          .foregroundColor(.textColor)
-          .font(.callout)
-          .fontWeight(.semibold)
-        ForEach(product.sizes, id: \.self) { sizeName in
-          ProductSizeLabel(sizeName: sizeName)
-        }
-      }
-      if let overview = product.overview {
-        Text(overview)
-          .defaultStyle()
       }
     }
   }

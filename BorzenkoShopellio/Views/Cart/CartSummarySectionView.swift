@@ -17,8 +17,8 @@ struct CartSummarySectionView: View {
           .defaultStyle()
         Spacer()
         Text("\(cart.totalItemQuantity)")
+          .defaultStyle()
           .fontWeight(.bold)
-          .foregroundColor(.textColor)
           .accessibilityIdentifier(Constants.Identifiers.itemsCount)
       }
       if cart.discountedAmount > 0 {

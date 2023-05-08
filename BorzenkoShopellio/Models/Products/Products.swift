@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 final class Products: ObservableObject {
-  private let productsEndpoint = "products"
+  private let productsEndpoint = Constants.Network.productsEndpoint
   private let cache: Cacher
   private let apiClient: APIClient
   private weak var shop: Shop?
@@ -81,8 +81,10 @@ extension Products {
     // currently 2 hardcoded collections are supported
     if let collectionId = collectionId {
       switch collectionId {
-      case "new": return filterNewProducts(categoryId: categoryId)
-      case "sale": return filterDiscountedProducts(categoryId: categoryId)
+      case Constants.ProductGroups.newGroupKey:
+        return filterNewProducts(categoryId: categoryId)
+      case Constants.ProductGroups.saleGroupKey:
+        return filterDiscountedProducts(categoryId: categoryId)
       default: return []
       }
     }

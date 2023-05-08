@@ -11,7 +11,7 @@ extension Text {
   func headlineStyle() -> some View {
     self
       .font(.headline)
-      .fontWeight(.medium)
+      .fontWeight(.bold)
       .foregroundColor(.textColor)
       .lineSpacing(Constants.General.headlineTextLineSpacing)
   }
@@ -34,8 +34,13 @@ extension Text {
     self
       .font(.footnote)
       .foregroundColor(.textColor)
-      .multilineTextAlignment(.center)
-      .textCase(.uppercase)
+  }
+
+  func labelStyle() -> some View {
+    self
+      .font(.callout)
+      .foregroundColor(.textColor)
+      .fontWeight(.semibold)
   }
 }
 
@@ -50,6 +55,11 @@ struct Text_Previews: PreviewProvider {
         .defaultStyle()
       Text("FootnoteTextView")
         .footnoteStyle()
+      Text("LabelTextView")
+        .labelStyle()
+      Button { } label: {
+        Text("Button text")
+      }
     }
   }
 }

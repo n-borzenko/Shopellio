@@ -13,13 +13,7 @@ struct MainTabView: View {
 
   var body: some View {
     TabView(selection: $router.selectedTab) {
-      NewArrivalsView()
-        .tabItem {
-          Image.flame
-          Text(Constants.Main.newArrivalsTitle)
-        }
-        .tag(MainTab.newArrivals)
-      ProductsView()
+      ProductGroupsView()
         .tabItem {
           Image.squareStack
           Text(Constants.Main.productsTitle)

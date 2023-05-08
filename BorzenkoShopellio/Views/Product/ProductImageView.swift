@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProductImageView: View {
   var imageUrl: String?
+  var aspectRatio: CGFloat? = 1
+  var contentMode: ContentMode = .fit
 
   var body: some View {
     Group {
@@ -30,7 +32,7 @@ struct ProductImageView: View {
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .aspectRatio(1, contentMode: .fit)
+    .aspectRatio(aspectRatio, contentMode: contentMode)
   }
 }
 

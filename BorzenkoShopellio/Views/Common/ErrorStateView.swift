@@ -10,14 +10,12 @@ import SwiftUI
 enum ErrorState {
   case requestError
   case emptyCart
-  case emptySearchResults
   case emptyProductGroup
 
   var imageName: String {
     switch self {
     case .requestError: return Constants.ErrorStateView.requestErrorImage
     case .emptyCart: return Constants.ErrorStateView.emptyCartImage
-    case .emptySearchResults: return Constants.ErrorStateView.emptySearchResultsImage
     case .emptyProductGroup: return Constants.ErrorStateView.emptyProductGroupImage
     }
   }
@@ -28,8 +26,6 @@ enum ErrorState {
       return Constants.ErrorStateView.requestErrorMessage
     case .emptyCart:
       return Constants.ErrorStateView.emptyCartMessage
-    case .emptySearchResults:
-      return Constants.ErrorStateView.emptySearchResultsMessage
     case .emptyProductGroup:
       return Constants.ErrorStateView.emptyProductGroupMessage
     }
@@ -74,9 +70,8 @@ struct ErrorStateView: View {
             }
             if let state = state {
               Text(state.message)
-                .font(.headline)
+                .headlineStyle()
                 .multilineTextAlignment(.center)
-                .foregroundColor(.textColor)
                 .frame(maxWidth: Constants.ErrorStateView.errorMessageMaxWidth)
             }
             if let action = action {
@@ -113,9 +108,8 @@ struct NetworkStatusView: View {
         Constants.ErrorStateView.networkOnlineTitle :
           Constants.ErrorStateView.networkOfflineTitle
       )
-      .font(.footnote)
+      .footnoteStyle()
       .multilineTextAlignment(.center)
-      .foregroundColor(.textColor)
       .opacity(Constants.ErrorStateView.networkStatusOpacity)
     }
     .task {
@@ -130,6 +124,5 @@ struct ErrorStateView_Previews: PreviewProvider {
     ErrorStateView(state: .requestError) {}
     ErrorStateView(state: .emptyCart, actionTitle: "Go shopping") {}
     ErrorStateView(state: .emptyProductGroup)
-    ErrorStateView(state: .emptySearchResults)
   }
 }

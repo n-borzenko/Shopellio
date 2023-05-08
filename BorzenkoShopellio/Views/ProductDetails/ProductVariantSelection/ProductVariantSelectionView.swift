@@ -38,7 +38,7 @@ struct ProductVariantSelectionView: View {
     .background(Color.backgroundColor)
     .toolbar {
       ToolbarItem(placement: .cancellationAction) {
-        Button("Close") {
+        Button(Constants.Product.closeButtonTitle) {
           dismiss()
         }
       }

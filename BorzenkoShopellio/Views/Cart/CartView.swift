@@ -10,6 +10,7 @@ import SwiftUI
 struct CartView: View {
   @EnvironmentObject var cart: Cart
   @EnvironmentObject var router: Router
+  @State private var emptyCartAlertIsShown = false
 
   var body: some View {
     NavigationStack(path: $router.cartPath) {
@@ -37,10 +38,29 @@ struct CartView: View {
         }
         .navigationTitle(Constants.Cart.navigationTitle)
         .toolbar {
-          ToolbarItem(placement: .confirmationAction) {
+          ToolbarItem(placement: .navigationBarTrailing) {
             Button(Constants.Cart.checkoutButtonTitle) {}
               .disabled(true)
           }
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button(Constants.Cart.removeAllButtonTitle) {
+              emptyCartAlertIsShown = true
+            }
+          }
+        }
+        .alert(
+          Constants.Cart.removeAllAlertTitle,
+          isPresented: $emptyCartAlertIsShown
+        ) {
+          Button(Constants.Cart.removeAllButtonTitle, role: .destructive) {
+            cart.removeAllItems()
+            emptyCartAlertIsShown = false
+          }
+          Button(Constants.Cart.cancelButtonTitle, role: .cancel) {
+            emptyCartAlertIsShown = false
+          }
+        } message: {
+          Text(Constants.Cart.removeAllAlertMessage)
         }
         .toolbarBackground(Color.toolbarColor, for: .tabBar, .navigationBar)
       }

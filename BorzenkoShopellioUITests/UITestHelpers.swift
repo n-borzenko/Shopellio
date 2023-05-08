@@ -28,35 +28,28 @@ enum UITestHelpers {
     )
   }
 
-  static func deleteTheApp() {
-    let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-
-    XCUIApplication().terminate()
-
-    let icon = springboard.otherElements["Home screen icons"].icons["Shopellio"]
-    if icon.exists {
-      icon.press(forDuration: 1)
-
-      let buttonRemoveApp = springboard.buttons["Remove App"]
-      if buttonRemoveApp.waitForExistence(timeout: 3) {
-        buttonRemoveApp.tap()
-      } else {
-        XCTFail("Button \"Remove App\" not found")
-      }
-
-      let buttonDeleteApp = springboard.alerts.buttons["Delete App"]
-      if buttonDeleteApp.waitForExistence(timeout: 3) {
-        buttonDeleteApp.tap()
-      } else {
-        XCTFail("Button \"Delete App\" not found")
-      }
-
-      let buttonDelete = springboard.alerts.buttons["Delete"]
-      if buttonDelete.waitForExistence(timeout: 5) {
-        buttonDelete.tap()
-      } else {
-        XCTFail("Button \"Delete\" not found")
-      }
+  static func skipOnboarding() {
+    let app = XCUIApplication()
+    if app.buttons["Skip"].exists {
+      app.buttons["Skip"].tap()
     }
+  }
+
+  static func emptyTheCart() throws {
+    let app = XCUIApplication()
+    let tabBar = app.tabBars["Tab Bar"]
+
+    let badgeValue = try XCTUnwrap(
+      tabBar.buttons["Cart"].value as? String,
+      "Cart badge should be a string, but it is not"
+    )
+    guard !badgeValue.isEmpty else {
+      return
+    }
+
+    tabBar.buttons["Cart"].tap()
+    app.navigationBars["Cart"].buttons["Remove all"].tap()
+    app.alerts["Empty the cart"].scrollViews.otherElements.buttons["Remove all"].tap()
+    app.scrollViews.otherElements.buttons["Go shopping"].tap()
   }
 }

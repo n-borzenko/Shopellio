@@ -27,11 +27,23 @@ enum CachedItem {
   var fileURL: URL {
     switch self {
     case .shop:
-      return URL(filePath: "ShopData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
+      return URL(
+        filePath: Constants.Cache.shopFilePath,
+        relativeTo: URL.documentsDirectory
+      )
+      .appendingPathExtension(Constants.Cache.fileExtension)
     case .products:
-      return URL(filePath: "ProductsData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
+      return URL(
+        filePath: Constants.Cache.productsFilePath,
+        relativeTo: URL.documentsDirectory
+      )
+      .appendingPathExtension(Constants.Cache.fileExtension)
     case .cartItems:
-      return URL(filePath: "CartItemsData", relativeTo: URL.documentsDirectory).appendingPathExtension("json")
+      return URL(
+        filePath: Constants.Cache.cartItemsFilePath,
+        relativeTo: URL.documentsDirectory
+      )
+      .appendingPathExtension(Constants.Cache.fileExtension)
     }
   }
 }

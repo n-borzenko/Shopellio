@@ -21,25 +21,28 @@ struct MainView: View {
   }
 
   var body: some View {
-    ZStack {
-      Color.backgroundColor
-        .ignoresSafeArea()
-
-      if shop.state == .finished && products.state == .finished {
-        MainTabView()
-          .environmentObject(cart)
-          .environmentObject(shop)
-          .environmentObject(products)
-          .environmentObject(router)
+    Group {
+      if !router.onboardingWasShown {
+        OnboardingView {
+          router.onboardingWasShown = true
+        }
       } else {
-        if isInitialLoading {
-          MainLoadingView()
+        if shop.state == .finished && products.state == .finished {
+          MainTabView()
+            .environmentObject(cart)
+            .environmentObject(shop)
+            .environmentObject(products)
+            .environmentObject(router)
         } else {
-          ErrorStateView(
-            isLoading: shop.state == .loading || products.state == .loading,
-            state: .requestError,
-            action: fetchAndCache
-          )
+          if isInitialLoading {
+            MainLoadingView()
+          } else {
+            ErrorStateView(
+              isLoading: shop.state == .loading || products.state == .loading,
+              state: .requestError,
+              action: fetchAndCache
+            )
+          }
         }
       }
     }

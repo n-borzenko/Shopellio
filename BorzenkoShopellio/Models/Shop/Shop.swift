@@ -15,7 +15,7 @@ struct ShopContent: Codable {
 
 @MainActor
 final class Shop: ObservableObject {
-  private let shopEndpoint = "shop"
+  private let shopEndpoint = Constants.Network.shopEndpoint
   private let cache: Cacher
   private let apiClient: APIClient
 

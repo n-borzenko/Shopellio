@@ -10,64 +10,64 @@
 import XCTest
 
 final class NewArrivalsUITestCase: XCTestCase {
-  let device = XCUIDevice.shared
-
   override func setUpWithError() throws {
     continueAfterFailure = false
-    device.orientation = .portrait
   }
 
-  // MARK: - New Arrivals screen and default TabView settings
+  // MARK: - New Arrivals collection and default TabView settings
   func testMenTShirtSelection() throws {
-    UITestHelpers.deleteTheApp()
-
     let app = XCUIApplication()
     app.launch()
 
-    if !app.navigationBars["New Arrivals"].waitForExistence(timeout: 5) {
-      XCTFail("New Arrivals tab should have appeared in 2 seconds, but it didn't")
+    UITestHelpers.skipOnboarding()
+
+    if !app.navigationBars["Products"].waitForExistence(timeout: 5) {
+      XCTFail("Products tab should have appeared in 2 seconds, but it didn't")
     }
 
     // default tab view selection
-    let navigationBar = app.navigationBars["New Arrivals"]
+    var navigationBar = app.navigationBars["Products"]
     XCTAssertTrue(
-      navigationBar.staticTexts["New Arrivals"].exists,
-      "New arrivals screen should be selected by default, but it is not"
+      navigationBar.staticTexts["Products"].exists,
+      "Products screen should be selected by default, but it is not"
     )
+
+    try UITestHelpers.emptyTheCart()
 
     // empty cart badge
     try UITestHelpers.checkCartBadge(quantity: 0)
 
-    // default segmented control selection
-    let segmentedControls = navigationBar.segmentedControls
+    let scrollViews = app.scrollViews
+    scrollViews.otherElements.buttons["New Arrivals"].tap()
+
+    // default picker selection
+    navigationBar = app.navigationBars["New Arrivals"]
     XCTAssertTrue(
-      segmentedControls.buttons["Women"].isSelected,
-      "Women category should be selected by default, but it is not"
+      navigationBar.buttons["All"].isSelected,
+      "All categories should be selected by default, but it is not"
     )
 
-    // first item for women is a trench with an image
-    let scrollViews = app.scrollViews
+    if !scrollViews.buttons["Basic trench coat with belt, $129.00, NEW"].waitForExistence(timeout: 4) {
+      XCTFail("Products grid should have appeared in 4 seconds, but it didn't")
+    }
+
+    // first item for all categories is a trench with an image
     let firstItem = scrollViews.buttons.element(boundBy: 0)
     XCTAssertEqual(
       firstItem.label,
       "Basic trench coat with belt, $129.00, NEW",
       "First item should be \"Basic trench coat with belt\", but it is \(firstItem.label)"
     )
-    XCTAssertEqual(
-      firstItem.images.count,
-      1,
-      "First item should contain 1 image, but it contains \(firstItem.images.count)"
-    )
 
     // select men category
-    segmentedControls.buttons["Men"].tap()
+    navigationBar.buttons["Men"].tap()
     XCTAssertTrue(
-      segmentedControls.buttons["Men"].isSelected,
+      navigationBar.buttons["Men"].isSelected,
       "Men category should be selected after tapping on it, but it is not"
     )
 
     // select an item for men
-    let tShirtItem = scrollViews.buttons["Printed t-shirt with pocket, $18.00, NEW"]
+    let tShirtItem = scrollViews.otherElements.buttons["Printed t-shirt with pocket, $18.00, NEW"]
     XCTAssertTrue(
       tShirtItem.isHittable,
       "Printed t-shirt with pocket should be available for selection, but it is not"
@@ -84,7 +84,7 @@ final class NewArrivalsUITestCase: XCTestCase {
 
     // open variant selection and select one
     detailsTitle.swipeUp()
-    scrollViews.buttons["Select variant"].tap()
+    app.navigationBars.buttons["Add to cart"].tap()
     scrollViews.buttons["black"].tap()
     scrollViews.buttons["M"].tap()
 

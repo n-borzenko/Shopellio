@@ -83,6 +83,10 @@ extension Cart {
     items.remove(atOffsets: offsets)
   }
 
+  func removeAllItems() {
+    items.removeAll()
+  }
+
   func getItemQuantity(product: Product, variant: ProductVariant) -> Int {
     let index = getItemIndex(product: product, variant: variant)
     guard let index = index else { return 0 }

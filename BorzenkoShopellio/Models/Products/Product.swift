@@ -21,15 +21,13 @@ struct Product: Reviewable, Discountable, Identifiable, Codable {
   let colors: [String]
 
   let overview: String?
-  let careInstruction: String?
   let reviews: [Review]
 
-  let keywords: [String] // for search, filters, seo
   let tags: [String] // new, sells fast, customer choice, ...
 
   // other possible characteristics: materials, oversized, high/low waist, ...
 
-  init(id: UUID = UUID(), title: String, imageUrls: [String] = [], subcategoryId: String, price: Decimal, discount: Decimal = 0.0, stock: [StockItem] = [], sizes: [String] = [], colors: [String] = [], overview: String? = nil, careInstruction: String? = nil, reviews: [Review] = [], keywords: [String] = [], tags: [String] = []) {
+  init(id: UUID = UUID(), title: String, imageUrls: [String] = [], subcategoryId: String, price: Decimal, discount: Decimal = 0.0, stock: [StockItem] = [], sizes: [String] = [], colors: [String] = [], overview: String? = nil, reviews: [Review] = [], tags: [String] = []) {
     self.id = id
     self.title = title
     self.imageUrls = imageUrls
@@ -40,9 +38,7 @@ struct Product: Reviewable, Discountable, Identifiable, Codable {
     self.sizes = sizes
     self.colors = colors
     self.overview = overview
-    self.careInstruction = careInstruction
     self.reviews = reviews
-    self.keywords = keywords
     self.tags = tags
   }
 }

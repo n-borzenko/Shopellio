@@ -1,8 +1,8 @@
-![Shopellio logo](https://www.nborzenko.me/assets/shopellio/logo-large.png)
+![Shopellio logo](https://shopellio.nborzenko.me/report/logo-large.png)
 
-# Borzenko-Shopellio
+# Shopellio
 
-Capstone project for [Kodeco iOS Bootcamp](https://store.kodeco.com/bootcamp/ios) 2023
+Capstone project for [Kodeco iOS Bootcamp](https://bootcamp.kodeco.com/accelerator/ios) 2023
 
 ## Description
 
